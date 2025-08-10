@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurangzeb Quiz Application</title>
+    <style>
+        /* General Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Poppins', sans-serif;
+            min-height: 100vh;
+            transition: background 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        /* First Page Styles */
+        #startPage {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+      .box {
+    background: linear-gradient(45deg, rgb(218, 0, 171), rgb(0, 255, 191), rgb(255, 221, 0), rgb(218, 0, 171));
+    background-size: 400% 400%;
+    padding: 8px 50px;
+    font-size: 2.1rem;
+    font-weight: 700;
+    font-family: 'Tangerine', cursive;
+    color: black;
+    box-shadow: 0 0 50px rgb(0, 255, 191);
+    outline: 4px solid black;
+    outline-offset: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: gradientFlow 5s ease infinite, pulse 1s infinite;
+    transition: background 0.5s ease, box-shadow 0.3s ease;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.box:hover {
+    background: linear-gradient(45deg, rgb(0, 255, 255), rgb(255, 0, 255), rgb(255, 255, 0), rgb(0, 255, 255));
+    background-size: 400% 400%;
+    box-shadow: 0 0 50px rgb(255, 0, 255);
+}
+
+        .box:hover {
+            background-color: rgb(56, 255, 242);
+            box-shadow: 0 0 80px yellow;
+            outline-color: rgb(0, 255, 102);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 50px rgb(0, 255, 0); }
+            50% { box-shadow: 0 0 100px rgb(255, 0, 0); }
+            100% { box-shadow: 0 0 50px rgb(0, 21, 252); }
+        }
+
+        .loading-text {
+            position: relative;
+            font-family: 'Allura', cursive;
+            background: linear-gradient(90deg, rgb(255, 0, 0), #0ff, #00f) -1810% / 114%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font: 900 clamp(2em, 6vw, 4em) 'Allura', cursive;
+            animation: shimmer 2s linear infinite, glitch 2s infinite;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 100%; }
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: none; opacity: 1; }
+            92% { transform: translateX(-1px) skew(0deg); opacity: 0.9; }
+            94% { transform: translateX(2px) skew(-2deg); opacity: 1; }
+            96% { transform: translateX(-1px) skew(1deg); opacity: 0.95; }
+            98% { transform: translateX(1px) skew(-1deg); opacity: 1; }
+        }
+
+        /* Quiz Page Styles */
+        #quizPage {
+            background: linear-gradient(135deg, #09287e, #13a155);
+            color: #000;
+            position: relative;
+            min-height: 100vh;
+            display: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+       .card {
+    background: linear-gradient(135deg, #258cdf, #a2d9ce, #03b0c7);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(100, 46, 46, 0.2);
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: transform 0.2s;
+}
+
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .question .en {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+            margin-top: 5px;
+        }
+
+        .options button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 10px;
+            margin: 5px 0;
+            border: 3px solid #000;
+            border-radius: 8px;
+            background: #9cb7cf;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.4s ease, transform 0.1s, border-color 0.4s ease, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+            color: #000;
+        }
+
+        .options button:hover {
+            background: #f4ff1f;
+            border-color: #9d00ff;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .options button.correct {
+            background: #d4f5d0 !important;
+            border-color: #4caf50 !important;
+            cursor: default;
+            color: #000 !important;
+        }
+
+        .options button.wrong {
+            background: #b51010 !important;
+            border-color: #000 !important;
+            cursor: default;
+            color: #000 !important;
+        }
+
+        .options button.disabled {
+            pointer-events: none;
+            color: #000;
+        }
+
+        .options button::after {
+            content: '';
+            position: absolute;
+            background: rgb(212, 51, 51);
+            border-radius: 50%;
+            width: 0;
+            height: 0;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .options button:active::after {
+            animation: ripple 0.6s ease-out;
+        }
+
+        @keyframes ripple {
+            to { width: 300px; height: 300px; opacity: 0; }
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .controls button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #4311e8, #ff00dd, #cbd6db, #4311e8);
+            background-size: 400% 400%;
+            animation: flowGradient 5s ease infinite;
+            transition: transform 0.3s ease, box-shadow 0.5s ease;
+            color: #000;
+        }
+
+        .controls button:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+        }
+
+        @keyframes flowGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background: #8eedce;
+            border-left: 4px solid #0037ff;
+            font-size: 0.95rem;
+            animation: slideDown 0.4s ease;
+            opacity: 0;
+            transform: translateY(-10px);
+            font-weight: bold;
+        }
+
+        .explanation.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .progress {
+            height: 8px;
+            background: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #18ff03d6, #ff2802);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #01130e;
+            position: absolute;
+            top: -16px;
+            right: -20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.8rem;
+            transform: scale(0);
+            animation: grow 0.5s ease forwards;
+        }
+
+        @keyframes grow {
+            to { transform: scale(1); }
+        }
+
+        #timerContainer {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            color: #000;
+            z-index: 9999;
+            user-select: none;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        #timerContainer.hidden {
+            visibility: hidden;
+        }
+
+        #timerBar {
+            width: 100%;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        #timerBarFill {
+            height: 100%;
+            background: #ff4444;
+            width: 100%;
+            transition: width 1s linear, background 1s ease;
+        }
+
+        /* Dashboard Page Styles */
+        #dashboardPage {
+            background: linear-gradient(45deg, #a1c4fd, #c2e9fb, #d4fc79);
+            background-size: 600% 400%;
+            animation: flow 5s ease-in-out infinite;
+            padding: 40px;
+            display: none;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: slideUpContainer 1.2s ease-in-out;
+        }
+
+        @keyframes slideUpContainer {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .dashboard-container h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .dash-box {
+            border: 4px solid rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            background-size: 800% 600%;
+            animation: waveFlow 6s ease-in-out infinite, floatUpDown 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes waveFlow {
+            0% { background-position: 0% 50%; filter: brightness(1) saturate(1); }
+            25% { background-position: 50% 55%; filter: brightness(1.3) saturate(1.3); }
+            50% { background-position: 100% 50%; filter: brightness(1.5) saturate(1.4); }
+            75% { background-position: 50% 45%; filter: brightness(1.3) saturate(1.2); }
+            100% { background-position: 0% 50%; filter: brightness(1) saturate(1); }
+        }
+
+        .dash-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(-45deg, rgba(112, 201, 239, 0.15), rgba(109, 184, 121, 0.181), rgb(0, 0, 0));
+            animation: waveLine 6s ease-in-out infinite;
+            transform: rotate(45deg);
+            z-index: 0;
+            filter: drop-shadow(0 0 6px rgba(35, 218, 185, 0.6));
+        }
+
+        @keyframes waveLine {
+            0% { transform: rotate(45deg) translateX(120%) scale(0.85); opacity: 0.35; }
+            25% { transform: rotate(45deg) translateX(60%) scale(1); opacity: 0.65; }
+            50% { transform: rotate(45deg) translateX(-60%) scale(1.25); opacity: 1; }
+            75% { transform: rotate(25deg) translateX(30%) scale(1); opacity: 0.7; }
+            100% { transform: rotate(45deg) translateX(120%) scale(0.85); opacity: 0.35; }
+        }
+
+        .dash-box h4, .dash-box p {
+            position: relative;
+            z-index: 1;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .dash-box:nth-child(1) { background: linear-gradient(45deg, #ff6b6b, #ff9f43, #feca57); animation-delay: 0s; }
+        .dash-box:nth-child(2) { background: linear-gradient(45deg, #1dd1a1, #00d2d3, #54a0ff); animation-delay: 0.2s; }
+        .dash-box:nth-child(3) { background: linear-gradient(45deg, #ff4d4d, #ff793f, #ffcc99); animation-delay: 0.4s; }
+        .dash-box:nth-child(4) { background: linear-gradient(45deg, #40f752, #706fd3, #9980fa); animation-delay: 0.6s; }
+        .dash-box:nth-child(5) { background: linear-gradient(45deg, #ff9ff3, #feca57, #1dd1a1); animation-delay: 0.8s; }
+        .dash-box:nth-child(6) { background: linear-gradient(45deg, #54a0ff, #00d2d3, #ff6b6b); animation-delay: 1s; }
+        .dash-box:nth-child(7) { background: linear-gradient(45deg, #ffcc99, #ff4d4d, #9980fa); animation-delay: 1.2s; }
+        .dash-box:nth-child(8) { background: linear-gradient(45deg, #706fd3, #ff9ff3, #ff793f); animation-delay: 1.4s; }
+        .dash-box:nth-child(9) { background: linear-gradient(45deg, #feca57, #4834d4, #54a0ff); animation-delay: 1.6s; }
+        .dash-box:nth-child(10) { background: linear-gradient(45deg, #00d2d3, #ff6b6b, #ffcc99); animation-delay: 1.8s; }
+        .dash-box:nth-child(11) { background: linear-gradient(45deg, #ff793f, #1dd1a1, #706fd3); animation-delay: 2s; }
+        .dash-box:nth-child(12) { background: linear-gradient(45deg, #9980fa, #ff6b6b, #feca57); animation-delay: 2.2s; }
+        .dash-box:nth-child(13) { background: linear-gradient(45deg, #54a0ff, #ffcc99, #ff4d4d); animation-delay: 2.4s; }
+        .dash-box:nth-child(14) { background: linear-gradient(45deg, #ff9ff3, #00d2d3, #4834d4); animation-delay: 2.6s; }
+        .dash-box:nth-child(15) { background: linear-gradient(45deg, #feca57, #ff793f, #1dd1a1); animation-delay: 2.8s; }
+        .dash-box:nth-child(16) { background: linear-gradient(45deg, #706fd3, #ff6b6b, #54a0ff); animation-delay: 3s; }
+        .dash-box:nth-child(17) { background: linear-gradient(45deg, #ff4d4d, #9980fa, #00d2d3); animation-delay: 3.2s; }
+        .dash-box:nth-child(18) { background: linear-gradient(45deg, #ffcc99, #ff9ff3, #4834d4); animation-delay: 3.4s; }
+        .dash-box:nth-child(19) { background: linear-gradient(45deg, #1dd1a1, #ff793f, #706fd3); animation-delay: 3.6s; }
+        .dash-box:nth-child(20) { background: linear-gradient(45deg, #54a0ff, #feca57, #ff6b6b); animation-delay: 3.8s; }
+        .dash-box:nth-child(21) { background: linear-gradient(45deg, #9980fa, #ff4d4d, #00d2d3); animation-delay: 4s; }
+        .dash-box:nth-child(22) { background: linear-gradient(45deg, #ff9ff3, #ffcc99, #ff793f); animation-delay: 4.2s; }
+        .dash-box:nth-child(23) { background: linear-gradient(45deg, #4834d4, #1dd1a1, #54a0ff); animation-delay: 4.4s; }
+        .dash-box:nth-child(24) { background: linear-gradient(45deg, #ff6b6b, #706fd3, #ff4d4d); animation-delay: 4.6s; }
+        .dash-box:nth-child(25) { background: linear-gradient(45deg, #00d2d3, #ff9ff3, #feca57); animation-delay: 4.8s; }
+        .dash-box:nth-child(26) { background: linear-gradient(45deg, #ffcc99, #54a0ff, #9980fa); animation-delay: 5s; }
+        .dash-box:nth-child(27) { background: linear-gradient(45deg, #ff793f, #ff6b6b, #1dd1a1); animation-delay: 5.2s; }
+        .dash-box:nth-child(28) { background: linear-gradient(45deg, #706fd3, #ff4d4d, #00d2d3); animation-delay: 5.4s; }
+        .dash-box:nth-child(29) { background: linear-gradient(45deg, #feca57, #9980fa, #ff9ff3); animation-delay: 5.6s; }
+        .dash-box:nth-child(30) { background: linear-gradient(45deg, #54a0ff, #ff793f, #ff6b6b); animation-delay: 5.8s; }
+
+        .dash-box:hover {
+            transform: scale(1.15) translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.3);
+        }
+
+        .dash-box h4 {
+            margin: 0;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dash-box p {
+            font-size: 28px;
+            margin: 12px 0 0;
+        }
+
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #4311e8, #ff00dd, #cbd6db, #4311e8);
+            background-size: 400% 400%;
+            animation: flowGradient 5s ease infinite;
+            color: #000;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+        }
+
+        #restartModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border: 1px solid black;
+            z-index: 1000;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container, .dashboard-container {
+                padding: 20px;
+            }
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 20px;
+            }
+            .dash-box p {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Start Page -->
+    <div id="startPage">
+        <div class="box" onclick="goToQuizPage()">Start</div>
+        <div class="loading-text">Lucky</div>
+    </div>
+
+    <!-- Quiz Page -->
+    <div id="quizPage">
+        <div id="timerContainer">
+            <div>Total Time: <span id="totalTime">00:00</span></div>
+            <div id="timerBar"><div id="timerBarFill"></div></div>
+        </div>
+        <div class="container" id="quizContainer">
+            <h1>Aurangzeb Quiz</h1>
+            <div id="score"></div>
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+                <div class="progress-circle" id="progressCircle">0%</div>
+            </div>
+            <div id="quiz"></div>
+            <div class="controls">
+                <button class="submit" onclick="submitQuiz()">Submit</button>
+                <button class="restart" onclick="openRestartModal()">Restart</button>
+                <button class="dashboard" onclick="goToDashboard()">Show Dashboard</button>
+            </div>
+            <select id="languageToggle" onchange="toggleLanguage()">
+                <option value="hi">हिन्दी</option>
+                <option value="en">English</option>
+                <option value="both">Both</option>
+            </select>
+            <div id="restartModal">
+                <h2>Select Questions to Restart</h2>
+                <div id="questionCheckboxes"></div>
+                <button onclick="applyRestart()">Apply</button>
+                <button onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboardPage">
+        <div class="dashboard-container">
+            <h2>🎓 Quiz Result Dashboard</h2>
+            <div class="grid" id="dashboardGrid"></div>
+            <button class="back-button" onclick="goToQuizPage()">Back to Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+    // Very Hard Questions (1-15)
+    {
+        q: "औरंगजेब की मृत्यु के समय मुगल साम्राज्य में कितने सूबे थे, और उनके पुत्रों में से किसने जजाऊ के युद्ध में आजम को पराजित किया?",
+        q_en: "How many provinces were there in the Mughal Empire at the time of Aurangzeb’s death, and which of his sons defeated Azam in the Battle of Jajau?",
+        options: ["21 सूबे, मुअज्जम", "19 सूबे, आजम", "21 सूबे, कमबख्श", "20 सूबे, मुअज्जम"],
+        options_en: ["21 provinces, Muazzam", "19 provinces, Azam", "21 provinces, Kam Bakhsh", "20 provinces, Muazzam"],
+        answer: 0,
+        explanation: "औरंगजेब की मृत्यु 1707 ई. में हुई, तब मुगल साम्राज्य में 21 सूबे थे। जजाऊ के युद्ध में 1707 ई. में मुअज्जम ने आजम को पराजित किया, जिससे वह बादशाह बने।",
+        explanation_en: "Aurangzeb died in 1707 CE, when the Mughal Empire had 21 provinces. In the Battle of Jajau in 1707 CE, Muazzam defeated Azam, becoming the emperor."
+    },
+    {
+        q: "बहादुरशाह प्रथम के शासनकाल में जोसुआ के टेलर के नेतृत्व में कौन सा डच दल आया, और इस समय उनकी पत्नी की क्या भूमिका थी?",
+        q_en: "During Bahadurshah I’s reign, which Dutch group arrived under Joshua Teler’s leadership, and what was the role of his wife during this time?",
+        options: ["डच व्यापारी, जुलियनर की सलाहकार", "डच सैन्य दल, जुलियनर की कोई भूमिका नहीं", "डच व्यापारी, जुलियनर की राजनैतिक भूमिका", "डच दूत, जुलियनर की सैन्य भूमिका"],
+        options_en: ["Dutch traders, Julianar as an advisor", "Dutch military group, Julianar had no role", "Dutch traders, Julianar’s political role", "Dutch envoy, Julianar’s military role"],
+        answer: 2,
+        explanation: "1711 ई. में जोसुआ के टेलर के नेतृत्व में डच व्यापारी दल आया। बहादुरशाह प्रथम की पत्नी जुलियनर ने महत्वपूर्ण राजनैतिक भूमिका निभाई, जिससे डच व्यापार को बढ़ावा मिला।",
+        explanation_en: "In 1711 CE, a Dutch trading group arrived under Joshua Teler’s leadership. Bahadurshah I’s wife Julianar played a significant political role, aiding Dutch trade."
+    },
+    {
+        q: "फर्रुखसियर के शासनकाल में सैयद बंधुओं ने किसके साथ मिलकर उनकी हत्या करवाई, और इसका क्या परिणाम हुआ?",
+        q_en: "During Farrukhsiyar’s reign, with whom did the Sayyid brothers conspire to assassinate him, and what was the outcome?",
+        options: ["बलाजी विश्वनाथ, मुगल साम्राज्य का पतन", "बलाजी विश्वनाथ, सैयद बंधुओं का उत्थान", "जयसिंह, सैयद बंधुओं का पतन", "जुल्फिकर खां, सैयद बंधुओं का उत्थान"],
+        options_en: ["Balaji Vishwanath, decline of the Mughal Empire", "Balaji Vishwanath, rise of the Sayyid brothers", "Jai Singh, decline of the Sayyid brothers", "Zulfikar Khan, rise of the Sayyid brothers"],
+        answer: 1,
+        explanation: "1719 ई. में सैयद बंधुओं ने बलाजी विश्वनाथ के साथ मिलकर फर्रुखसियर की हत्या करवाई, जिससे सैयद बंधुओं का प्रभाव बढ़ा और मुगल सत्ता कमजोर हुई।",
+        explanation_en: "In 1719 CE, the Sayyid brothers conspired with Balaji Vishwanath to assassinate Farrukhsiyar, leading to the rise of the Sayyid brothers and weakening Mughal power."
+    },
+    {
+        q: "मुहम्मद शाह के शासनकाल में सैयद बंधुओं के पतन के बाद पहला वजीर कौन बना, और इस समय कौन सा स्वतंत्र प्रदेश अस्तित्व में नहीं आया था?",
+        q_en: "After the fall of the Sayyid brothers during Muhammad Shah’s reign, who became the first Wazir, and which independent province did not emerge during this time?",
+        options: ["मुहम्मद अमीन खां, मराठा", "निजामुल मुल्क, बंगाल", "मुहम्मद अमीन खां, जयपुर", "सआदत खां, हैदराबाद"],
+        options_en: ["Muhammad Amin Khan, Maratha", "Nizam-ul-Mulk, Bengal", "Muhammad Amin Khan, Jaipur", "Saadat Khan, Hyderabad"],
+        answer: 2,
+        explanation: "सैयद बंधुओं के पतन के बाद 1720 ई. में मुहम्मद अमीन खां पहला वजीर बना। जयपुर इस समय स्वतंत्र प्रदेश के रूप में अस्तित्व में नहीं आया था।",
+        explanation_en: "After the fall of the Sayyid brothers in 1720 CE, Muhammad Amin Khan became the first Wazir. Jaipur did not emerge as an independent province at this time."
+    },
+    {
+        q: "शाहआलम द्वितीय के शासनकाल में पानिपत का तीसरा युद्ध और बक्सर का युद्ध कब हुआ, और इनके बीच किसके संरक्षण में वे रहे?",
+        q_en: "During Shah Alam II’s reign, when did the Third Battle of Panipat and the Battle of Buxar occur, and under whose protection was he during this period?",
+        options: ["1761 और 1764, अंग्रेज", "1760 और 1765, मराठा", "1761 और 1764, मराठा", "1760 और 1764, अंग्रेज"],
+        options_en: ["1761 and 1764, British", "1760 and 1765, Maratha", "1761 and 1764, Maratha", "1760 and 1764, British"],
+        answer: 0,
+        explanation: "पानिपत का तीसरा युद्ध 1761 ई. और बक्सर का युद्ध 1764 ई. में हुआ। इस दौरान शाहआलम द्वितीय 1765 ई. से अंग्रेजों के संरक्षण में रहे।",
+        explanation_en: "The Third Battle of Panipat occurred in 1761 CE, and the Battle of Buxar in 1764 CE. During this period, Shah Alam II was under British protection from 1765 CE."
+    },
+    {
+        q: "औरंगजेब के बाद किस मुगल बादशाह को 'अंतिम अच्छा मुगल नवाब' कहा गया, और इसका कारण क्या था?",
+        q_en: "Which Mughal emperor after Aurangzeb was called the ‘last good Mughal Nawab,’ and why?",
+        options: ["बहादुरशाह प्रथम, सिखों से संधि", "जहांदारशाह, इजारा व्यवस्था", "फर्रुखसियर, फरमान जारी", "मुहम्मद शाह, सैयद बंधुओं का अंत"],
+        options_en: ["Bahadurshah I, treaty with Sikhs", "Jahandarshah, Ijara system", "Farrukhsiyar, issuing Farman", "Muhammad Shah, end of Sayyid brothers"],
+        answer: 0,
+        explanation: "बहादुरशाह प्रथम को 1707 ई. में ओवन सिडनी ने 'अंतिम अच्छा मुगल नवाब' कहा, क्योंकि उन्होंने गुरु गोविंद सिंह से संधि की और साम्राज्य को स्थिर किया।",
+        explanation_en: "In 1707 CE, Owen Sidney called Bahadurshah I the ‘last good Mughal Nawab’ because he signed a treaty with Guru Gobind Singh and stabilized the empire."
+    },
+    {
+        q: "फर्रुखसियर ने 1717 में अंग्रेजों के लिए फरमान जारी किया। इसका क्या प्रभाव पड़ा?",
+        q_en: "Farrukhsiyar issued a Farman for the British in 1717. What was its impact?",
+        options: ["अंग्रेजों को व्यापारिक छूट मिली", "अंग्रेजों को दिल्ली में सत्ता मिली", "अंग्रेजों का सैन्य हस्तक्षेप बढ़ा", "अंग्रेजों को बंगाल में नियंत्रण मिला"],
+        options_en: ["British received trade concessions", "British gained power in Delhi", "British military intervention increased", "British gained control over Bengal"],
+        answer: 0,
+        explanation: "1717 ई. में फर्रुखसियर के फरमान से अंग्रेजों को व्यापारिक छूट मिली, जिससे भारत में उनका व्यापारिक प्रभाव बढ़ा।",
+        explanation_en: "In 1717 CE, Farrukhsiyar’s Farman granted trade concessions to the British, increasing their commercial influence in India."
+    },
+    {
+        q: "मुहम्मद शाह के शासनकाल में नादिरशाह के आक्रमण का परिणाम क्या था, और इसका मुगल साम्राज्य पर क्या प्रभाव पड़ा?",
+        q_en: "What was the outcome of Nadir Shah’s invasion during Muhammad Shah’s reign, and its impact on the Mughal Empire?",
+        options: ["करनाल का युद्ध, आर्थिक कमजोरी", "करनाल का युद्ध, सैन्य शक्ति में वृद्धि", "दिल्ली का युद्ध, साम्राज्य का पूर्ण पतन", "बक्सर का युद्ध, साम्राज्य का पुनरुद्धार"],
+        options_en: ["Battle of Karnal, economic weakness", "Battle of Karnal, increase in military strength", "Battle of Delhi, complete decline of the empire", "Battle of Buxar, revival of the empire"],
+        answer: 0,
+        explanation: "1739 ई. में नादिरशाह ने करनाल के युद्ध में मुगलों को हराया, जिससे मुगल साम्राज्य की आर्थिक कमजोरी बढ़ी।",
+        explanation_en: "In 1739 CE, Nadir Shah defeated the Mughals in the Battle of Karnal, leading to increased economic weakness of the Mughal Empire."
+    },
+    {
+        q: "शाहआलम द्वितीय के समय मराठों और अंग्रेजों के संरक्षण का क्या क्रम था?",
+        q_en: "What was the sequence of Maratha and British protection during Shah Alam II’s reign?",
+        options: ["पहले अंग्रेज, फिर मराठा", "पहले मराठा, फिर अंग्रेज", "केवल अंग्रेज", "केवल मराठा"],
+        options_en: ["First British, then Maratha", "First Maratha, then British", "Only British", "Only Maratha"],
+        answer: 0,
+        explanation: "शाहआलम द्वितीय 1765 ई. से 1772 ई. तक अंग्रेजों के संरक्षण में रहे, फिर 1772 ई. के बाद मराठों के संरक्षण में चले गए।",
+        explanation_en: "Shah Alam II was under British protection from 1765 CE to 1772 CE, then under Maratha protection after 1772 CE."
+    },
+    {
+        q: "अकबर द्वितीय ने राममोहन राय को क्या उपाधि दी, और इसका क्या परिणाम हुआ?",
+        q_en: "What title did Akbar II give to Rammohan Roy, and what was the outcome?",
+        options: ["राजा, ब्रिटेन भेजा गया", "नवाब, दिल्ली में नियुक्त", "राजा, बंगाल में नियुक्त", "दीवान, रंगून भेजा गया"],
+        options_en: ["Raja, sent to Britain", "Nawab, appointed in Delhi", "Raja, appointed in Bengal", "Diwan, sent to Rangoon"],
+        answer: 0,
+        explanation: "अकबर द्वितीय ने 1831 ई. में राममोहन राय को 'राजा' की उपाधि दी और उन्हें ब्रिटेन भेजा, जिससे सामाजिक सुधारों को बढ़ावा मिला।",
+        explanation_en: "In 1831 CE, Akbar II gave Rammohan Roy the title of ‘Raja’ and sent him to Britain, promoting social reforms."
+    },
+    {
+        q: "बहादुरशाह द्वितीय को 1857 के विद्रोह के बाद कहाँ भेजा गया, और उनकी मृत्यु कब हुई?",
+        q_en: "Where was Bahadurshah II sent after the 1857 revolt, and when did he die?",
+        options: ["रंगून, 1862", "लाहौर, 1860", "दिल्ली, 1862", "रंगून, 1858"],
+        options_en: ["Rangoon, 1862", "Lahore, 1860", "Delhi, 1862", "Rangoon, 1858"],
+        answer: 0,
+        explanation: "1857 ई. के विद्रोह के बाद बहादुरशाह द्वितीय को रंगून भेजा गया, और उनकी मृत्यु 1862 ई. में हुई।",
+        explanation_en: "After the 1857 CE revolt, Bahadurshah II was sent to Rangoon, and he died in 1862 CE."
+    },
+    {
+        q: "जहांदारशाह के शासनकाल में जजिया कर के साथ क्या हुआ, और इसका क्या प्रभाव पड़ा?",
+        q_en: "What happened to the Jizya tax during Jahandarshah’s reign, and what was its impact?",
+        options: ["समाप्त किया, धार्मिक सहिष्णुता बढ़ी", "लागू किया, धार्मिक तनाव बढ़ा", "समाप्त किया, आर्थिक संकट बढ़ा", "लागू किया, सैन्य शक्ति बढ़ी"],
+        options_en: ["Abolished, increased religious tolerance", "Imposed, increased religious tension", "Abolished, increased economic crisis", "Imposed, increased military strength"],
+        answer: 0,
+        explanation: "जहांदारशाह ने 1712 ई. में जजिया कर समाप्त किया, जिससे धार्मिक सहिष्णुता बढ़ी और सामाजिक सद्भाव को बढ़ावा मिला।",
+        explanation_en: "In 1712 CE, Jahandarshah abolished the Jizya tax, which increased religious tolerance and promoted social harmony."
+    },
+    {
+        q: "रफी उद-दरजात के शासनकाल में सनकु सिया का विद्रोह क्यों महत्वपूर्ण था?",
+        q_en: "Why was the Sanku Siya rebellion significant during Rafi ud-Darjat’s reign?",
+        options: ["इसने मुगल सत्ता को समाप्त किया", "इसने सिख शक्ति को मजबूत किया", "इसने अंग्रेजों को सत्ता दी", "इसने मराठों को कमजोर किया"],
+        options_en: ["It ended Mughal power", "It strengthened Sikh power", "It gave power to the British", "It weakened the Marathas"],
+        answer: 1,
+        explanation: "1719 ई. में सनकु सिया का विद्रोह सिख शक्ति को मजबूत करने में महत्वपूर्ण था, जिसने मुगल सत्ता को चुनौती दी।",
+        explanation_en: "In 1719 CE, the Sanku Siya rebellion was significant in strengthening Sikh power, challenging Mughal authority."
+    },
+    {
+        q: "अहमदशाह अब्दाली के आक्रमण के समय मुगल साम्राज्य की स्थिति क्या थी, और इसका नेतृत्व कौन कर रहा था?",
+        q_en: "What was the condition of the Mughal Empire during Ahmad Shah Abdali’s invasion, and who was leading it?",
+        options: ["आर्थिक पतन, उमराई", "सैन्य शक्ति में वृद्धि, वजीर", "आर्थिक पतन, बादशाह", "सैन्य कमजोरी, सैयद बंधु"],
+        options_en: ["Economic decline, Umrai", "Military strength increased, Wazir", "Economic decline, Emperor", "Military weakness, Sayyid brothers"],
+        answer: 0,
+        explanation: "1748 ई. में अहमदशाह अब्दाली के आक्रमण के समय मुगल साम्राज्य आर्थिक पतन की स्थिति में था, और इसका नेतृत्व उमराई (जकबल-ए-आलम) कर रही थी।",
+        explanation_en: "In 1748 CE, during Ahmad Shah Abdali’s invasion, the Mughal Empire was in economic decline, led by Umrai (Jiqbal-e-Alam)."
+    },
+    {
+        q: "आलमगीर द्वितीय के शासनकाल में प्लासी का युद्ध हुआ। इसका मुगल साम्राज्य पर क्या प्रभाव पड़ा?",
+        q_en: "The Battle of Plassey occurred during Alamgir II’s reign. What was its impact on the Mughal Empire?",
+        options: ["अंग्रेजों का पूर्ण नियंत्रण", "बंगाल में अंग्रेजों का प्रभाव बढ़ा", "मुगल सैन्य शक्ति में वृद्धि", "मराठों का नियंत्रण बढ़ा"],
+        options_en: ["Complete British control", "Increased British influence in Bengal", "Increased Mughal military strength", "Increased Maratha control"],
+        answer: 1,
+        explanation: "1757 ई. में प्लासी का युद्ध हुआ, जिससे बंगाल में अंग्रेजों का प्रभाव बढ़ा और मुगल सत्ता कमजोर हुई।",
+        explanation_en: "In 1757 CE, the Battle of Plassey increased British influence in Bengal, weakening Mughal authority."
+    },
+
+    // Hard Questions (16-25)
+    {
+        q: "औरंगजेब के तीन पुत्रों के नाम और उनके सूबेदारी क्षेत्र क्या थे?",
+        q_en: "What were the names of Aurangzeb’s three sons and their respective governorships?",
+        options: ["मुअज्जम-काबुल, आजम-गुजरात, कमबख्श-बीजापुर", "मुअज्जम-दिल्ली, आजम-बंगाल, कमबख्श-हैदराबाद", "मुअज्जम-गुजरात, आजम-काबुल, कमबख्श-दिल्ली", "मुअज्जम-बीजापुर, आजम-काबुल, कमबख्श-गुजरात"],
+        options_en: ["Muazzam-Kabul, Azam-Gujarat, Kam Bakhsh-Bijapur", "Muazzam-Delhi, Azam-Bengal, Kam Bakhsh-Hyderabad", "Muazzam-Gujarat, Azam-Kabul, Kam Bakhsh-Delhi", "Muazzam-Bijapur, Azam-Kabul, Kam Bakhsh-Gujarat"],
+        answer: 0,
+        explanation: "औरंगजेब के तीन पुत्र मुअज्जम (काबुल), आजम (गुजरात), और कमबख्श (बीजापुर) के सूबेदार थे, जिन्होंने 1707 ई. में उत्तराधिकार के लिए संघर्ष किया।",
+        explanation_en: "Aurangzeb’s three sons were Muazzam (Kabul), Azam (Gujarat), and Kam Bakhsh (Bijapur), who fought for succession in 1707 CE."
+    },
+    {
+        q: "जजाऊ का युद्ध कब और कहाँ हुआ था?",
+        q_en: "When and where did the Battle of Jajau take place?",
+        options: ["18 जून 1707, आगरा", "18 जनवरी 1709, बीजापुर", "27 फरवरी 1712, लाहौर", "29 फरवरी 1719, दिल्ली"],
+        options_en: ["June 18, 1707, Agra", "January 18, 1709, Bijapur", "February 27, 1712, Lahore", "February 29, 1719, Delhi"],
+        answer: 0,
+        explanation: "जजाऊ का युद्ध 18 जून 1707 ई. को आगरा के पास हुआ, जिसमें मुअज्जम ने आजम को हराया।",
+        explanation_en: "The Battle of Jajau took place on June 18, 1707 CE, near Agra, where Muazzam defeated Azam."
+    },
+    {
+        q: "बहादुरशाह प्रथम को किसने 'शाहे बेखबर' की उपाधि दी थी?",
+        q_en: "Who gave Bahadurshah I the title ‘Shahe Bekhabar’?",
+        options: ["खाफी खां", "ओवन सिडनी", "सैयद बंधु", "जुल्फिकर खां"],
+        options_en: ["Khafi Khan", "Owen Sidney", "Sayyid brothers", "Zulfikar Khan"],
+        answer: 0,
+        explanation: "खाफी खां ने 1707 ई. में बहादुरशाह प्रथम को 'शाहे बेखबर' की उपाधि दी, क्योंकि वह प्रशासनिक मामलों में कम सक्रिय थे।",
+        explanation_en: "In 1707 CE, Khafi Khan gave Bahadurshah I the title ‘Shahe Bekhabar’ due to his limited engagement in administrative affairs."
+    },
+    {
+        q: "जहांदारशाह ने जयसिंह को क्या उपाधि दी थी?",
+        q_en: "What title did Jahandarshah give to Jai Singh?",
+        options: ["सवाई", "महाराज", "सम्राट", "दीवान"],
+        options_en: ["Sawai", "Maharaja", "Samrat", "Diwan"],
+        answer: 0,
+        explanation: "जहांदारशाह ने 1712 ई. में जयसिंह को 'सवाई' की उपाधि दी, जो उनकी शक्ति और प्रभाव को दर्शाती थी।",
+        explanation_en: "In 1712 CE, Jahandarshah gave Jai Singh the title of ‘Sawai,’ reflecting his power and influence."
+    },
+    {
+        q: "फर्रुखसियर ने सिख नेता बंदा बहादुर की हत्या कब करवाई?",
+        q_en: "When did Farrukhsiyar order the execution of the Sikh leader Banda Bahadur?",
+        options: ["1716", "1717", "1719", "1712"],
+        options_en: ["1716", "1717", "1719", "1712"],
+        answer: 0,
+        explanation: "फर्रुखसियर ने 1716 ई. में सिख नेता बंदा बहादुर की हत्या करवाई, जिससे सिख विद्रोह कमजोर हुआ।",
+        explanation_en: "In 1716 CE, Farrukhsiyar ordered the execution of Sikh leader Banda Bahadur, weakening the Sikh rebellion."
+    },
+    {
+        q: "रफी उद-दरजात का शासनकाल कितने समय तक रहा?",
+        q_en: "How long was Rafi ud-Darjat’s reign?",
+        options: ["29 फरवरी-4 जून 1719", "6 जून-17 सितंबर 1719", "1713-1719", "1719-1748"],
+        options_en: ["February 29–June 4, 1719", "June 6–September 17, 1719", "1713-1719", "1719-1748"],
+        answer: 0,
+        explanation: "रफी उद-दरजात का शासनकाल 29 फरवरी से 4 जून 1719 ई. तक रहा, जो सैयद बंधुओं के नियंत्रण में था।",
+        explanation_en: "Rafi ud-Darjat’s reign lasted from February 29 to June 4, 1719 CE, under the control of the Sayyid brothers."
+    },
+    {
+        q: "मुहम्मद शाह को उनकी रंगीन मिजाजी के कारण क्या उपनाम दिया गया था?",
+        q_en: "What nickname was given to Muhammad Shah due to his colorful personality?",
+        options: ["रौशन अख्तर", "रंगीला", "शाहे बेखबर", "शाह आलम"],
+        options_en: ["Raushan Akhtar", "Rangila", "Shahe Bekhabar", "Shah Alam"],
+        answer: 1,
+        explanation: "मुहम्मद शाह को 1719 ई. में उनकी रंगीन मिजाजी के कारण 'रंगीला' का उपनाम दिया गया।",
+        explanation_en: "In 1719 CE, Muhammad Shah was nicknamed ‘Rangila’ due to his colorful personality."
+    },
+    {
+        q: "अहमदशाह के शासनकाल में सेना ने वेतन न मिलने के कारण क्या किया?",
+        q_en: "What did the army do during Ahmad Shah’s reign due to non-payment of salaries?",
+        options: ["विद्रोह", "दिल्ली पर कब्जा", "बादशाह की हत्या", "अंग्रेजों से संधि"],
+        options_en: ["Revolted", "Captured Delhi", "Assassinated the emperor", "Signed a treaty with the British"],
+        answer: 0,
+        explanation: "अहमदशाह के शासनकाल (1748-1754 ई.) में सेना ने वेतन न मिलने के कारण विद्रोह किया, जिससे मुगल सत्ता कमजोर हुई।",
+        explanation_en: "During Ahmad Shah’s reign (1748-1754 CE), the army revolted due to non-payment of salaries, weakening Mughal authority."
+    },
+    {
+        q: "आलमगीर द्वितीय का वास्तविक नाम क्या था?",
+        q_en: "What was the real name of Alamgir II?",
+        options: ["अजीजुद्दीन", "मुही-उल-मिल्लत", "अलीगौहर", "रौशन अख्तर"],
+        options_en: ["Azizuddin", "Muhi-ul-Millat", "Aligauhar", "Raushan Akhtar"],
+        answer: 0,
+        explanation: "आलमगीर द्वितीय का वास्तविक नाम अजीजुद्दीन था, और उनका शासन 1754 ई. से शुरू हुआ।",
+        explanation_en: "The real name of Alamgir II was Azizuddin, and his reign began in 1754 CE."
+    },
+    {
+        q: "शाहजहां तृतीय किसके पौत्र थे?",
+        q_en: "Whose grandson was Shahjahan III?",
+        options: ["कमबख्श", "मुअज्जम", "आजम", "रफी-उस-शान"],
+        options_en: ["Kam Bakhsh", "Muazzam", "Azam", "Rafi-us-Shan"],
+        answer: 0,
+        explanation: "शाहजहां तृतीय कमबख्श के पौत्र थे, और उनका शासन 1758 ई. में शुरू हुआ।",
+        explanation_en: "Shahjahan III was the grandson of Kam Bakhsh, and his reign began in 1758 CE."
+    },
+
+    // Medium Questions (26-40)
+    {
+        q: "औरंगजेब की मृत्यु कब हुई थी?",
+        q_en: "When did Aurangzeb die?",
+        options: ["1707", "1712", "1699", "1720"],
+        options_en: ["1707", "1712", "1699", "1720"],
+        answer: 0,
+        explanation: "औरंगजेब की मृत्यु 1707 ई. में हुई थी, जिसके बाद मुगल साम्राज्य में उत्तराधिकार युद्ध शुरू हुए।",
+        explanation_en: "Aurangzeb died in 1707 CE, after which succession wars began in the Mughal Empire."
+    },
+    {
+        q: "बहादुरशाह प्रथम का दूसरा नाम क्या था?",
+        q_en: "What was the other name of Bahadurshah I?",
+        options: ["मुअज्जम", "रंगीला", "अलीगौहर", "जुल्फिकर"],
+        options_en: ["Muazzam", "Rangila", "Aligauhar", "Zulfikar"],
+        answer: 0,
+        explanation: "बहादुरशाह प्रथम का दूसरा नाम मुअज्जम था, और उन्होंने 1707 ई. में शासन शुरू किया।",
+        explanation_en: "The other name of Bahadurshah I was Muazzam, and he began his reign in 1707 CE."
+    },
+    {
+        q: "जजाऊ का युद्ध किसके बीच हुआ था?",
+        q_en: "The Battle of Jajau was fought between whom?",
+        options: ["मुअज्जम और आजम", "मुअज्जम और कमबख्श", "आजम और कमबख्श", "मुअज्जम और जयसिंह"],
+        options_en: ["Muazzam and Azam", "Muazzam and Kam Bakhsh", "Azam and Kam Bakhsh", "Muazzam and Jai Singh"],
+        answer: 0,
+        explanation: "जजाऊ का युद्ध 1707 ई. में मुअज्जम और आजम के बीच हुआ, जिसमें मुअज्जम विजयी रहे।",
+        explanation_en: "The Battle of Jajau was fought in 1707 CE between Muazzam and Azam, with Muazzam emerging victorious."
+    },
+    {
+        q: "बीजापुर का युद्ध कब हुआ था?",
+        q_en: "When did the Battle of Bijapur take place?",
+        options: ["18 जनवरी 1709", "18 जून 1707", "27 फरवरी 1712", "29 फरवरी 1719"],
+        options_en: ["January 18, 1709", "June 18, 1707", "February 27, 1712", "February 29, 1719"],
+        answer: 0,
+        explanation: "बीजापुर का युद्ध 18 जनवरी 1709 ई. में हुआ, जिसमें कमबख्श पराजित हुआ।",
+        explanation_en: "The Battle of Bijapur took place on January 18, 1709 CE, where Kam Bakhsh was defeated."
+    },
+    {
+        q: "बहादुरशाह प्रथम ने गुरु गोविंद सिंह से क्या किया?",
+        q_en: "What did Bahadurshah I do with Guru Gobind Singh?",
+        options: ["संधि", "युद्ध", "कैद", "हत्या"],
+        options_en: ["Signed a treaty", "Fought a battle", "Imprisoned", "Assassinated"],
+        answer: 0,
+        explanation: "बहादुरशाह प्रथम ने 1707 ई. में गुरु गोविंद सिंह से संधि की, जिससे सिखों के साथ संबंध सुधरे।",
+        explanation_en: "In 1707 CE, Bahadurshah I signed a treaty with Guru Gobind Singh, improving relations with the Sikhs."
+    },
+    {
+        q: "जहांदारशाह को किसने बादशाह बनाया?",
+        q_en: "Who made Jahandarshah the emperor?",
+        options: ["जुल्फिकर खां", "सैयद बंधु", "जयसिंह", "बलाजी विश्वनाथ"],
+        options_en: ["Zulfikar Khan", "Sayyid brothers", "Jai Singh", "Balaji Vishwanath"],
+        answer: 0,
+        explanation: "जुल्फिकर खां ने 1712 ई. में जहांदारशाह को बादशाह बनाया, जिससे उनकी सत्ता स्थापित हुई।",
+        explanation_en: "In 1712 CE, Zulfikar Khan made Jahandarshah the emperor, establishing his rule."
+    },
+    {
+        q: "फर्रुखसियर ने जयसिंह को क्या उपाधि दी?",
+        q_en: "What title did Farrukhsiyar give to Jai Singh?",
+        options: ["सवाई", "महाराज", "दीवान", "सम्राट"],
+        options_en: ["Sawai", "Maharaja", "Diwan", "Samrat"],
+        answer: 0,
+        explanation: "फर्रुखसियर ने 1713 ई. में जयसिंह को 'सवाई' की उपाधि दी, जो उनकी वीरता को दर्शाती थी।",
+        explanation_en: "In 1713 CE, Farrukhsiyar gave Jai Singh the title of ‘Sawai,’ reflecting his bravery."
+    },
+    {
+        q: "मुहम्मद शाह के समय कौन सा स्वतंत्र प्रदेश अस्तित्व में आया?",
+        q_en: "Which independent province emerged during Muhammad Shah’s reign?",
+        options: ["बंगाल", "जयपुर", "दिल्ली", "काबुल"],
+        options_en: ["Bengal", "Jaipur", "Delhi", "Kabul"],
+        answer: 0,
+        explanation: "मुहम्मद शाह के समय 1724 ई. में बंगाल (मुर्शिद कुली खां) स्वतंत्र हुआ।",
+        explanation_en: "During Muhammad Shah’s reign in 1724 CE, Bengal (Murshid Quli Khan) became independent."
+    },
+    {
+        q: "नादिरशाह का आक्रमण कब हुआ था?",
+        q_en: "When did Nadir Shah’s invasion occur?",
+        options: ["1739", "1737", "1748", "1759"],
+        options_en: ["1739", "1737", "1748", "1759"],
+        answer: 0,
+        explanation: "नादिरशाह का आक्रमण 1739 ई. में हुआ, जिसने मुगल साम्राज्य को कमजोर किया।",
+        explanation_en: "Nadir Shah’s invasion occurred in 1739 CE, weakening the Mughal Empire."
+    },
+    {
+        q: "अहमदशाह अब्दाली ने भारत पर आक्रमण कब किया?",
+        q_en: "When did Ahmad Shah Abdali invade India?",
+        options: ["1748", "1754", "1759", "1761"],
+        options_en: ["1748", "1754", "1759", "1761"],
+        answer: 0,
+        explanation: "अहमदशाह अब्दाली ने 1748 ई. में भारत पर आक्रमण किया, जिससे मुगल सत्ता और कमजोर हुई।",
+        explanation_en: "Ahmad Shah Abdali invaded India in 1748 CE, further weakening Mughal authority."
+    },
+    {
+        q: "आलमगीर द्वितीय का शासनकाल कब था?",
+        q_en: "What was the reign period of Alamgir II?",
+        options: ["1754-1758", "1759-1806", "1719-1748", "1748-1754"],
+        options_en: ["1754-1758", "1759-1806", "1719-1748", "1748-1754"],
+        answer: 0,
+        explanation: "आलमगीर द्वितीय का शासनकाल 1754-1758 ई. तक था, जो अस्थिरता का दौर था।",
+        explanation_en: "Alamgir II’s reign was from 1754 to 1758 CE, a period of instability."
+    },
+    {
+        q: "शाहजहां तृतीय का वास्तविक नाम क्या था?",
+        q_en: "What was the real name of Shahjahan III?",
+        options: ["मुही-उल-मिल्लत", "अलीगौहर", "अजीजुद्दीन", "रौशन अख्तर"],
+        options_en: ["Muhi-ul-Millat", "Aligauhar", "Azizuddin", "Raushan Akhtar"],
+        answer: 0,
+        explanation: "शाहजहां तृतीय का वास्तविक नाम मुही-उल-मिल्लत था, और उनका शासन 1758 ई. में शुरू हुआ।",
+        explanation_en: "The real name of Shahjahan III was Muhi-ul-Millat, and his reign began in 1758 CE."
+    },
+    {
+        q: "शाहआलम द्वितीय का वास्तविक नाम क्या था?",
+        q_en: "What was the real name of Shah Alam II?",
+        options: ["अलीगौहर", "अजीजुद्दीन", "मुही-उल-मिल्लत", "रौशन अख्तर"],
+        options_en: ["Aligauhar", "Azizuddin", "Muhi-ul-Millat", "Raushan Akhtar"],
+        answer: 0,
+        explanation: "शाहआलम द्वितीय का वास्तविक नाम अलीगौहर था, और उनका शासन 1759 ई. में शुरू हुआ।",
+        explanation_en: "The real name of Shah Alam II was Aligauhar, and his reign began in 1759 CE."
+    },
+    {
+        q: "अकबर द्वितीय के समय मुगल सिक्के कब बंद हुए?",
+        q_en: "When were Mughal coins discontinued during Akbar II’s reign?",
+        options: ["1835", "1837", "1857", "1806"],
+        options_en: ["1835", "1837", "1857", "1806"],
+        answer: 0,
+        explanation: "अकबर द्वितीय के समय 1835 ई. में मुगल सिक्के बंद हुए, जिससे ब्रिटिश प्रभाव बढ़ा।",
+        explanation_en: "Mughal coins were discontinued in 1835 CE during Akbar II’s reign, increasing British influence."
+    },
+    {
+        q: "बहादुरशाह द्वितीय को किस उपनाम से जाना जाता था?",
+        q_en: "By which nickname was Bahadurshah II known?",
+        options: ["जफर", "रंगीला", "शाहे बेखबर", "सवाई"],
+        options_en: ["Zafar", "Rangila", "Shahe Bekhabar", "Sawai"],
+        answer: 0,
+        explanation: "बहादुरशाह द्वितीय को 1837 ई. में 'जफर' के उपनाम से जाना जाता था, जो उनके शासन का प्रतीक था।",
+        explanation_en: "Bahadurshah II was known by the nickname ‘Zafar’ in 1837 CE, symbolizing his reign."
+    },
+
+    // Easy Questions (41-65)
+    {
+        q: "औरंगजेब की मृत्यु के समय मुगल साम्राज्य में कितने सूबे थे?",
+        q_en: "How many provinces were there in the Mughal Empire at the time of Aurangzeb’s death?",
+        options: ["21", "19", "20", "22"],
+        options_en: ["21", "19", "20", "22"],
+        answer: 0,
+        explanation: "औरंगजेब की मृत्यु 1707 ई. में हुई, तब मुगल साम्राज्य में 21 सूबे थे।",
+        explanation_en: "Aurangzeb died in 1707 CE, when the Mughal Empire had 21 provinces."
+    },
+    {
+        q: "औरंगजेब के पुत्र मुअज्जम किस सूबे के सूबेदार थे?",
+        q_en: "Which province was Aurangzeb’s son Muazzam the governor of?",
+        options: ["काबुल", "गुजरात", "बीजापुर", "दिल्ली"],
+        options_en: ["Kabul", "Gujarat", "Bijapur", "Delhi"],
+        answer: 0,
+        explanation: "मुअज्जम 1707 ई. से पहले काबुल के सूबेदार थे।",
+        explanation_en: "Muazzam was the governor of Kabul before 1707 CE."
+    },
+    {
+        q: "आजम किस सूबे के सूबेदार थे?",
+        q_en: "Which province was Azam the governor of?",
+        options: ["गुजरात", "काबुल", "बीजापुर", "बंगाल"],
+        options_en: ["Gujarat", "Kabul", "Bijapur", "Bengal"],
+        answer: 0,
+        explanation: "आजम 1707 ई. से पहले गुजरात के सूबेदार थे।",
+        explanation_en: "Azam was the governor of Gujarat before 1707 CE."
+    },
+    {
+        q: "कमबख्श किस सूबे के सूबेदार थे?",
+        q_en: "Which province was Kam Bakhsh the governor of?",
+        options: ["बीजापुर", "गुजरात", "काबुल", "बंगाल"],
+        options_en: ["Bijapur", "Gujarat", "Kabul", "Bengal"],
+        answer: 0,
+        explanation: "कमबख्श 1707 ई. से पहले बीजापुर के सूबेदार थे।",
+        explanation_en: "Kam Bakhsh was the governor of Bijapur before 1707 CE."
+    },
+    {
+        q: "जजाऊ का युद्ध कहाँ हुआ था?",
+        q_en: "Where did the Battle of Jajau take place?",
+        options: ["आगरा", "दिल्ली", "लाहौर", "बीजापुर"],
+        options_en: ["Agra", "Delhi", "Lahore", "Bijapur"],
+        answer: 0,
+        explanation: "जजाऊ का युद्ध 1707 ई. में आगरा के पास हुआ।",
+        explanation_en: "The Battle of Jajau took place near Agra in 1707 CE."
+    },
+    {
+        q: "बहादुरशाह प्रथम का शासनकाल कब था?",
+        q_en: "What was the reign period of Bahadurshah I?",
+        options: ["1707-1712", "1712-1713", "1713-1719", "1719-1748"],
+        options_en: ["1707-1712", "1712-1713", "1713-1719", "1719-1748"],
+        answer: 0,
+        explanation: "बहादुरशाह प्रथम का शासनकाल 1707-1712 ई. तक था, जिस दौरान उन्होंने साम्राज्य को स्थिर किया।",
+        explanation_en: "Bahadurshah I’s reign was from 1707 to 1712 CE, during which he stabilized the empire."
+    },
+    {
+        q: "बहादुरशाह प्रथम की मृत्यु कहाँ हुई थी?",
+        q_en: "Where did Bahadurshah I die?",
+        options: ["लाहौर", "दिल्ली", "आगरा", "रंगून"],
+        options_en: ["Lahore", "Delhi", "Agra", "Rangoon"],
+        answer: 0,
+        explanation: "बहादुरशाह प्रथम की मृत्यु 1712 ई. में लाहौर में हुई।",
+        explanation_en: "Bahadurshah I died in Lahore in 1712 CE."
+    },
+    {
+        q: "बहादुरशाह प्रथम को किसने 'अंतिम अच्छा मुगल नवाब' कहा?",
+        q_en: "Who called Bahadurshah I the ‘last good Mughal Nawab’?",
+        options: ["ओवन सिडनी", "खाफी खां", "जुल्फिकर खां", "सैयद बंधु"],
+        options_en: ["Owen Sidney", "Khafi Khan", "Zulfikar Khan", "Sayyid brothers"],
+        answer: 0,
+        explanation: "ओवन सिडनी ने 1707 ई. में बहादुरशाह प्रथम को 'अंतिम अच्छा मुगल नवाब' कहा।",
+        explanation_en: "In 1707 CE, Owen Sidney called Bahadurshah I the ‘last good Mughal Nawab’."
+    },
+    {
+        q: "जहांदारशाह का शासनकाल कब था?",
+        q_en: "What was the reign period of Jahandarshah?",
+        options: ["1712-1713", "1707-1712", "1713-1719", "1719-1748"],
+        options_en: ["1712-1713", "1707-1712", "1713-1719", "1719-1748"],
+        answer: 0,
+        explanation: "जहांदारशाह का शासनकाल 1712-1713 ई. तक था, जो संक्षिप्त और अस्थिर था।",
+        explanation_en: "Jahandarshah’s reign was from 1712 to 1713 CE, which was brief and unstable."
+    },
+    {
+        q: "जहांदारशाह को किसने बादशाह बनाया?",
+        q_en: "Who made Jahandarshah the emperor?",
+        options: ["जुल्फिकर खां", "सैयद बंधु", "जयसिंह", "निजामुल मुल्क"],
+        options_en: ["Zulfikar Khan", "Sayyid brothers", "Jai Singh", "Nizam-ul-Mulk"],
+        answer: 0,
+        explanation: "जुल्फिकर खां ने 1712 ई. में जहांदारशाह को बादशाह बनाया।",
+        explanation_en: "In 1712 CE, Zulfikar Khan made Jahandarshah the emperor."
+    },
+    {
+        q: "जहांदारशाह ने किस कर को समाप्त किया था?",
+        q_en: "Which tax did Jahandarshah abolish?",
+        options: ["जजिया", "तीर्थयात्रा कर", "आयात कर", "निर्यात कर"],
+        options_en: ["Jizya", "Pilgrimage tax", "Import tax", "Export tax"],
+        answer: 0,
+        explanation: "जहांदारशाह ने 1712 ई. में जजिया कर समाप्त किया, जिससे धार्मिक सहिष्णुता बढ़ी।",
+        explanation_en: "In 1712 CE, Jahandarshah abolished the Jizya tax, increasing religious tolerance."
+    },
+    {
+        q: "फर्रुखसियर का शासनकाल कब था?",
+        q_en: "What was the reign period of Farrukhsiyar?",
+        options: ["1713-1719", "1707-1712", "1712-1713", "1719-1748"],
+        options_en: ["1713-1719", "1707-1712", "1712-1713", "1719-1748"],
+        answer: 0,
+        explanation: "फर्रुखसियर का शासनकाल 1713-1719 ई. तक था, जिस दौरान सैयद बंधुओं का प्रभाव बढ़ा।",
+        explanation_en: "Farrukhsiyar’s reign was from 1713 to 1719 CE, during which the Sayyid brothers’ influence grew."
+    },
+    {
+        q: "फर्रुखसियर ने अंग्रेजों के लिए फरमान कब जारी किया?",
+        q_en: "When did Farrukhsiyar issue a Farman for the British?",
+        options: ["1717", "1716", "1719", "1712"],
+        options_en: ["1717", "1716", "1719", "1712"],
+        answer: 0,
+        explanation: "फर्रुखसियर ने 1717 ई. में अंग्रेजों के लिए फरमान जारी किया, जिससे उनका व्यापारिक प्रभाव बढ़ा।",
+        explanation_en: "In 1717 CE, Farrukhsiyar issued a Farman for the British, increasing their commercial influence."
+    },
+    {
+        q: "रफी उद-दरजात का शासनकाल कब था?",
+        q_en: "What was the reign period of Rafi ud-Darjat?",
+        options: ["29 फरवरी-4 जून 1719", "6 जून-17 सितंबर 1719", "1713-1719", "1719-1748"],
+        options_en: ["February 29–June 4, 1719", "June 6–September 17, 1719", "1713-1719", "1719-1748"],
+        answer: 0,
+        explanation: "रफी उद-दरजात का शासनकाल 29 फरवरी से 4 जून 1719 ई. तक रहा।",
+        explanation_en: "Rafi ud-Darjat’s reign lasted from February 29 to June 4, 1719 CE."
+    },
+    {
+        q: "रफी उद-दौलत का शासनकाल कब था?",
+        q_en: "What was the reign period of Rafi ud-Daulat?",
+        options: ["6 जून-17 सितंबर 1719", "29 फरवरी-4 जून 1719", "1713-1719", "1719-1748"],
+        options_en: ["June 6–September 17, 1719", "February 29–June 4, 1719", "1713-1719", "1719-1748"],
+        answer: 0,
+        explanation: "रफी उद-दौलत का शासनकाल 6 जून से 17 सितंबर 1719 ई. तक रहा।",
+        explanation_en: "Rafi ud-Daulat’s reign lasted from June 6 to September 17, 1719 CE."
+    },
+    {
+        q: "मुहम्मद शाह का उपनाम क्या था?",
+        q_en: "What was the nickname of Muhammad Shah?",
+        options: ["रंगीला", "जफर", "शाहे बेखबर", "सवाई"],
+        options_en: ["Rangila", "Zafar", "Shahe Bekhabar", "Sawai"],
+        answer: 0,
+        explanation: "मुहम्मद शाह को 1719 ई. में 'रंगीला' का उपनाम उनकी रंगीन मिजाजी के कारण दिया गया।",
+        explanation_en: "In 1719 CE, Muhammad Shah was nicknamed ‘Rangila’ due to his colorful personality."
+    },
+    {
+        q: "मुहम्मद शाह का शासनकाल कब था?",
+        q_en: "What was the reign period of Muhammad Shah?",
+        options: ["1719-1748", "1707-1712", "1713-1719", "1754-1758"],
+        options_en: ["1719-1748", "1707-1712", "1713-1719", "1754-1758"],
+        answer: 0,
+        explanation: "मुहम्मद शाह का शासनकाल 1719-1748 ई. तक था, जिसमें कई स्वतंत्र प्रदेश उभरे।",
+        explanation_en: "Muhammad Shah’s reign was from 1719 to 1748 CE, during which several independent provinces emerged."
+    },
+    {
+        q: "मुहम्मद शाह के समय बंगाल का स्वतंत्र शासक कौन था?",
+        q_en: "Who was the independent ruler of Bengal during Muhammad Shah’s reign?",
+        options: ["मुर्शिद कुली खां", "सआदत खां", "निजामुल मुल्क", "बदन सिंह"],
+        options_en: ["Murshid Quli Khan", "Saadat Khan", "Nizam-ul-Mulk", "Badan Singh"],
+        answer: 0,
+        explanation: "मुहम्मद शाह के समय 1724 ई. में बंगाल का स्वतंत्र शासक मुर्शिद कुली खां था।",
+        explanation_en: "In 1724 CE, during Muhammad Shah’s reign, Murshid Quli Khan was the independent ruler of Bengal."
+    },
+    {
+        q: "अहमदशाह का शासनकाल कब था?",
+        q_en: "What was the reign period of Ahmad Shah?",
+        options: ["1748-1754", "1754-1758", "1719-1748", "1759-1806"],
+        options_en: ["1748-1754", "1754-1758", "1719-1748", "1759-1806"],
+        answer: 0,
+        explanation: "अहमदशाह का शासनकाल 1748-1754 ई. तक था, जो आर्थिक और सैन्य कमजोरी का दौर था।",
+        explanation_en: "Ahmad Shah’s reign was from 1748 to 1754 CE, a period of economic and military weakness."
+    },
+    {
+        q: "आलमगीर द्वितीय का शासनकाल कब था?",
+        q_en: "What was the reign period of Alamgir II?",
+        options: ["1754-1758", "1748-1754", "1759-1806", "1719-1748"],
+        options_en: ["1754-1758", "1748-1754", "1759-1806", "1719-1748"],
+        answer: 0,
+        explanation: "आलमगीर द्वितीय का शासनकाल 1754-1758 ई. तक था, जिसमें ब्रिटिश प्रभाव बढ़ा।",
+        explanation_en: "Alamgir II’s reign was from 1754 to 1758 CE, during which British influence grew."
+    },
+    {
+        q: "शाहजहां तृतीय का शासनकाल कब था?",
+        q_en: "What was the reign period of Shahjahan III?",
+        options: ["1758-1759", "1754-1758", "1759-1806", "1748-1754"],
+        options_en: ["1758-1759", "1754-1758", "1759-1806", "1748-1754"],
+        answer: 0,
+        explanation: "शाहजहां तृतीय का शासनकाल 1758-1759 ई. तक था, जो संक्षिप्त और अस्थिर था।",
+        explanation_en: "Shahjahan III’s reign was from 1758 to 1759 CE, which was brief and unstable."
+    },
+    {
+        q: "शाहआलम द्वितीय का शासनकाल कब था?",
+        q_en: "What was the reign period of Shah Alam II?",
+        options: ["1759-1806", "1748-1754", "1754-1758", "1719-1748"],
+        options_en: ["1759-1806", "1748-1754", "1754-1758", "1719-1748"],
+        answer: 0,
+        explanation: "शाहआलम द्वितीय का शासनकाल 1759-1806 ई. तक था, जिसमें अंग्रेजों का प्रभाव बढ़ा।",
+        explanation_en: "Shah Alam II’s reign was from 1759 to 1806 CE, during which British influence increased."
+    },
+    {
+        q: "अकबर द्वितीय का शासनकाल कब था?",
+        q_en: "What was the reign period of Akbar II?",
+        options: ["1806-1837", "1759-1806", "1754-1758", "1837-1857"],
+        options_en: ["1806-1837", "1759-1806", "1754-1758", "1837-1857"],
+        answer: 0,
+        explanation: "अकबर द्वितीय का शासनकाल 1806-1837 ई. तक था, जिसमें मुगल सत्ता नाममात्र की रह गई।",
+        explanation_en: "Akbar II’s reign was from 1806 to 1837 CE, when Mughal power was nominal."
+    },
+    {
+        q: "बहादुरशाह द्वितीय का शासनकाल कब था?",
+        q_en: "What was the reign period of Bahadurshah II?",
+        options: ["1837-1857", "1806-1837", "1759-1806", "1754-1758"],
+        options_en: ["1837-1857", "1806-1837", "1759-1806", "1754-1758"],
+        answer: 0,
+        explanation: "बहादुरशाह द्वितीय का शासनकाल 1837-1857 ई. तक था, जो 1857 के विद्रोह के साथ समाप्त हुआ।",
+        explanation_en: "Bahadurshah II’s reign was from 1837 to 1857 CE, ending with the 1857 revolt."
+    },
+    {
+        q: "बहादुरशाह द्वितीय की मृत्यु कब हुई थी?",
+        q_en: "When did Bahadurshah II die?",
+        options: ["1862", "1857", "1837", "1806"],
+        options_en: ["1862", "1857", "1837", "1806"],
+        answer: 0,
+        explanation: "बहादुरशाह द्वितीय की मृत्यु 1862 ई. में रंगून में हुई, जहाँ उन्हें 1857 के विद्रोह के बाद निर्वासित किया गया था।",
+        explanation_en: "Bahadurshah II died in 1862 CE in Rangoon, where he was exiled after the 1857 revolt."
+    }
+];
+
+        let selectedAnswers = new Array(questions.length).fill(null);
+        let submitted = false;
+        let score = 0;
+        let totalSeconds = 0;
+        let language = 'hi';
+        let timerInterval;
+        let answerTimes = [];
+        let startTime;
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+            const s = (seconds % 60).toString().padStart(2, '0');
+            return `${m}:${s}`;
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                totalSeconds++;
+                document.getElementById('totalTime').innerText = formatTime(totalSeconds);
+                updateTimerBar();
+            }, 1000);
+        }
+
+        function updateTimerBar() {
+            const maxTime = 150;
+            const width = (1 - totalSeconds / maxTime) * 100;
+            let color;
+            if (totalSeconds <= 50) {
+                color = 'lightgreen';
+            } else if (totalSeconds <= 75) {
+                color = 'green';
+            } else if (totalSeconds <= 100) {
+                color = 'black';
+            } else {
+                color = 'red';
+            }
+            const fill = document.getElementById('timerBarFill');
+            fill.style.width = `${width}%`;
+            fill.style.background = color;
+            if (totalSeconds >= maxTime && !submitted) {
+                submitQuiz();
+            }
+        }
+
+        function loadQuestions() {
+            const quiz = document.getElementById('quiz');
+            const lang = document.getElementById('languageToggle').value;
+            const answered = selectedAnswers.filter(a => a !== null).length;
+            document.getElementById('progressBar').style.width = (answered / questions.length * 100) + '%';
+            document.getElementById('progressCircle').textContent = `${Math.round(answered / questions.length * 100)}%`;
+            document.getElementById('progressCircle').style.transform = 'scale(0)';
+            setTimeout(() => document.getElementById('progressCircle').style.transform = 'scale(1)', 10);
+
+            quiz.innerHTML = questions.map((q, index) => {
+                let cls = '';
+                if (selectedAnswers[index] !== null) {
+                    cls = 'answered';
+                }
+                return `
+                    <div class='card ${cls}'>
+                        <div class='question'>
+                            Q${index + 1}. ${lang === 'en' ? q.q_en : q.q}
+                            ${lang === 'both' ? `<div class='en'>Q${index + 1}. ${q.q_en}</div>` : ''}
+                        </div>
+                        <div class='options'>
+                            ${q.options.map((opt, i) => {
+                                let btnCls = '';
+                                if (selectedAnswers[index] !== null) {
+                                    if (i === q.answer) btnCls = 'correct disabled';
+                                    else if (selectedAnswers[index] === i) btnCls = 'wrong disabled';
+                                    else btnCls = 'disabled';
+                                }
+                                return `
+                                    <button class='${btnCls}' onclick='selectOption(${index}, ${i})' ${btnCls.includes('disabled') ? 'disabled' : ''}>
+                                        ${String.fromCharCode(65 + i)}) ${lang === 'en' ? q.options_en[i] : opt}
+                                        ${lang === 'both' ? `<div class='en'>${String.fromCharCode(65 + i)}) ${q.options_en[i]}</div>` : ''}
+                                    </button>`;
+                            }).join('')}
+                        </div>
+                        ${selectedAnswers[index] !== null ? `
+                            <div class='explanation ${selectedAnswers[index] !== null ? 'active' : ''}'>
+                                <b>Explanation:</b> ${lang === 'en' ? q.explanation_en : q.explanation}
+                                ${lang === 'both' ? `<div class='en'><b>Explanation:</b> ${q.explanation_en}</div>` : ''}
+                            </div>` : ''}
+                    </div>`;
+            }).join('');
+            document.getElementById('score').innerText = `Score: ${score} / ${questions.length}`;
+        }
+
+        function selectOption(qIndex, optIndex) {
+            if (submitted) return;
+            if (selectedAnswers[qIndex] !== null) return;
+
+            const endTime = Date.now();
+            const timeTaken = (endTime - startTime) / 1000; // Time in seconds
+            answerTimes[qIndex] = { time: timeTaken, correct: optIndex === questions[qIndex].answer };
+
+            selectedAnswers[qIndex] = optIndex;
+            if (optIndex === questions[qIndex].answer) {
+                score++;
+            }
+            document.getElementById('score').innerText = `Score: ${score} / ${questions.length}`;
+            loadQuestions();
+            startTime = Date.now(); // Reset start time for the next question
+        }
+
+        function submitQuiz() {
+            if (submitted) return;
+
+            selectedAnswers.forEach((answer, index) => {
+                if (answer === null) {
+                    selectedAnswers[index] = -1; // Mark unattempted
+                }
+            });
+
+            submitted = true;
+            document.getElementById('score').innerText = `Your Score: ${score} / ${questions.length} (Total Time: ${formatTime(totalSeconds)})`;
+            loadQuestions();
+            clearInterval(timerInterval);
+            setTimeout(goToDashboard, 2000);
+        }
+
+        function openRestartModal() {
+            if (submitted) {
+                alert('Cannot restart after submit');
+                return;
+            }
+            const checkboxes = document.getElementById('questionCheckboxes');
+            checkboxes.innerHTML = '';
+
+            const selectAllLabel = document.createElement('label');
+            const selectAll = document.createElement('input');
+            selectAll.type = 'checkbox';
+            selectAll.onclick = () => {
+                const cbs = document.querySelectorAll('#questionCheckboxes input[type="checkbox"]');
+                cbs.forEach(cb => {
+                    if (cb !== selectAll) cb.checked = selectAll.checked;
+                });
+            };
+            selectAllLabel.appendChild(selectAll);
+            selectAllLabel.appendChild(document.createTextNode('Select All'));
+            checkboxes.appendChild(selectAllLabel);
+            checkboxes.appendChild(document.createElement('br'));
+
+            questions.forEach((q, i) => {
+                const label = document.createElement('label');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.value = i;
+                label.appendChild(checkbox);
+                label.appendChild(document.createTextNode(`Question ${i + 1}`));
+                checkboxes.appendChild(label);
+                checkboxes.appendChild(document.createElement('br'));
+            });
+
+            document.getElementById('restartModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('restartModal').style.display = 'none';
+        }
+
+        function applyRestart() {
+            const checkboxes = document.querySelectorAll('#questionCheckboxes input[type="checkbox"]:checked');
+            checkboxes.forEach(cb => {
+                if (cb.value !== undefined) {
+                    const idx = parseInt(cb.value);
+                    if (selectedAnswers[idx] === questions[idx].answer) {
+                        score--;
+                    }
+                    selectedAnswers[idx] = null;
+                    answerTimes[idx] = null; // Clear answer time
+                }
+            });
+
+            closeModal();
+            document.getElementById('score').innerText = `Score: ${score} / ${questions.length}`;
+            loadQuestions();
+        }
+
+        function goToQuizPage() {
+            document.getElementById('startPage').style.display = 'none';
+            document.getElementById('quizPage').style.display = 'block';
+            document.getElementById('dashboardPage').style.display = 'none';
+            startTimer();
+            loadQuestions();
+            startTime = Date.now(); // Initialize start time for the first question
+        }
+
+        function goToDashboard() {
+            document.getElementById('startPage').style.display = 'none';
+            document.getElementById('quizPage').style.display = 'none';
+            document.getElementById('dashboardPage').style.display = 'block';
+            loadDashboard();
+        }
+
+        function loadDashboard() {
+            const totalQuestions = questions.length;
+            const attempted = selectedAnswers.filter(a => a !== null && a !== -1).length;
+            const unattempted = totalQuestions - attempted;
+            const correct = score;
+            const wrong = attempted - correct;
+            const scorePercentage = (correct / totalQuestions * 100).toFixed(1) || 0;
+            const totalMarks = `${totalQuestions * 20} / ${correct * 20}`; // Assuming 20 marks per question
+            const totalTime = formatTime(totalSeconds);
+            const avgTimePerQuestion = (totalSeconds / attempted).toFixed(1) || 0;
+            const speed = (attempted / (totalSeconds / 60)).toFixed(1) || 0;
+            const accuracy = (correct / attempted * 100).toFixed(1) || 0;
+            const efficiency = accuracy > 80 ? 'High' : accuracy > 60 ? 'Medium' : 'Low';
+            const percentile = accuracy > 90 ? 'Top 15%' : accuracy > 70 ? 'Top 30%' : 'Top 50%';
+            const rank = Math.floor(Math.random() * 280) + 1; // Placeholder
+            let longestStreak = 0;
+            let currentStreak = 0;
+            selectedAnswers.forEach((answer, i) => {
+                if (answer === questions[i].answer) {
+                    currentStreak++;
+                    longestStreak = Math.max(longestStreak, currentStreak);
+                } else {
+                    currentStreak = 0;
+                }
+            });
+            const bestSection = 'History (100%)'; // Static as per quiz context
+            const weakSection = 'N/A'; // Placeholder
+            const improvement = accuracy > 80 ? '+5%' : '+2%'; // Placeholder
+            const performanceLevel = accuracy > 80 ? 'Advanced' : accuracy > 60 ? 'Intermediate' : 'Beginner';
+            const medals = accuracy > 80 ? 'Accuracy Master' : 'N/A'; // Placeholder
+            const efficiencyScore = (accuracy * 0.9).toFixed(0); // Placeholder
+            const predictedScore = (scorePercentage * 1.02).toFixed(1); // Placeholder
+            const fastestAnswer = answerTimes.filter(t => t).length ? Math.min(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
+            const slowestAnswer = answerTimes.filter(t => t).length ? Math.max(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
+            const avgTimeCorrect = answerTimes.filter(t => t && t.correct).length ? (answerTimes.filter(t => t && t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && t.correct).length).toFixed(1) : 'N/A';
+            const avgTimeWrong = answerTimes.filter(t => t && !t.correct).length ? (answerTimes.filter(t => t && !t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && !t.correct).length).toFixed(1) : 'N/A';
+            const timeEfficiency = (1 - totalSeconds / (totalQuestions * 30)).toFixed(2); // Placeholder
+            const guessRate = wrong > 0 ? ((wrong / attempted) * 100).toFixed(1) : 0;
+            const firstHalfAccuracy = selectedAnswers.slice(0, Math.ceil(totalQuestions / 2)).filter((a, i) => a === questions[i].answer).length / Math.ceil(totalQuestions / 2) * 100 || 0;
+
+            const dashboardGrid = document.getElementById('dashboardGrid');
+            dashboardGrid.innerHTML = `
+                <div class="dash-box"><h4>Total Questions</h4><p>${totalQuestions}</p></div>
+                <div class="dash-box"><h4>Attempted</h4><p>${attempted}</p></div>
+                <div class="dash-box"><h4>Unattempted</h4><p>${unattempted}</p></div>
+                <div class="dash-box"><h4>Correct</h4><p>${correct}</p></div>
+                <div class="dash-box"><h4>Wrong</h4><p>${wrong}</p></div>
+                <div class="dash-box"><h4>Score</h4><p>${scorePercentage}%</p></div>
+                <div class="dash-box"><h4>Total Marks</h4><p>${totalMarks}</p></div>
+                <div class="dash-box"><h4>Total Time</h4><p>${totalTime}</p></div>
+                <div class="dash-box"><h4>Avg Time/Q</h4><p>${avgTimePerQuestion} sec</p></div>
+                <div class="dash-box"><h4>Speed</h4><p>${speed} Q/min</p></div>
+                <div class="dash-box"><h4>Accuracy</h4><p>${accuracy}%</p></div>
+                <div class="dash-box"><h4>Efficiency</h4><p>${efficiency}</p></div>
+                <div class="dash-box"><h4>Percentile</h4><p>${percentile}</p></div>
+                <div class="dash-box"><h4>Rank</h4><p>${rank} / 280</p></div>
+                <div class="dash-box"><h4>Longest Streak</h4><p>${longestStreak} Qs</p></div>
+                <div class="dash-box"><h4>Best Section</h4><p>${bestSection}</p></div>
+                <div class="dash-box"><h4>Weak Section</h4><p>${weakSection}</p></div>
+                <div class="dash-box"><h4>Improvement</h4><p>${improvement}</p></div>
+                <div class="dash-box"><h4>Performance Level</h4><p>${performanceLevel}</p></div>
+                <div class="dash-box"><h4>Medals</h4><p>${medals}</p></div>
+                <div class="dash-box"><h4>Efficiency Score</h4><p>${efficiencyScore}</p></div>
+                <div class="dash-box"><h4>Predicted Score</h4><p>${predictedScore}%</p></div>
+                <div class="dash-box"><h4>Questions/Min</h4><p>${speed} Q/min</p></div>
+                <div class="dash-box"><h4>Fastest Answer</h4><p>${fastestAnswer} sec</p></div>
+                <div class="dash-box"><h4>Slowest Answer</h4><p>${slowestAnswer} sec</p></div>
+                <div class="dash-box"><h4>Avg Time Correct</h4><p>${avgTimeCorrect} sec</p></div>
+                <div class="dash-box"><h4>Avg Time Wrong</h4><p>${avgTimeWrong} sec</p></div>
+                <div class="dash-box"><h4>Time Efficiency</h4><p>${timeEfficiency}</p></div>
+                <div class="dash-box"><h4>Guess Rate</h4><p>${guessRate}%</p></div>
+                <div class="dash-box"><h4>First-Half Accuracy</h4><p>${firstHalfAccuracy.toFixed(1)}%</p></div>
+            `;
+        }
+
+        // Initialize
+        document.getElementById('timerContainer').addEventListener('dblclick', function() {
+            this.classList.toggle('hidden');
+        });
+
+        // Load Google Fonts
+        const link = document.createElement('link');
+        link.href = 'https://fonts.googleapis.com/css2?family=Tangerine&family=Allura&family=Poppins:wght@400;600&display=swap';
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+    </script>
+</body>
+</html>
