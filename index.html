@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurangzeb Quiz Application</title>
+    <title> medieval his  Quiz </title>
     <style>
         /* General Reset and Base Styles */
         * {
@@ -460,7 +460,11 @@
         .dash-box:nth-child(28) { background: linear-gradient(45deg, #706fd3, #ff4d4d, #00d2d3); animation-delay: 5.4s; }
         .dash-box:nth-child(29) { background: linear-gradient(45deg, #feca57, #9980fa, #ff9ff3); animation-delay: 5.6s; }
         .dash-box:nth-child(30) { background: linear-gradient(45deg, #54a0ff, #ff793f, #ff6b6b); animation-delay: 5.8s; }
-
+        .dash-box:nth-child(31) { background: linear-gradient(45deg, #706fd3, #ff6b6b, #54a0ff); animation-delay: 3s; }
+        .dash-box:nth-child(32) { background: linear-gradient(45deg, #ff4d4d, #9980fa, #00d2d3); animation-delay: 3.2s; }
+        .dash-box:nth-child(33) { background: linear-gradient(45deg, #ffcc99, #ff9ff3, #4834d4); animation-delay: 3.4s; }
+        .dash-box:nth-child(34) { background: linear-gradient(45deg, #1dd1a1, #ff793f, #706fd3); animation-delay: 3.6s; }
+        
         .dash-box:hover {
             transform: scale(1.15) translateY(-10px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
@@ -579,597 +583,911 @@
     <script>
         const questions = [
     // Very Hard Questions (1-15)
+    
     {
-        q: "औरंगजेब की मृत्यु के समय मुगल साम्राज्य में कितने सूबे थे, और उनके पुत्रों में से किसने जजाऊ के युद्ध में आजम को पराजित किया?",
-        q_en: "How many provinces were there in the Mughal Empire at the time of Aurangzeb’s death, and which of his sons defeated Azam in the Battle of Jajau?",
-        options: ["21 सूबे, मुअज्जम", "19 सूबे, आजम", "21 सूबे, कमबख्श", "20 सूबे, मुअज्जम"],
-        options_en: ["21 provinces, Muazzam", "19 provinces, Azam", "21 provinces, Kam Bakhsh", "20 provinces, Muazzam"],
-        answer: 0,
-        explanation: "औरंगजेब की मृत्यु 1707 ई. में हुई, तब मुगल साम्राज्य में 21 सूबे थे। जजाऊ के युद्ध में 1707 ई. में मुअज्जम ने आजम को पराजित किया, जिससे वह बादशाह बने।",
-        explanation_en: "Aurangzeb died in 1707 CE, when the Mughal Empire had 21 provinces. In the Battle of Jajau in 1707 CE, Muazzam defeated Azam, becoming the emperor."
+        "q": "मोहम्मद साहब का जन्म कब हुआ था?",
+        "q_en": "When was Prophet Muhammad born?",
+        "options": ["560 ई.", "570 ई.", "580 ई.", "590 ई."],
+        "options_en": ["560 CE", "570 CE", "580 CE", "590 CE"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब का जन्म 570 ई. में हुआ था।",
+        "explanation_en": "Prophet Muhammad was born in 570 CE."
     },
     {
-        q: "बहादुरशाह प्रथम के शासनकाल में जोसुआ के टेलर के नेतृत्व में कौन सा डच दल आया, और इस समय उनकी पत्नी की क्या भूमिका थी?",
-        q_en: "During Bahadurshah I’s reign, which Dutch group arrived under Joshua Teler’s leadership, and what was the role of his wife during this time?",
-        options: ["डच व्यापारी, जुलियनर की सलाहकार", "डच सैन्य दल, जुलियनर की कोई भूमिका नहीं", "डच व्यापारी, जुलियनर की राजनैतिक भूमिका", "डच दूत, जुलियनर की सैन्य भूमिका"],
-        options_en: ["Dutch traders, Julianar as an advisor", "Dutch military group, Julianar had no role", "Dutch traders, Julianar’s political role", "Dutch envoy, Julianar’s military role"],
-        answer: 2,
-        explanation: "1711 ई. में जोसुआ के टेलर के नेतृत्व में डच व्यापारी दल आया। बहादुरशाह प्रथम की पत्नी जुलियनर ने महत्वपूर्ण राजनैतिक भूमिका निभाई, जिससे डच व्यापार को बढ़ावा मिला।",
-        explanation_en: "In 1711 CE, a Dutch trading group arrived under Joshua Teler’s leadership. Bahadurshah I’s wife Julianar played a significant political role, aiding Dutch trade."
+        "q": "मोहम्मद साहब का जन्म स्थान कहाँ था?",
+        "q_en": "Where was Prophet Muhammad born?",
+        "options": ["मदीना", "रियाद", "मक्का", "काबा"],
+        "options_en": ["Medina", "Riyadh", "Mecca", "Kaaba"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब का जन्म मक्का में हुआ था।",
+        "explanation_en": "Prophet Muhammad was born in Mecca."
     },
     {
-        q: "फर्रुखसियर के शासनकाल में सैयद बंधुओं ने किसके साथ मिलकर उनकी हत्या करवाई, और इसका क्या परिणाम हुआ?",
-        q_en: "During Farrukhsiyar’s reign, with whom did the Sayyid brothers conspire to assassinate him, and what was the outcome?",
-        options: ["बलाजी विश्वनाथ, मुगल साम्राज्य का पतन", "बलाजी विश्वनाथ, सैयद बंधुओं का उत्थान", "जयसिंह, सैयद बंधुओं का पतन", "जुल्फिकर खां, सैयद बंधुओं का उत्थान"],
-        options_en: ["Balaji Vishwanath, decline of the Mughal Empire", "Balaji Vishwanath, rise of the Sayyid brothers", "Jai Singh, decline of the Sayyid brothers", "Zulfikar Khan, rise of the Sayyid brothers"],
-        answer: 1,
-        explanation: "1719 ई. में सैयद बंधुओं ने बलाजी विश्वनाथ के साथ मिलकर फर्रुखसियर की हत्या करवाई, जिससे सैयद बंधुओं का प्रभाव बढ़ा और मुगल सत्ता कमजोर हुई।",
-        explanation_en: "In 1719 CE, the Sayyid brothers conspired with Balaji Vishwanath to assassinate Farrukhsiyar, leading to the rise of the Sayyid brothers and weakening Mughal power."
+        "q": "मोहम्मद साहब की पत्नी का नाम क्या था?",
+        "q_en": "What was the name of Prophet Muhammad's wife?",
+        "options": ["आयशा", "फातिमा", "खदीजा", "अमीना"],
+        "options_en": ["Aisha", "Fatima", "Khadija", "Amina"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब की पहली पत्नी खदीजा थीं।",
+        "explanation_en": "Prophet Muhammad's first wife was Khadija."
     },
     {
-        q: "मुहम्मद शाह के शासनकाल में सैयद बंधुओं के पतन के बाद पहला वजीर कौन बना, और इस समय कौन सा स्वतंत्र प्रदेश अस्तित्व में नहीं आया था?",
-        q_en: "After the fall of the Sayyid brothers during Muhammad Shah’s reign, who became the first Wazir, and which independent province did not emerge during this time?",
-        options: ["मुहम्मद अमीन खां, मराठा", "निजामुल मुल्क, बंगाल", "मुहम्मद अमीन खां, जयपुर", "सआदत खां, हैदराबाद"],
-        options_en: ["Muhammad Amin Khan, Maratha", "Nizam-ul-Mulk, Bengal", "Muhammad Amin Khan, Jaipur", "Saadat Khan, Hyderabad"],
-        answer: 2,
-        explanation: "सैयद बंधुओं के पतन के बाद 1720 ई. में मुहम्मद अमीन खां पहला वजीर बना। जयपुर इस समय स्वतंत्र प्रदेश के रूप में अस्तित्व में नहीं आया था।",
-        explanation_en: "After the fall of the Sayyid brothers in 1720 CE, Muhammad Amin Khan became the first Wazir. Jaipur did not emerge as an independent province at this time."
+        "q": "मोहम्मद साहब के पिता का नाम क्या था?",
+        "q_en": "What was the name of Prophet Muhammad's father?",
+        "options": ["अबु तालीब", "हज़रत", "अब्दुल्ला", "मोहम्मद"],
+        "options_en": ["Abu Talib", "Hazrat", "Abdullah", "Muhammad"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब के पिता का नाम अब्दुल्ला था।",
+        "explanation_en": "Prophet Muhammad's father was Abdullah."
     },
     {
-        q: "शाहआलम द्वितीय के शासनकाल में पानिपत का तीसरा युद्ध और बक्सर का युद्ध कब हुआ, और इनके बीच किसके संरक्षण में वे रहे?",
-        q_en: "During Shah Alam II’s reign, when did the Third Battle of Panipat and the Battle of Buxar occur, and under whose protection was he during this period?",
-        options: ["1761 और 1764, अंग्रेज", "1760 और 1765, मराठा", "1761 और 1764, मराठा", "1760 और 1764, अंग्रेज"],
-        options_en: ["1761 and 1764, British", "1760 and 1765, Maratha", "1761 and 1764, Maratha", "1760 and 1764, British"],
-        answer: 0,
-        explanation: "पानिपत का तीसरा युद्ध 1761 ई. और बक्सर का युद्ध 1764 ई. में हुआ। इस दौरान शाहआलम द्वितीय 1765 ई. से अंग्रेजों के संरक्षण में रहे।",
-        explanation_en: "The Third Battle of Panipat occurred in 1761 CE, and the Battle of Buxar in 1764 CE. During this period, Shah Alam II was under British protection from 1765 CE."
+        "q": "मोहम्मद साहब का पालन-पोषण किसने किया?",
+        "q_en": "Who raised Prophet Muhammad?",
+        "options": ["पिता अब्दुल्ला", "मां अमीना", "दादा", "चाचा अबु तालीब"],
+        "options_en": ["Father Abdullah", "Mother Amina", "Grandfather", "Uncle Abu Talib"],
+        "answer": 3,
+        "explanation": "मोहम्मद साहब का पालन-पोषण उनके चाचा अबु तालीब ने किया।",
+        "explanation_en": "Prophet Muhammad was raised by his uncle Abu Talib."
     },
     {
-        q: "औरंगजेब के बाद किस मुगल बादशाह को 'अंतिम अच्छा मुगल नवाब' कहा गया, और इसका कारण क्या था?",
-        q_en: "Which Mughal emperor after Aurangzeb was called the ‘last good Mughal Nawab,’ and why?",
-        options: ["बहादुरशाह प्रथम, सिखों से संधि", "जहांदारशाह, इजारा व्यवस्था", "फर्रुखसियर, फरमान जारी", "मुहम्मद शाह, सैयद बंधुओं का अंत"],
-        options_en: ["Bahadurshah I, treaty with Sikhs", "Jahandarshah, Ijara system", "Farrukhsiyar, issuing Farman", "Muhammad Shah, end of Sayyid brothers"],
-        answer: 0,
-        explanation: "बहादुरशाह प्रथम को 1707 ई. में ओवन सिडनी ने 'अंतिम अच्छा मुगल नवाब' कहा, क्योंकि उन्होंने गुरु गोविंद सिंह से संधि की और साम्राज्य को स्थिर किया।",
-        explanation_en: "In 1707 CE, Owen Sidney called Bahadurshah I the ‘last good Mughal Nawab’ because he signed a treaty with Guru Gobind Singh and stabilized the empire."
+        "q": "मोहम्मद साहब किस कबीले से थे?",
+        "q_en": "Which tribe did Prophet Muhammad belong to?",
+        "options": ["बानी उमय्य", "बानी हशिम", "बानी हसन", "कुरैश"],
+        "options_en": ["Banu Umayya", "Banu Hashim", "Banu Hasan", "Quraysh"],
+        "answer": 3,
+        "explanation": "मोहम्मद साहब कुरैश कबीले से थे, विशेष रूप से बानी हशिम शाखा से।",
+        "explanation_en": "Prophet Muhammad belonged to the Quraysh tribe, specifically the Banu Hashim clan."
     },
     {
-        q: "फर्रुखसियर ने 1717 में अंग्रेजों के लिए फरमान जारी किया। इसका क्या प्रभाव पड़ा?",
-        q_en: "Farrukhsiyar issued a Farman for the British in 1717. What was its impact?",
-        options: ["अंग्रेजों को व्यापारिक छूट मिली", "अंग्रेजों को दिल्ली में सत्ता मिली", "अंग्रेजों का सैन्य हस्तक्षेप बढ़ा", "अंग्रेजों को बंगाल में नियंत्रण मिला"],
-        options_en: ["British received trade concessions", "British gained power in Delhi", "British military intervention increased", "British gained control over Bengal"],
-        answer: 0,
-        explanation: "1717 ई. में फर्रुखसियर के फरमान से अंग्रेजों को व्यापारिक छूट मिली, जिससे भारत में उनका व्यापारिक प्रभाव बढ़ा।",
-        explanation_en: "In 1717 CE, Farrukhsiyar’s Farman granted trade concessions to the British, increasing their commercial influence in India."
+        "q": "मोहम्मद साहब के परिवार का पेशा क्या था?",
+        "q_en": "What was the profession of Prophet Muhammad's family?",
+        "options": ["किसान", "सैनिक", "पुजारी परिवार (Priest Family)", "व्यापारी"],
+        "options_en": ["Farmer", "Soldier", "Priest Family", "Merchant"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब का परिवार काबा के पुजारी परिवार से था।",
+        "explanation_en": "Prophet Muhammad's family was associated with the priesthood of the Kaaba."
     },
     {
-        q: "मुहम्मद शाह के शासनकाल में नादिरशाह के आक्रमण का परिणाम क्या था, और इसका मुगल साम्राज्य पर क्या प्रभाव पड़ा?",
-        q_en: "What was the outcome of Nadir Shah’s invasion during Muhammad Shah’s reign, and its impact on the Mughal Empire?",
-        options: ["करनाल का युद्ध, आर्थिक कमजोरी", "करनाल का युद्ध, सैन्य शक्ति में वृद्धि", "दिल्ली का युद्ध, साम्राज्य का पूर्ण पतन", "बक्सर का युद्ध, साम्राज्य का पुनरुद्धार"],
-        options_en: ["Battle of Karnal, economic weakness", "Battle of Karnal, increase in military strength", "Battle of Delhi, complete decline of the empire", "Battle of Buxar, revival of the empire"],
-        answer: 0,
-        explanation: "1739 ई. में नादिरशाह ने करनाल के युद्ध में मुगलों को हराया, जिससे मुगल साम्राज्य की आर्थिक कमजोरी बढ़ी।",
-        explanation_en: "In 1739 CE, Nadir Shah defeated the Mughals in the Battle of Karnal, leading to increased economic weakness of the Mughal Empire."
+        "q": "मोहम्मद साहब ने किस गुफा में ध्यान लगाया?",
+        "q_en": "In which cave did Prophet Muhammad meditate?",
+        "options": ["मदीना की गुफा", "बगदाद की गुफा", "मक्का की हिरा की गुफा", "मक्का की पहाड़ी"],
+        "options_en": ["Cave of Medina", "Cave of Baghdad", "Cave of Hira in Mecca", "Hill of Mecca"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब ने मक्का की हिरा गुफा में ध्यान लगाया।",
+        "explanation_en": "Prophet Muhammad meditated in the Cave of Hira in Mecca."
     },
     {
-        q: "शाहआलम द्वितीय के समय मराठों और अंग्रेजों के संरक्षण का क्या क्रम था?",
-        q_en: "What was the sequence of Maratha and British protection during Shah Alam II’s reign?",
-        options: ["पहले अंग्रेज, फिर मराठा", "पहले मराठा, फिर अंग्रेज", "केवल अंग्रेज", "केवल मराठा"],
-        options_en: ["First British, then Maratha", "First Maratha, then British", "Only British", "Only Maratha"],
-        answer: 0,
-        explanation: "शाहआलम द्वितीय 1765 ई. से 1772 ई. तक अंग्रेजों के संरक्षण में रहे, फिर 1772 ई. के बाद मराठों के संरक्षण में चले गए।",
-        explanation_en: "Shah Alam II was under British protection from 1765 CE to 1772 CE, then under Maratha protection after 1772 CE."
+        "q": "मोहम्मद साहब को पहला संदेश किसने दिया?",
+        "q_en": "Who gave the first revelation to Prophet Muhammad?",
+        "options": ["खदीजा", "अबु तालीब", "जिब्राइल", "जब्राईल (Angel Gabriel)"],
+        "options_en": ["Khadija", "Abu Talib", "Jibrail", "Angel Gabriel"],
+        "answer": 3,
+        "explanation": "मोहम्मद साहब को पहला संदेश जब्राईल (Angel Gabriel) ने दिया।",
+        "explanation_en": "The first revelation to Prophet Muhammad was given by Angel Gabriel."
     },
     {
-        q: "अकबर द्वितीय ने राममोहन राय को क्या उपाधि दी, और इसका क्या परिणाम हुआ?",
-        q_en: "What title did Akbar II give to Rammohan Roy, and what was the outcome?",
-        options: ["राजा, ब्रिटेन भेजा गया", "नवाब, दिल्ली में नियुक्त", "राजा, बंगाल में नियुक्त", "दीवान, रंगून भेजा गया"],
-        options_en: ["Raja, sent to Britain", "Nawab, appointed in Delhi", "Raja, appointed in Bengal", "Diwan, sent to Rangoon"],
-        answer: 0,
-        explanation: "अकबर द्वितीय ने 1831 ई. में राममोहन राय को 'राजा' की उपाधि दी और उन्हें ब्रिटेन भेजा, जिससे सामाजिक सुधारों को बढ़ावा मिला।",
-        explanation_en: "In 1831 CE, Akbar II gave Rammohan Roy the title of ‘Raja’ and sent him to Britain, promoting social reforms."
+        "q": "मोहम्मद साहब ने किस विचार का समर्थन किया?",
+        "q_en": "Which belief did Prophet Muhammad support?",
+        "options": ["मूर्तिपूजा", "अवतारवाद", "पंथवाद", "एकेश्वरवाद"],
+        "options_en": ["Idolatry", "Incarnation", "Sectarianism", "Monotheism"],
+        "answer": 3,
+        "explanation": "मोहम्मद साहब ने एकेश्वरवाद का समर्थन किया।",
+        "explanation_en": "Prophet Muhammad supported monotheism."
     },
     {
-        q: "बहादुरशाह द्वितीय को 1857 के विद्रोह के बाद कहाँ भेजा गया, और उनकी मृत्यु कब हुई?",
-        q_en: "Where was Bahadurshah II sent after the 1857 revolt, and when did he die?",
-        options: ["रंगून, 1862", "लाहौर, 1860", "दिल्ली, 1862", "रंगून, 1858"],
-        options_en: ["Rangoon, 1862", "Lahore, 1860", "Delhi, 1862", "Rangoon, 1858"],
-        answer: 0,
-        explanation: "1857 ई. के विद्रोह के बाद बहादुरशाह द्वितीय को रंगून भेजा गया, और उनकी मृत्यु 1862 ई. में हुई।",
-        explanation_en: "After the 1857 CE revolt, Bahadurshah II was sent to Rangoon, and he died in 1862 CE."
+        "q": "मोहम्मद साहब ने मक्का छोड़कर मदीना कब गए?",
+        "q_en": "When did Prophet Muhammad migrate from Mecca to Medina?",
+        "options": ["620 ई.", "621 ई.", "622 ई.", "623 ई."],
+        "options_en": ["620 CE", "621 CE", "622 CE", "623 CE"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब ने 622 ई. में मक्का छोड़कर मदीना की ओर हिजरा की।",
+        "explanation_en": "Prophet Muhammad migrated from Mecca to Medina in 622 CE."
     },
     {
-        q: "जहांदारशाह के शासनकाल में जजिया कर के साथ क्या हुआ, और इसका क्या प्रभाव पड़ा?",
-        q_en: "What happened to the Jizya tax during Jahandarshah’s reign, and what was its impact?",
-        options: ["समाप्त किया, धार्मिक सहिष्णुता बढ़ी", "लागू किया, धार्मिक तनाव बढ़ा", "समाप्त किया, आर्थिक संकट बढ़ा", "लागू किया, सैन्य शक्ति बढ़ी"],
-        options_en: ["Abolished, increased religious tolerance", "Imposed, increased religious tension", "Abolished, increased economic crisis", "Imposed, increased military strength"],
-        answer: 0,
-        explanation: "जहांदारशाह ने 1712 ई. में जजिया कर समाप्त किया, जिससे धार्मिक सहिष्णुता बढ़ी और सामाजिक सद्भाव को बढ़ावा मिला।",
-        explanation_en: "In 1712 CE, Jahandarshah abolished the Jizya tax, which increased religious tolerance and promoted social harmony."
+        "q": "मदीना जाने की घटना को क्या कहा जाता है?",
+        "q_en": "What is the migration to Medina called?",
+        "options": ["हिजरी", "जिहाद", "मुहाजिरा", "हिजरा"],
+        "options_en": ["Hijri", "Jihad", "Muhajira", "Hijra"],
+        "answer": 3,
+        "explanation": "मदीना जाने की घटना को हिजरा कहा जाता है।",
+        "explanation_en": "The migration to Medina is called Hijra."
     },
     {
-        q: "रफी उद-दरजात के शासनकाल में सनकु सिया का विद्रोह क्यों महत्वपूर्ण था?",
-        q_en: "Why was the Sanku Siya rebellion significant during Rafi ud-Darjat’s reign?",
-        options: ["इसने मुगल सत्ता को समाप्त किया", "इसने सिख शक्ति को मजबूत किया", "इसने अंग्रेजों को सत्ता दी", "इसने मराठों को कमजोर किया"],
-        options_en: ["It ended Mughal power", "It strengthened Sikh power", "It gave power to the British", "It weakened the Marathas"],
-        answer: 1,
-        explanation: "1719 ई. में सनकु सिया का विद्रोह सिख शक्ति को मजबूत करने में महत्वपूर्ण था, जिसने मुगल सत्ता को चुनौती दी।",
-        explanation_en: "In 1719 CE, the Sanku Siya rebellion was significant in strengthening Sikh power, challenging Mughal authority."
+        "q": "हिजरी संवि्धा की शुरुआत कब हुई?",
+        "q_en": "When did the Hijri calendar begin?",
+        "options": ["620 ई.", "621 ई.", "622 ई.", "623 ई."],
+        "options_en": ["620 CE", "621 CE", "622 CE", "623 CE"],
+        "answer": 2,
+        "explanation": "हिजरी संवि्धा की शुरुआत 622 ई. में हिजरा के साथ हुई।",
+        "explanation_en": "The Hijri calendar began in 622 CE with the Hijra."
     },
     {
-        q: "अहमदशाह अब्दाली के आक्रमण के समय मुगल साम्राज्य की स्थिति क्या थी, और इसका नेतृत्व कौन कर रहा था?",
-        q_en: "What was the condition of the Mughal Empire during Ahmad Shah Abdali’s invasion, and who was leading it?",
-        options: ["आर्थिक पतन, उमराई", "सैन्य शक्ति में वृद्धि, वजीर", "आर्थिक पतन, बादशाह", "सैन्य कमजोरी, सैयद बंधु"],
-        options_en: ["Economic decline, Umrai", "Military strength increased, Wazir", "Economic decline, Emperor", "Military weakness, Sayyid brothers"],
-        answer: 0,
-        explanation: "1748 ई. में अहमदशाह अब्दाली के आक्रमण के समय मुगल साम्राज्य आर्थिक पतन की स्थिति में था, और इसका नेतृत्व उमराई (जकबल-ए-आलम) कर रही थी।",
-        explanation_en: "In 1748 CE, during Ahmad Shah Abdali’s invasion, the Mughal Empire was in economic decline, led by Umrai (Jiqbal-e-Alam)."
+        "q": "मक्का पर मोहम्मद साहब ने कब अधिकार किया?",
+        "q_en": "When did Prophet Muhammad conquer Mecca?",
+        "options": ["628 ई.", "629 ई.", "630 ई.", "632 ई."],
+        "options_en": ["628 CE", "629 CE", "630 CE", "632 CE"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब ने 630 ई. में मक्का पर अधिकार किया।",
+        "explanation_en": "Prophet Muhammad conquered Mecca in 630 CE."
     },
     {
-        q: "आलमगीर द्वितीय के शासनकाल में प्लासी का युद्ध हुआ। इसका मुगल साम्राज्य पर क्या प्रभाव पड़ा?",
-        q_en: "The Battle of Plassey occurred during Alamgir II’s reign. What was its impact on the Mughal Empire?",
-        options: ["अंग्रेजों का पूर्ण नियंत्रण", "बंगाल में अंग्रेजों का प्रभाव बढ़ा", "मुगल सैन्य शक्ति में वृद्धि", "मराठों का नियंत्रण बढ़ा"],
-        options_en: ["Complete British control", "Increased British influence in Bengal", "Increased Mughal military strength", "Increased Maratha control"],
-        answer: 1,
-        explanation: "1757 ई. में प्लासी का युद्ध हुआ, जिससे बंगाल में अंग्रेजों का प्रभाव बढ़ा और मुगल सत्ता कमजोर हुई।",
-        explanation_en: "In 1757 CE, the Battle of Plassey increased British influence in Bengal, weakening Mughal authority."
+        "q": "मोहम्मद साहब की मृत्यु कब हुई?",
+        "q_en": "When did Prophet Muhammad die?",
+        "options": ["630 ई.", "631 ई.", "632 ई.", "633 ई."],
+        "options_en": ["630 CE", "631 CE", "632 CE", "633 CE"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब की मृत्यु 632 ई. में हुई।",
+        "explanation_en": "Prophet Muhammad died in 632 CE."
+    },
+    {
+        "q": "मोहम्मद साहब के उत्तराधिकारी को क्या कहा जाता है?",
+        "q_en": "What is the successor of Prophet Muhammad called?",
+        "options": ["राजा", "शासक", "खलीफा", "सुल्तान"],
+        "options_en": ["King", "Ruler", "Caliph", "Sultan"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब के उत्तराधिकारी को खलीफा कहा जाता है।",
+        "explanation_en": "The successor of Prophet Muhammad is called a Caliph."
+    },
+    {
+        "q": "खलीफा का साम्राज्य क्या कहलाता है?",
+        "q_en": "What is the empire of the Caliph called?",
+        "options": ["सल्तनत", "साम्राज्य", "खिलाफत", "राज्य"],
+        "options_en": ["Sultanate", "Empire", "Caliphate", "Kingdom"],
+        "answer": 2,
+        "explanation": "खलीफा का साम्राज्य खिलाफत कहलाता है।",
+        "explanation_en": "The empire of the Caliph is called the Caliphate."
+    },
+    {
+        "q": "मोहम्मद साहब ने अपने अनुयायियों को कितने स्तंभों का पालन करने को कहा?",
+        "q_en": "How many pillars did Prophet Muhammad ask his followers to follow?",
+        "options": ["3", "4", "5", "6"],
+        "options_en": ["3", "4", "5", "6"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब ने अपने अनुयायियों को इस्लाम के पांच स्तंभों का पालन करने को कहा।",
+        "explanation_en": "Prophet Muhammad asked his followers to follow the five pillars of Islam."
+    },
+    {
+        "q": "इस्लाम के पहले स्तंभ का नाम क्या है?",
+        "q_en": "What is the name of the first pillar of Islam?",
+        "options": ["रोज़ा", "हज", "जकात", "कलमा (Shahada)"],
+        "options_en": ["Fasting", "Hajj", "Zakat", "Shahada"],
+        "answer": 3,
+        "explanation": "इस्लाम का पहला स्तंभ कलमा (शहादा) है।",
+        "explanation_en": "The first pillar of Islam is Shahada."
+    },
+    {
+        "q": "बद्र की लड़ाई कब हुई थी?",
+        "q_en": "When did the Battle of Badr take place?",
+        "options": ["623 ई.", "624 ई.", "625 ई.", "627 ई."],
+        "options_en": ["623 CE", "624 CE", "625 CE", "627 CE"],
+        "answer": 1,
+        "explanation": "बद्र की लड़ाई 624 ई. में हुई थी।",
+        "explanation_en": "The Battle of Badr took place in 624 CE."
+    },
+    {
+        "q": "उहुद की लड़ाई कब हुई थी?",
+        "q_en": "When did the Battle of Uhud take place?",
+        "options": ["624 ई.", "625 ई.", "626 ई.", "627 ई."],
+        "options_en": ["624 CE", "625 CE", "626 CE", "627 CE"],
+        "answer": 1,
+        "explanation": "उहुद की लड़ाई 625 ई. में हुई थी।",
+        "explanation_en": "The Battle of Uhud took place in 625 CE."
+    },
+    {
+        "q": "खंदक की लड़ाई कब हुई थी?",
+        "q_en": "When did the Battle of the Trench take place?",
+        "options": ["624 ई.", "625 ई.", "626 ई.", "627 ई."],
+        "options_en": ["624 CE", "625 CE", "626 CE", "627 CE"],
+        "answer": 3,
+        "explanation": "खंदक की लड़ाई 627 ई. में हुई थी।",
+        "explanation_en": "The Battle of the Trench took place in 627 CE."
+    },
+    {
+        "q": "बद्र की लड़ाई किसके बीच हुई थी?",
+        "q_en": "Between whom was the Battle of Badr fought?",
+        "options": ["मदीना और बगदाद", "मदीना के मुसलमान और मक्का के कुरैश", "मक्का और मदीना के व्यापारियों", "इनमें से कोई नहीं"],
+        "options_en": ["Medina and Baghdad", "Muslims of Medina and Quraysh of Mecca", "Merchants of Mecca and Medina", "None of these"],
+        "answer": 1,
+        "explanation": "बद्र की लड़ाई मदीना के मुसलमानों और मक्का के कुरैश के बीच हुई थी।",
+        "explanation_en": "The Battle of Badr was fought between the Muslims of Medina and the Quraysh of Mecca."
+    },
+    {
+        "q": "उहुद की लड़ाई का परिणाम क्या था?",
+        "q_en": "What was the outcome of the Battle of Uhud?",
+        "options": ["मुसलमानों की जीत", "कुरैश की हार", "एक आंशिक परिणाम (Partial Result)", "सभी की हार"],
+        "options_en": ["Victory of Muslims", "Defeat of Quraysh", "Partial Result", "Defeat of All"],
+        "answer": 2,
+        "explanation": "उहुद की लड़ाई का परिणाम आंशिक था, जिसमें मुसलमानों को नुकसान हुआ लेकिन कोई स्पष्ट विजेता नहीं था।",
+        "explanation_en": "The Battle of Uhud had a partial result, with losses for the Muslims but no clear victor."
+    },
+    {
+        "q": "खदीजा का वर्णन इस प्रकार है:",
+        "q_en": "Khadija is described as:",
+        "options": ["तलाकशुदा", "विधवा", "त्रिविधवा (widow)", "अविवाहित"],
+        "options_en": ["Divorced", "Widow", "Widow", "Unmarried"],
+        "answer": 2,
+        "explanation": "खदीजा त्रिविधवा (विधवा) थीं जब उन्होंने मोहम्मद साहब से विवाह किया।",
+        "explanation_en": "Khadija was a widow when she married Prophet Muhammad."
+    },
+    {
+        "q": "मोहम्मद साहब पहले किस तरह के शासक थे?",
+        "q_en": "What type of ruler was Prophet Muhammad initially?",
+        "options": ["धार्मिक", "मुक्तस्लम (Religious & Political)", "राजनीतिक", "इनमें से कोई नहीं"],
+        "options_en": ["Religious", "Religious & Political", "Political", "None of these"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब पहले धार्मिक और राजनीतिक दोनों तरह के शासक थे।",
+        "explanation_en": "Prophet Muhammad was initially both a religious and political ruler."
+    },
+    {
+        "q": "मोहम्मद साहब ने किस कानून का निर्माण किया?",
+        "q_en": "Which law did Prophet Muhammad establish?",
+        "options": ["नागरिक कानून", "जवानबी धार्मिक कानून", "व्यापार कानून", "इनमें से कोई नहीं"],
+        "options_en": ["Civil Law", "Sharia Religious Law", "Trade Law", "None of these"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब ने जवानबी धार्मिक कानून (शरिया) का निर्माण किया।",
+        "explanation_en": "Prophet Muhammad established Sharia religious law."
+    },
+    {
+        "q": "कुरैश कबीले ने मुसलमानों पर क्यों हमला किया?",
+        "q_en": "Why did the Quraysh tribe attack the Muslims?",
+        "options": ["व्यापार के लिए", "जमीन के लिए", "मोहम्मद साहब का विरोध", "इनमें से कोई नहीं"],
+        "options_en": ["For trade", "For land", "To oppose Prophet Muhammad", "None of these"],
+        "answer": 2,
+        "explanation": "कुरैश कबीले ने मोहम्मद साहब के इस्लाम प्रचार के विरोध में मुसलमानों पर हमला किया।",
+        "explanation_en": "The Quraysh tribe attacked the Muslims to oppose Prophet Muhammad's propagation of Islam."
+    },
+    {
+        "q": "मदीना के मुसलमानों ने खंदक की लड़ाई में क्या किया?",
+        "q_en": "What did the Muslims of Medina do in the Battle of the Trench?",
+        "options": ["पलटवार किया", "भाग गए", "खंदक बनाकर रक्षा की", "सौदा किया"],
+        "options_en": ["Counterattacked", "Fled", "Built a trench for defense", "Made a deal"],
+        "answer": 2,
+        "explanation": "मदीना के मुसलमानों ने खंदक की लड़ाई में खंदक बनाकर अपनी रक्षा की।",
+        "explanation_en": "The Muslims of Medina built a trench for defense in the Battle of the Trench."
+    },
+    {
+        "q": "मुसलमानों के धर्मग्रंथ का पालन कौन करता है?",
+        "q_en": "Who follows the religious scripture of the Muslims?",
+        "options": ["केवल राजा", "केवल खलीफा", "सभी अनुयायी", "इनमें से कोई नहीं"],
+        "options_en": ["Only the king", "Only the Caliph", "All followers", "None of these"],
+        "answer": 2,
+        "explanation": "मुसलमानों के धर्मग्रंथ (कुरान) का पालन सभी अनुयायी करते हैं।",
+        "explanation_en": "All followers of Islam follow the religious scripture (Quran)."
+    },
+    
+    {
+        "q": "मोहम्मद साहब किस वर्ष मदीना पहुँचे?",
+        "q_en": "In which year did Prophet Muhammad reach Medina?",
+        "options": ["621 ई.", "622 ई.", "623 ई.", "624 ई."],
+        "options_en": ["621 CE", "622 CE", "623 CE", "624 CE"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब 622 ई. में मक्का से मदीना पहुँचे, जिसे हिजरा कहा जाता है।",
+        "explanation_en": "Prophet Muhammad reached Medina in 622 CE, an event known as the Hijra."
+    },
+    {
+        "q": "हिजरी संवत की शुरुआत कहाँ से हुई?",
+        "q_en": "Where did the Hijri calendar begin?",
+        "options": ["मक्का से", "मदीना से", "यमन से", "बगदाद से"],
+        "options_en": ["From Mecca", "From Medina", "From Yemen", "From Baghdad"],
+        "answer": 1,
+        "explanation": "हिजरी संवत की शुरुआत मदीना से हुई, जो 622 ई. में हिजरा के साथ शुरू हुआ।",
+        "explanation_en": "The Hijri calendar began from Medina, starting with the Hijra in 622 CE."
+    },
+    {
+        "q": "मोहम्मद साहब की माता का नाम क्या था?",
+        "q_en": "What was the name of Prophet Muhammad's mother?",
+        "options": ["फातिमा", "खदीजा", "आमिना", "आयशा"],
+        "options_en": ["Fatima", "Khadija", "Amina", "Aisha"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब की माता का नाम आमिना था।",
+        "explanation_en": "Prophet Muhammad's mother was Amina."
+    },
+    {
+        "q": "मोहम्मद साहब किस जातीय समुदाय से जुड़े थे?",
+        "q_en": "Which ethnic community was Prophet Muhammad associated with?",
+        "options": ["यहूदी", "ईसाई", "अरब", "फारसी"],
+        "options_en": ["Jewish", "Christian", "Arab", "Persian"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब अरब समुदाय से जुड़े थे।",
+        "explanation_en": "Prophet Muhammad was associated with the Arab community."
+    },
+    {
+        "q": "मक्का में कितनी से अधिक मूर्तियाँ थीं?",
+        "q_en": "How many idols were there in Mecca?",
+        "options": ["200", "300", "350+", "400"],
+        "options_en": ["200", "300", "350+", "400"],
+        "answer": 2,
+        "explanation": "मक्का में काबा के आसपास 350 से अधिक मूर्तियाँ थीं।",
+        "explanation_en": "There were more than 350 idols around the Kaaba in Mecca."
+    },
+    {
+        "q": "मोहम्मद साहब ने मूर्तिपूजा का क्या किया?",
+        "q_en": "What did Prophet Muhammad do regarding idolatry?",
+        "options": ["समर्थन", "विरोध", "प्रचार", "उपेक्षा"],
+        "options_en": ["Supported", "Opposed", "Promoted", "Ignored"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब ने मूर्तिपूजा का विरोध किया और एकेश्वरवाद का प्रचार किया।",
+        "explanation_en": "Prophet Muhammad opposed idolatry and promoted monotheism."
+    },
+    {
+        "q": "इस्लाम के कितने स्तंभ बताए गए हैं?",
+        "q_en": "How many pillars of Islam are there?",
+        "options": ["3", "4", "5", "6"],
+        "options_en": ["3", "4", "5", "6"],
+        "answer": 2,
+        "explanation": "इस्लाम में पाँच स्तंभ बताए गए हैं।",
+        "explanation_en": "There are five pillars of Islam."
+    },
+    {
+        "q": "इस्लाम का दूसरा स्तंभ क्या है?",
+        "q_en": "What is the second pillar of Islam?",
+        "options": ["रोज़ा", "जकात", "हज", "नमाज"],
+        "options_en": ["Fasting", "Zakat", "Hajj", "Prayer"],
+        "answer": 3,
+        "explanation": "इस्लाम का दूसरा स्तंभ नमाज (सलात) है।",
+        "explanation_en": "The second pillar of Islam is Salat (Prayer)."
+    },
+    {
+        "q": "इस्लाम का तीसरा स्तंभ क्या है?",
+        "q_en": "What is the third pillar of Islam?",
+        "options": ["रोज़ा", "हज", "कलमा", "जकात"],
+        "options_en": ["Fasting", "Hajj", "Shahada", "Zakat"],
+        "answer": 0,
+        "explanation": "इस्लाम का तीसरा स्तंभ रोज़ा (सवम) है।",
+        "explanation_en": "The third pillar of Islam is Sawm (Fasting)."
+    },
+    {
+        "q": "इस्लाम का चौथा स्तंभ क्या है?",
+        "q_en": "What is the fourth pillar of Islam?",
+        "options": ["रोज़ा", "कलमा", "हज", "जकात"],
+        "options_en": ["Fasting", "Shahada", "Hajj", "Zakat"],
+        "answer": 2,
+        "explanation": "इस्लाम का चौथा स्तंभ हज है।",
+        "explanation_en": "The fourth pillar of Islam is Hajj."
+    },
+    {
+        "q": "इस्लाम का पाँचवाँ स्तंभ क्या है?",
+        "q_en": "What is the fifth pillar of Islam?",
+        "options": ["हज", "नमाज", "रोज़ा", "जकात"],
+        "options_en": ["Hajj", "Prayer", "Fasting", "Zakat"],
+        "answer": 3,
+        "explanation": "इस्लाम का पाँचवाँ स्तंभ जकात है।",
+        "explanation_en": "The fifth pillar of Islam is Zakat."
+    },
+    {
+        "q": "मोहम्मद साहब ने शासन किस आधार पर चलाया?",
+        "q_en": "On what basis did Prophet Muhammad govern?",
+        "options": ["धार्मिक कानून", "प्रथा", "कुरान", "परंपरा"],
+        "options_en": ["Religious Law", "Custom", "Quran", "Tradition"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब ने शासन कुरान के आधार पर चलाया।",
+        "explanation_en": "Prophet Muhammad governed based on the Quran."
+    },
+    {
+        "q": "मोहम्मद साहब की मृत्यु कहाँ हुई थी?",
+        "q_en": "Where did Prophet Muhammad die?",
+        "options": ["मक्का", "मदीना", "यमन", "बगदाद"],
+        "options_en": ["Mecca", "Medina", "Yemen", "Baghdad"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब की मृत्यु मदीना में हुई थी।",
+        "explanation_en": "Prophet Muhammad died in Medina."
+    },
+    {
+        "q": "बद्र की लड़ाई किस वर्ष हुई?",
+        "q_en": "In which year did the Battle of Badr take place?",
+        "options": ["623 ई.", "624 ई.", "625 ई.", "627 ई."],
+        "options_en": ["623 CE", "624 CE", "625 CE", "627 CE"],
+        "answer": 1,
+        "explanation": "बद्र की लड़ाई 624 ई. में हुई थी।",
+        "explanation_en": "The Battle of Badr took place in 624 CE."
+    },
+    {
+        "q": "उहुद की लड़ाई किस वर्ष हुई?",
+        "q_en": "In which year did the Battle of Uhud take place?",
+        "options": ["624 ई.", "625 ई.", "626 ई.", "627 ई."],
+        "options_en": ["624 CE", "625 CE", "626 CE", "627 CE"],
+        "answer": 1,
+        "explanation": "उहुद की लड़ाई 625 ई. में हुई थी।",
+        "explanation_en": "The Battle of Uhud took place in 625 CE."
+    },
+    {
+        "q": "खंदक की लड़ाई किस वर्ष हुई?",
+        "q_en": "In which year did the Battle of the Trench take place?",
+        "options": ["624 ई.", "625 ई.", "626 ई.", "627 ई."],
+        "options_en": ["624 CE", "625 CE", "626 CE", "627 CE"],
+        "answer": 3,
+        "explanation": "खंदक की लड़ाई 627 ई. में हुई थी।",
+        "explanation_en": "The Battle of the Trench took place in 627 CE."
+    },
+    {
+        "q": "बद्र की लड़ाई में किसकी जीत हुई?",
+        "q_en": "Who won the Battle of Badr?",
+        "options": ["कुरैश", "मदीना के मुसलमान", "फारसी", "रोमन"],
+        "options_en": ["Quraysh", "Muslims of Medina", "Persians", "Romans"],
+        "answer": 1,
+        "explanation": "बद्र की लड़ाई में मदीना के मुसलमानों की जीत हुई।",
+        "explanation_en": "The Muslims of Medina won the Battle of Badr."
+    },
+    {
+        "q": "उहुद की लड़ाई का परिणाम क्या रहा?",
+        "q_en": "What was the outcome of the Battle of Uhud?",
+        "options": ["मुसलमानों की जीत", "कुरैश की पूर्ण हार", "अनिर्णायक", "रोमन हस्तक्षेप"],
+        "options_en": ["Victory of Muslims", "Complete defeat of Quraysh", "Inconclusive", "Roman intervention"],
+        "answer": 2,
+        "explanation": "उहुद की लड़ाई का परिणाम अनिर्णायक रहा, जिसमें मुसलमानों को नुकसान हुआ लेकिन कोई स्पष्ट विजेता नहीं था।",
+        "explanation_en": "The Battle of Uhud was inconclusive, with losses for the Muslims but no clear victor."
+    },
+    {
+        "q": "खंदक की लड़ाई में मुसलमानों ने किससे रक्षा की?",
+        "q_en": "How did the Muslims defend themselves in the Battle of the Trench?",
+        "options": ["किले से", "हथियारों से", "खंदक बनाकर", "पहाड़ी से"],
+        "options_en": ["From a fort", "With weapons", "By building a trench", "From a hill"],
+        "answer": 2,
+        "explanation": "खंदक की लड़ाई में मुसलमानों ने खंदक बनाकर अपनी रक्षा की।",
+        "explanation_en": "In the Battle of the Trench, the Muslims defended themselves by building a trench."
+    },
+    {
+        "q": "मोहम्मद साहब को किस उपाधि से जाना जाता है?",
+        "q_en": "By what title is Prophet Muhammad known?",
+        "options": ["सुल्तान", "राजा", "पैगंबर", "खलीफा"],
+        "options_en": ["Sultan", "King", "Prophet", "Caliph"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब को पैगंबर (नबी) के रूप में जाना जाता है।",
+        "explanation_en": "Prophet Muhammad is known as the Prophet (Nabi)."
+    },
+    {
+        "q": "मोहम्मद साहब ने किसके विरुद्ध प्रचार किया?",
+        "q_en": "Against what did Prophet Muhammad preach?",
+        "options": ["बहुदेववाद", "एकेश्वरवाद", "मूर्तिपूजा और अवतारवाद", "किसी के नहीं"],
+        "options_en": ["Polytheism", "Monotheism", "Idolatry and incarnation", "None"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब ने मूर्तिपूजा और अवतारवाद के विरुद्ध प्रचार किया।",
+        "explanation_en": "Prophet Muhammad preached against idolatry and incarnation."
+    },
+    {
+        "q": "इस्लाम में ‘जकात’ का अर्थ है –",
+        "q_en": "What does ‘Zakat’ mean in Islam?",
+        "options": ["नमाज", "धार्मिक कर (Charity)", "रोज़ा", "हज"],
+        "options_en": ["Prayer", "Charity", "Fasting", "Hajj"],
+        "answer": 1,
+        "explanation": "इस्लाम में जकात का अर्थ धार्मिक कर या दान देना है।",
+        "explanation_en": "In Islam, Zakat means charity or almsgiving."
+    },
+    {
+        "q": "इस्लाम के पाँच स्तंभों में कौन शामिल नहीं है?",
+        "q_en": "Which is not included in the five pillars of Islam?",
+        "options": ["रोज़ा", "कलमा", "युद्ध (Jihad)", "हज"],
+        "options_en": ["Fasting", "Shahada", "Jihad", "Hajj"],
+        "answer": 2,
+        "explanation": "इस्लाम के पाँच स्तंभों में युद्ध (जिहाद) शामिल नहीं है।",
+        "explanation_en": "Jihad is not included in the five pillars of Islam."
+    },
+    {
+        "q": "मोहम्मद साहब ने किस वर्ष मक्का पर विजय प्राप्त की?",
+        "q_en": "In which year did Prophet Muhammad conquer Mecca?",
+        "options": ["629 ई.", "630 ई.", "631 ई.", "632 ई."],
+        "options_en": ["629 CE", "630 CE", "631 CE", "632 CE"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब ने 630 ई. में मक्का पर विजय प्राप्त की।",
+        "explanation_en": "Prophet Muhammad conquered Mecca in 630 CE."
+    },
+    {
+        "q": "मोहम्मद साहब किस प्रकार के प्रमुख थे?",
+        "q_en": "What type of leader was Prophet Muhammad?",
+        "options": ["केवल धार्मिक", "केवल राजनीतिक", "धार्मिक एवं राजनीतिक दोनों", "केवल व्यापारी"],
+        "options_en": ["Only religious", "Only political", "Both religious and political", "Only merchant"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब धार्मिक और राजनीतिक दोनों प्रकार के प्रमुख थे।",
+        "explanation_en": "Prophet Muhammad was both a religious and political leader."
+    },
+    {
+        "q": "मोहम्मद साहब के बाद पहले खलीफा कौन बने?",
+        "q_en": "Who became the first Caliph after Prophet Muhammad?",
+        "options": ["उमर", "उस्मान", "अबू बकर", "अली"],
+        "options_en": ["Umar", "Uthman", "Abu Bakr", "Ali"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब के बाद अबू बकर पहले खलीफा बने।",
+        "explanation_en": "Abu Bakr became the first Caliph after Prophet Muhammad."
+    },
+    {
+        "q": "इस्लाम में धार्मिक कानून को क्या कहा जाता है?",
+        "q_en": "What is the religious law in Islam called?",
+        "options": ["फिकह", "कुरान", "शरीअत", "सुन्नत"],
+        "options_en": ["Fiqh", "Quran", "Sharia", "Sunnah"],
+        "answer": 2,
+        "explanation": "इस्लाम में धार्मिक कानून को शरीअत कहा जाता है।",
+        "explanation_en": "The religious law in Islam is called Sharia."
+    },
+    {
+        "q": "मोहम्मद साहब की मृत्यु कब हुई?",
+        "q_en": "When did Prophet Muhammad die?",
+        "options": ["630 ई.", "631 ई.", "632 ई.", "633 ई."],
+        "options_en": ["630 CE", "631 CE", "632 CE", "633 CE"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब की मृत्यु 632 ई. में हुई।",
+        "explanation_en": "Prophet Muhammad died in 632 CE."
+    },
+    {
+        "q": "मोहम्मद साहब ने किस स्थान पर ध्यान लगाना शुरू किया था?",
+        "q_en": "Where did Prophet Muhammad begin meditating?",
+        "options": ["मदीना", "हिरा गुफा (मक्का)", "बगदाद", "सीरिया"],
+        "options_en": ["Medina", "Cave of Hira (Mecca)", "Baghdad", "Syria"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब ने हिरा गुफा (मक्का) में ध्यान लगाना शुरू किया।",
+        "explanation_en": "Prophet Muhammad began meditating in the Cave of Hira in Mecca."
+    },
+    {
+        "q": "इस्लाम का पहला स्तंभ 'कलमा' का क्या अर्थ है?",
+        "q_en": "What is the meaning of the first pillar of Islam, 'Shahada'?",
+        "options": ["उपवास", "हज करना", "एक ईश्वर और मोहम्मद पैगंबर में विश्वास", "दान"],
+        "options_en": ["Fasting", "Performing Hajj", "Belief in one God and Muhammad as His Prophet", "Charity"],
+        "answer": 2,
+        "explanation": "इस्लाम का पहला स्तंभ 'कलमा' (शहादा) का अर्थ है एक ईश्वर और मोहम्मद साहब को उनके पैगंबर के रूप में विश्वास करना।",
+        "explanation_en": "The first pillar of Islam, Shahada, means belief in one God and Muhammad as His Prophet."
     },
 
-    // Hard Questions (16-25)
     {
-        q: "औरंगजेब के तीन पुत्रों के नाम और उनके सूबेदारी क्षेत्र क्या थे?",
-        q_en: "What were the names of Aurangzeb’s three sons and their respective governorships?",
-        options: ["मुअज्जम-काबुल, आजम-गुजरात, कमबख्श-बीजापुर", "मुअज्जम-दिल्ली, आजम-बंगाल, कमबख्श-हैदराबाद", "मुअज्जम-गुजरात, आजम-काबुल, कमबख्श-दिल्ली", "मुअज्जम-बीजापुर, आजम-काबुल, कमबख्श-गुजरात"],
-        options_en: ["Muazzam-Kabul, Azam-Gujarat, Kam Bakhsh-Bijapur", "Muazzam-Delhi, Azam-Bengal, Kam Bakhsh-Hyderabad", "Muazzam-Gujarat, Azam-Kabul, Kam Bakhsh-Delhi", "Muazzam-Bijapur, Azam-Kabul, Kam Bakhsh-Gujarat"],
-        answer: 0,
-        explanation: "औरंगजेब के तीन पुत्र मुअज्जम (काबुल), आजम (गुजरात), और कमबख्श (बीजापुर) के सूबेदार थे, जिन्होंने 1707 ई. में उत्तराधिकार के लिए संघर्ष किया।",
-        explanation_en: "Aurangzeb’s three sons were Muazzam (Kabul), Azam (Gujarat), and Kam Bakhsh (Bijapur), who fought for succession in 1707 CE."
+        "q": "मोहम्मद साहब का जन्म किस शताब्दी में हुआ?",
+        "q_en": "In which century was Prophet Muhammad born?",
+        "options": ["5वीं शताब्दी", "6वीं शताब्दी", "7वीं शताब्दी", "8वीं शताब्दी"],
+        "options_en": ["5th century", "6th century", "7th century", "8th century"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब का जन्म 6वीं शताब्दी में, विशेष रूप से 570 ई. में हुआ।",
+        "explanation_en": "Prophet Muhammad was born in the 6th century, specifically in 570 CE."
     },
     {
-        q: "जजाऊ का युद्ध कब और कहाँ हुआ था?",
-        q_en: "When and where did the Battle of Jajau take place?",
-        options: ["18 जून 1707, आगरा", "18 जनवरी 1709, बीजापुर", "27 फरवरी 1712, लाहौर", "29 फरवरी 1719, दिल्ली"],
-        options_en: ["June 18, 1707, Agra", "January 18, 1709, Bijapur", "February 27, 1712, Lahore", "February 29, 1719, Delhi"],
-        answer: 0,
-        explanation: "जजाऊ का युद्ध 18 जून 1707 ई. को आगरा के पास हुआ, जिसमें मुअज्जम ने आजम को हराया।",
-        explanation_en: "The Battle of Jajau took place on June 18, 1707 CE, near Agra, where Muazzam defeated Azam."
+        "q": "मोहम्मद साहब का जन्म किस वर्ष हुआ?",
+        "q_en": "In which year was Prophet Muhammad born?",
+        "options": ["560 ई.", "565 ई.", "570 ई.", "575 ई."],
+        "options_en": ["560 CE", "565 CE", "570 CE", "575 CE"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब का जन्म 570 ई. में हुआ था।",
+        "explanation_en": "Prophet Muhammad was born in 570 CE."
     },
     {
-        q: "बहादुरशाह प्रथम को किसने 'शाहे बेखबर' की उपाधि दी थी?",
-        q_en: "Who gave Bahadurshah I the title ‘Shahe Bekhabar’?",
-        options: ["खाफी खां", "ओवन सिडनी", "सैयद बंधु", "जुल्फिकर खां"],
-        options_en: ["Khafi Khan", "Owen Sidney", "Sayyid brothers", "Zulfikar Khan"],
-        answer: 0,
-        explanation: "खाफी खां ने 1707 ई. में बहादुरशाह प्रथम को 'शाहे बेखबर' की उपाधि दी, क्योंकि वह प्रशासनिक मामलों में कम सक्रिय थे।",
-        explanation_en: "In 1707 CE, Khafi Khan gave Bahadurshah I the title ‘Shahe Bekhabar’ due to his limited engagement in administrative affairs."
+        "q": "मोहम्मद साहब की मृत्यु किस वर्ष हुई?",
+        "q_en": "In which year did Prophet Muhammad die?",
+        "options": ["629 ई.", "630 ई.", "631 ई.", "632 ई."],
+        "options_en": ["629 CE", "630 CE", "631 CE", "632 CE"],
+        "answer": 3,
+        "explanation": "मोहम्मद साहब की मृत्यु 632 ई. में हुई।",
+        "explanation_en": "Prophet Muhammad died in 632 CE."
     },
     {
-        q: "जहांदारशाह ने जयसिंह को क्या उपाधि दी थी?",
-        q_en: "What title did Jahandarshah give to Jai Singh?",
-        options: ["सवाई", "महाराज", "सम्राट", "दीवान"],
-        options_en: ["Sawai", "Maharaja", "Samrat", "Diwan"],
-        answer: 0,
-        explanation: "जहांदारशाह ने 1712 ई. में जयसिंह को 'सवाई' की उपाधि दी, जो उनकी शक्ति और प्रभाव को दर्शाती थी।",
-        explanation_en: "In 1712 CE, Jahandarshah gave Jai Singh the title of ‘Sawai,’ reflecting his power and influence."
+        "q": "मक्का छोड़कर मोहम्मद साहब कहाँ गए?",
+        "q_en": "Where did Prophet Muhammad go after leaving Mecca?",
+        "options": ["यमन", "सीरिया", "मदीना", "बगदाद"],
+        "options_en": ["Yemen", "Syria", "Medina", "Baghdad"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब मक्का छोड़कर मदीना गए, जिसे हिजरा कहा जाता है।",
+        "explanation_en": "Prophet Muhammad went to Medina after leaving Mecca, an event known as the Hijra."
     },
     {
-        q: "फर्रुखसियर ने सिख नेता बंदा बहादुर की हत्या कब करवाई?",
-        q_en: "When did Farrukhsiyar order the execution of the Sikh leader Banda Bahadur?",
-        options: ["1716", "1717", "1719", "1712"],
-        options_en: ["1716", "1717", "1719", "1712"],
-        answer: 0,
-        explanation: "फर्रुखसियर ने 1716 ई. में सिख नेता बंदा बहादुर की हत्या करवाई, जिससे सिख विद्रोह कमजोर हुआ।",
-        explanation_en: "In 1716 CE, Farrukhsiyar ordered the execution of Sikh leader Banda Bahadur, weakening the Sikh rebellion."
+        "q": "मोहम्मद साहब के अनुसार कौन सा धर्मग्रंथ सर्वोच्च है?",
+        "q_en": "According to Prophet Muhammad, which religious scripture is supreme?",
+        "options": ["बाइबल", "तोराह", "कुरान", "वेद"],
+        "options_en": ["Bible", "Torah", "Quran", "Vedas"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब के अनुसार कुरान सर्वोच्च धर्मग्रंथ है।",
+        "explanation_en": "According to Prophet Muhammad, the Quran is the supreme religious scripture."
     },
     {
-        q: "रफी उद-दरजात का शासनकाल कितने समय तक रहा?",
-        q_en: "How long was Rafi ud-Darjat’s reign?",
-        options: ["29 फरवरी-4 जून 1719", "6 जून-17 सितंबर 1719", "1713-1719", "1719-1748"],
-        options_en: ["February 29–June 4, 1719", "June 6–September 17, 1719", "1713-1719", "1719-1748"],
-        answer: 0,
-        explanation: "रफी उद-दरजात का शासनकाल 29 फरवरी से 4 जून 1719 ई. तक रहा, जो सैयद बंधुओं के नियंत्रण में था।",
-        explanation_en: "Rafi ud-Darjat’s reign lasted from February 29 to June 4, 1719 CE, under the control of the Sayyid brothers."
+        "q": "इस्लाम का अर्थ है –",
+        "q_en": "What does Islam mean?",
+        "options": ["बलिदान", "समर्पण (Submission)", "विजय", "शांति का विरोध"],
+        "options_en": ["Sacrifice", "Submission", "Victory", "Opposition to peace"],
+        "answer": 1,
+        "explanation": "इस्लाम का अर्थ है समर्पण, विशेष रूप से अल्लाह के प्रति समर्पण।",
+        "explanation_en": "Islam means submission, specifically submission to Allah."
     },
     {
-        q: "मुहम्मद शाह को उनकी रंगीन मिजाजी के कारण क्या उपनाम दिया गया था?",
-        q_en: "What nickname was given to Muhammad Shah due to his colorful personality?",
-        options: ["रौशन अख्तर", "रंगीला", "शाहे बेखबर", "शाह आलम"],
-        options_en: ["Raushan Akhtar", "Rangila", "Shahe Bekhabar", "Shah Alam"],
-        answer: 1,
-        explanation: "मुहम्मद शाह को 1719 ई. में उनकी रंगीन मिजाजी के कारण 'रंगीला' का उपनाम दिया गया।",
-        explanation_en: "In 1719 CE, Muhammad Shah was nicknamed ‘Rangila’ due to his colorful personality."
+        "q": "इस्लाम का पैगंबर किसे माना जाता है?",
+        "q_en": "Who is considered the Prophet of Islam?",
+        "options": ["ईसा मसीह", "मूसा", "हज़रत मोहम्मद साहब", "अब्राहम"],
+        "options_en": ["Jesus Christ", "Moses", "Hazrat Muhammad Sahab", "Abraham"],
+        "answer": 2,
+        "explanation": "हज़रत मोहम्मद साहब को इस्लाम का पैगंबर माना जाता है।",
+        "explanation_en": "Hazrat Muhammad Sahab is considered the Prophet of Islam."
     },
     {
-        q: "अहमदशाह के शासनकाल में सेना ने वेतन न मिलने के कारण क्या किया?",
-        q_en: "What did the army do during Ahmad Shah’s reign due to non-payment of salaries?",
-        options: ["विद्रोह", "दिल्ली पर कब्जा", "बादशाह की हत्या", "अंग्रेजों से संधि"],
-        options_en: ["Revolted", "Captured Delhi", "Assassinated the emperor", "Signed a treaty with the British"],
-        answer: 0,
-        explanation: "अहमदशाह के शासनकाल (1748-1754 ई.) में सेना ने वेतन न मिलने के कारण विद्रोह किया, जिससे मुगल सत्ता कमजोर हुई।",
-        explanation_en: "During Ahmad Shah’s reign (1748-1754 CE), the army revolted due to non-payment of salaries, weakening Mughal authority."
+        "q": "मोहम्मद साहब की माता का नाम क्या था?",
+        "q_en": "What was the name of Prophet Muhammad's mother?",
+        "options": ["खदीजा", "आयशा", "आमिना", "फातिमा"],
+        "options_en": ["Khadija", "Aisha", "Amina", "Fatima"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब की माता का नाम आमिना था।",
+        "explanation_en": "Prophet Muhammad's mother was Amina."
     },
     {
-        q: "आलमगीर द्वितीय का वास्तविक नाम क्या था?",
-        q_en: "What was the real name of Alamgir II?",
-        options: ["अजीजुद्दीन", "मुही-उल-मिल्लत", "अलीगौहर", "रौशन अख्तर"],
-        options_en: ["Azizuddin", "Muhi-ul-Millat", "Aligauhar", "Raushan Akhtar"],
-        answer: 0,
-        explanation: "आलमगीर द्वितीय का वास्तविक नाम अजीजुद्दीन था, और उनका शासन 1754 ई. से शुरू हुआ।",
-        explanation_en: "The real name of Alamgir II was Azizuddin, and his reign began in 1754 CE."
+        "q": "मोहम्मद साहब के पिता की मृत्यु उनके जन्म के समय ही हो गई थी। पिता का नाम था –",
+        "q_en": "Prophet Muhammad's father died at the time of his birth. His father's name was –",
+        "options": ["अबु बकर", "अबु तालीब", "अब्दुल्ला", "उमर"],
+        "options_en": ["Abu Bakr", "Abu Talib", "Abdullah", "Umar"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब के पिता का नाम अब्दुल्ला था, जिनकी मृत्यु उनके जन्म के समय हो गई थी।",
+        "explanation_en": "Prophet Muhammad's father was Abdullah, who died at the time of his birth."
     },
     {
-        q: "शाहजहां तृतीय किसके पौत्र थे?",
-        q_en: "Whose grandson was Shahjahan III?",
-        options: ["कमबख्श", "मुअज्जम", "आजम", "रफी-उस-शान"],
-        options_en: ["Kam Bakhsh", "Muazzam", "Azam", "Rafi-us-Shan"],
-        answer: 0,
-        explanation: "शाहजहां तृतीय कमबख्श के पौत्र थे, और उनका शासन 1758 ई. में शुरू हुआ।",
-        explanation_en: "Shahjahan III was the grandson of Kam Bakhsh, and his reign began in 1758 CE."
-    },
-
-    // Medium Questions (26-40)
-    {
-        q: "औरंगजेब की मृत्यु कब हुई थी?",
-        q_en: "When did Aurangzeb die?",
-        options: ["1707", "1712", "1699", "1720"],
-        options_en: ["1707", "1712", "1699", "1720"],
-        answer: 0,
-        explanation: "औरंगजेब की मृत्यु 1707 ई. में हुई थी, जिसके बाद मुगल साम्राज्य में उत्तराधिकार युद्ध शुरू हुए।",
-        explanation_en: "Aurangzeb died in 1707 CE, after which succession wars began in the Mughal Empire."
+        "q": "मोहम्मद साहब का पालन-पोषण किसने किया?",
+        "q_en": "Who raised Prophet Muhammad?",
+        "options": ["दादा", "भाई", "चाचा अबु तालीब", "फुफा"],
+        "options_en": ["Grandfather", "Brother", "Uncle Abu Talib", "Uncle-in-law"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब का पालन-पोषण उनके चाचा अबु तालीब ने किया।",
+        "explanation_en": "Prophet Muhammad was raised by his uncle Abu Talib."
     },
     {
-        q: "बहादुरशाह प्रथम का दूसरा नाम क्या था?",
-        q_en: "What was the other name of Bahadurshah I?",
-        options: ["मुअज्जम", "रंगीला", "अलीगौहर", "जुल्फिकर"],
-        options_en: ["Muazzam", "Rangila", "Aligauhar", "Zulfikar"],
-        answer: 0,
-        explanation: "बहादुरशाह प्रथम का दूसरा नाम मुअज्जम था, और उन्होंने 1707 ई. में शासन शुरू किया।",
-        explanation_en: "The other name of Bahadurshah I was Muazzam, and he began his reign in 1707 CE."
+        "q": "मोहम्मद साहब किस कबीले के थे?",
+        "q_en": "Which tribe did Prophet Muhammad belong to?",
+        "options": ["उमय्यद", "अब्बासी", "कुरैश", "हाशमी"],
+        "options_en": ["Umayyad", "Abbasid", "Quraysh", "Hashmi"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब कुरैश कबीले के थे, विशेष रूप से बानी हशिम शाखा से।",
+        "explanation_en": "Prophet Muhammad belonged to the Quraysh tribe, specifically the Banu Hashim clan."
     },
     {
-        q: "जजाऊ का युद्ध किसके बीच हुआ था?",
-        q_en: "The Battle of Jajau was fought between whom?",
-        options: ["मुअज्जम और आजम", "मुअज्जम और कमबख्श", "आजम और कमबख्श", "मुअज्जम और जयसिंह"],
-        options_en: ["Muazzam and Azam", "Muazzam and Kam Bakhsh", "Azam and Kam Bakhsh", "Muazzam and Jai Singh"],
-        answer: 0,
-        explanation: "जजाऊ का युद्ध 1707 ई. में मुअज्जम और आजम के बीच हुआ, जिसमें मुअज्जम विजयी रहे।",
-        explanation_en: "The Battle of Jajau was fought in 1707 CE between Muazzam and Azam, with Muazzam emerging victorious."
+        "q": "मक्का में कितनी मूर्तियाँ थीं?",
+        "q_en": "How many idols were there in Mecca?",
+        "options": ["250", "300", "350+", "400"],
+        "options_en": ["250", "300", "350+", "400"],
+        "answer": 2,
+        "explanation": "मक्का में काबा के आसपास 350 से अधिक मूर्तियाँ थीं।",
+        "explanation_en": "There were more than 350 idols around the Kaaba in Mecca."
     },
     {
-        q: "बीजापुर का युद्ध कब हुआ था?",
-        q_en: "When did the Battle of Bijapur take place?",
-        options: ["18 जनवरी 1709", "18 जून 1707", "27 फरवरी 1712", "29 फरवरी 1719"],
-        options_en: ["January 18, 1709", "June 18, 1707", "February 27, 1712", "February 29, 1719"],
-        answer: 0,
-        explanation: "बीजापुर का युद्ध 18 जनवरी 1709 ई. में हुआ, जिसमें कमबख्श पराजित हुआ।",
-        explanation_en: "The Battle of Bijapur took place on January 18, 1709 CE, where Kam Bakhsh was defeated."
+        "q": "मोहम्मद साहब को पैगंबरी का संदेश कहाँ प्राप्त हुआ?",
+        "q_en": "Where did Prophet Muhammad receive the prophetic message?",
+        "options": ["मदीना", "सीरिया", "हिरा गुफा (मक्का)", "यमन"],
+        "options_en": ["Medina", "Syria", "Cave of Hira (Mecca)", "Yemen"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब को पैगंबरी का संदेश मक्का की हिरा गुफा में प्राप्त हुआ।",
+        "explanation_en": "Prophet Muhammad received the prophetic message in the Cave of Hira in Mecca."
     },
     {
-        q: "बहादुरशाह प्रथम ने गुरु गोविंद सिंह से क्या किया?",
-        q_en: "What did Bahadurshah I do with Guru Gobind Singh?",
-        options: ["संधि", "युद्ध", "कैद", "हत्या"],
-        options_en: ["Signed a treaty", "Fought a battle", "Imprisoned", "Assassinated"],
-        answer: 0,
-        explanation: "बहादुरशाह प्रथम ने 1707 ई. में गुरु गोविंद सिंह से संधि की, जिससे सिखों के साथ संबंध सुधरे।",
-        explanation_en: "In 1707 CE, Bahadurshah I signed a treaty with Guru Gobind Singh, improving relations with the Sikhs."
+        "q": "मोहम्मद साहब को संदेश किसने दिया?",
+        "q_en": "Who gave the message to Prophet Muhammad?",
+        "options": ["अल्लाह", "खदीजा", "अबु तालीब", "जिब्राइल (Gabriel)"],
+        "options_en": ["Allah", "Khadija", "Abu Talib", "Gabriel"],
+        "answer": 3,
+        "explanation": "मोहम्मद साहब को संदेश जिब्राइल (Gabriel) ने दिया।",
+        "explanation_en": "The message to Prophet Muhammad was given by Gabriel."
     },
     {
-        q: "जहांदारशाह को किसने बादशाह बनाया?",
-        q_en: "Who made Jahandarshah the emperor?",
-        options: ["जुल्फिकर खां", "सैयद बंधु", "जयसिंह", "बलाजी विश्वनाथ"],
-        options_en: ["Zulfikar Khan", "Sayyid brothers", "Jai Singh", "Balaji Vishwanath"],
-        answer: 0,
-        explanation: "जुल्फिकर खां ने 1712 ई. में जहांदारशाह को बादशाह बनाया, जिससे उनकी सत्ता स्थापित हुई।",
-        explanation_en: "In 1712 CE, Zulfikar Khan made Jahandarshah the emperor, establishing his rule."
+        "q": "मोहम्मद साहब ने किस विचारधारा का विरोध किया?",
+        "q_en": "Which ideology did Prophet Muhammad oppose?",
+        "options": ["एकेश्वरवाद", "मूर्तिपूजा और अवतारवाद", "न्याय", "दान"],
+        "options_en": ["Monotheism", "Idolatry and incarnation", "Justice", "Charity"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब ने मूर्तिपूजा और अवतारवाद का विरोध किया।",
+        "explanation_en": "Prophet Muhammad opposed idolatry and incarnation."
     },
     {
-        q: "फर्रुखसियर ने जयसिंह को क्या उपाधि दी?",
-        q_en: "What title did Farrukhsiyar give to Jai Singh?",
-        options: ["सवाई", "महाराज", "दीवान", "सम्राट"],
-        options_en: ["Sawai", "Maharaja", "Diwan", "Samrat"],
-        answer: 0,
-        explanation: "फर्रुखसियर ने 1713 ई. में जयसिंह को 'सवाई' की उपाधि दी, जो उनकी वीरता को दर्शाती थी।",
-        explanation_en: "In 1713 CE, Farrukhsiyar gave Jai Singh the title of ‘Sawai,’ reflecting his bravery."
+        "q": "हिजरा किस वर्ष हुआ?",
+        "q_en": "In which year did the Hijra take place?",
+        "options": ["621 ई.", "622 ई.", "623 ई.", "624 ई."],
+        "options_en": ["621 CE", "622 CE", "623 CE", "624 CE"],
+        "answer": 1,
+        "explanation": "हिजरा 622 ई. में हुआ, जब मोहम्मद साहब मक्का से मदीना गए।",
+        "explanation_en": "The Hijra took place in 622 CE, when Prophet Muhammad migrated from Mecca to Medina."
     },
     {
-        q: "मुहम्मद शाह के समय कौन सा स्वतंत्र प्रदेश अस्तित्व में आया?",
-        q_en: "Which independent province emerged during Muhammad Shah’s reign?",
-        options: ["बंगाल", "जयपुर", "दिल्ली", "काबुल"],
-        options_en: ["Bengal", "Jaipur", "Delhi", "Kabul"],
-        answer: 0,
-        explanation: "मुहम्मद शाह के समय 1724 ई. में बंगाल (मुर्शिद कुली खां) स्वतंत्र हुआ।",
-        explanation_en: "During Muhammad Shah’s reign in 1724 CE, Bengal (Murshid Quli Khan) became independent."
+        "q": "हिजरी संवत किस वर्ष से शुरू हुआ?",
+        "q_en": "In which year did the Hijri calendar begin?",
+        "options": ["621 ई.", "622 ई.", "623 ई.", "624 ई."],
+        "options_en": ["621 CE", "622 CE", "623 CE", "624 CE"],
+        "answer": 1,
+        "explanation": "हिजरी संवत 622 ई. में हिजरा के साथ शुरू हुआ।",
+        "explanation_en": "The Hijri calendar began in 622 CE with the Hijra."
     },
     {
-        q: "नादिरशाह का आक्रमण कब हुआ था?",
-        q_en: "When did Nadir Shah’s invasion occur?",
-        options: ["1739", "1737", "1748", "1759"],
-        options_en: ["1739", "1737", "1748", "1759"],
-        answer: 0,
-        explanation: "नादिरशाह का आक्रमण 1739 ई. में हुआ, जिसने मुगल साम्राज्य को कमजोर किया।",
-        explanation_en: "Nadir Shah’s invasion occurred in 1739 CE, weakening the Mughal Empire."
+        "q": "मोहम्मद साहब ने मक्का पर विजय कब प्राप्त की?",
+        "q_en": "When did Prophet Muhammad conquer Mecca?",
+        "options": ["629 ई.", "630 ई.", "631 ई.", "632 ई."],
+        "options_en": ["629 CE", "630 CE", "631 CE", "632 CE"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब ने 630 ई. में मक्का पर विजय प्राप्त की।",
+        "explanation_en": "Prophet Muhammad conquered Mecca in 630 CE."
     },
     {
-        q: "अहमदशाह अब्दाली ने भारत पर आक्रमण कब किया?",
-        q_en: "When did Ahmad Shah Abdali invade India?",
-        options: ["1748", "1754", "1759", "1761"],
-        options_en: ["1748", "1754", "1759", "1761"],
-        answer: 0,
-        explanation: "अहमदशाह अब्दाली ने 1748 ई. में भारत पर आक्रमण किया, जिससे मुगल सत्ता और कमजोर हुई।",
-        explanation_en: "Ahmad Shah Abdali invaded India in 1748 CE, further weakening Mughal authority."
+        "q": "बद्र की लड़ाई कब हुई थी?",
+        "q_en": "When did the Battle of Badr take place?",
+        "options": ["623 ई.", "624 ई.", "625 ई.", "627 ई."],
+        "options_en": ["623 CE", "624 CE", "625 CE", "627 CE"],
+        "answer": 1,
+        "explanation": "बद्र की लड़ाई 624 ई. में हुई थी।",
+        "explanation_en": "The Battle of Badr took place in 624 CE."
     },
     {
-        q: "आलमगीर द्वितीय का शासनकाल कब था?",
-        q_en: "What was the reign period of Alamgir II?",
-        options: ["1754-1758", "1759-1806", "1719-1748", "1748-1754"],
-        options_en: ["1754-1758", "1759-1806", "1719-1748", "1748-1754"],
-        answer: 0,
-        explanation: "आलमगीर द्वितीय का शासनकाल 1754-1758 ई. तक था, जो अस्थिरता का दौर था।",
-        explanation_en: "Alamgir II’s reign was from 1754 to 1758 CE, a period of instability."
+        "q": "उहुद की लड़ाई कब हुई?",
+        "q_en": "When did the Battle of Uhud take place?",
+        "options": ["624 ई.", "625 ई.", "626 ई.", "627 ई."],
+        "options_en": ["624 CE", "625 CE", "626 CE", "627 CE"],
+        "answer": 1,
+        "explanation": "उहुद की लड़ाई 625 ई. में हुई थी।",
+        "explanation_en": "The Battle of Uhud took place in 625 CE."
     },
     {
-        q: "शाहजहां तृतीय का वास्तविक नाम क्या था?",
-        q_en: "What was the real name of Shahjahan III?",
-        options: ["मुही-उल-मिल्लत", "अलीगौहर", "अजीजुद्दीन", "रौशन अख्तर"],
-        options_en: ["Muhi-ul-Millat", "Aligauhar", "Azizuddin", "Raushan Akhtar"],
-        answer: 0,
-        explanation: "शाहजहां तृतीय का वास्तविक नाम मुही-उल-मिल्लत था, और उनका शासन 1758 ई. में शुरू हुआ।",
-        explanation_en: "The real name of Shahjahan III was Muhi-ul-Millat, and his reign began in 1758 CE."
+        "q": "खंदक की लड़ाई कब हुई?",
+        "q_en": "When did the Battle of the Trench take place?",
+        "options": ["624 ई.", "625 ई.", "626 ई.", "627 ई."],
+        "options_en": ["624 CE", "625 CE", "626 CE", "627 CE"],
+        "answer": 3,
+        "explanation": "खंदक की लड़ाई 627 ई. में हुई थी।",
+        "explanation_en": "The Battle of the Trench took place in 627 CE."
     },
     {
-        q: "शाहआलम द्वितीय का वास्तविक नाम क्या था?",
-        q_en: "What was the real name of Shah Alam II?",
-        options: ["अलीगौहर", "अजीजुद्दीन", "मुही-उल-मिल्लत", "रौशन अख्तर"],
-        options_en: ["Aligauhar", "Azizuddin", "Muhi-ul-Millat", "Raushan Akhtar"],
-        answer: 0,
-        explanation: "शाहआलम द्वितीय का वास्तविक नाम अलीगौहर था, और उनका शासन 1759 ई. में शुरू हुआ।",
-        explanation_en: "The real name of Shah Alam II was Aligauhar, and his reign began in 1759 CE."
+        "q": "बद्र की लड़ाई किसके बीच हुई?",
+        "q_en": "Between whom was the Battle of Badr fought?",
+        "options": ["रोमन और फारसी", "यहूदी और ईसाई", "मदीना के मुसलमान और मक्का के कुरैश", "फारसी और मदीना"],
+        "options_en": ["Romans and Persians", "Jews and Christians", "Muslims of Medina and Quraysh of Mecca", "Persians and Medina"],
+        "answer": 2,
+        "explanation": "बद्र की लड़ाई मदीना के मुसलमानों और मक्का के कुरैश के बीच हुई थी।",
+        "explanation_en": "The Battle of Badr was fought between the Muslims of Medina and the Quraysh of Mecca."
     },
     {
-        q: "अकबर द्वितीय के समय मुगल सिक्के कब बंद हुए?",
-        q_en: "When were Mughal coins discontinued during Akbar II’s reign?",
-        options: ["1835", "1837", "1857", "1806"],
-        options_en: ["1835", "1837", "1857", "1806"],
-        answer: 0,
-        explanation: "अकबर द्वितीय के समय 1835 ई. में मुगल सिक्के बंद हुए, जिससे ब्रिटिश प्रभाव बढ़ा।",
-        explanation_en: "Mughal coins were discontinued in 1835 CE during Akbar II’s reign, increasing British influence."
+        "q": "उहुद की लड़ाई का परिणाम क्या था?",
+        "q_en": "What was the outcome of the Battle of Uhud?",
+        "options": ["मदीना की जीत", "कुरैश की जीत", "अनिर्णायक", "मुसलमानों की हार"],
+        "options_en": ["Victory of Medina", "Victory of Quraysh", "Inconclusive", "Defeat of Muslims"],
+        "answer": 2,
+        "explanation": "उहुद की लड़ाई का परिणाम अनिर्णायक था, जिसमें मुसलमानों को नुकसान हुआ लेकिन कोई स्पष्ट विजेता नहीं था।",
+        "explanation_en": "The Battle of Uhud was inconclusive, with losses for the Muslims but no clear victor."
     },
     {
-        q: "बहादुरशाह द्वितीय को किस उपनाम से जाना जाता था?",
-        q_en: "By which nickname was Bahadurshah II known?",
-        options: ["जफर", "रंगीला", "शाहे बेखबर", "सवाई"],
-        options_en: ["Zafar", "Rangila", "Shahe Bekhabar", "Sawai"],
-        answer: 0,
-        explanation: "बहादुरशाह द्वितीय को 1837 ई. में 'जफर' के उपनाम से जाना जाता था, जो उनके शासन का प्रतीक था।",
-        explanation_en: "Bahadurshah II was known by the nickname ‘Zafar’ in 1837 CE, symbolizing his reign."
-    },
-
-    // Easy Questions (41-65)
-    {
-        q: "औरंगजेब की मृत्यु के समय मुगल साम्राज्य में कितने सूबे थे?",
-        q_en: "How many provinces were there in the Mughal Empire at the time of Aurangzeb’s death?",
-        options: ["21", "19", "20", "22"],
-        options_en: ["21", "19", "20", "22"],
-        answer: 0,
-        explanation: "औरंगजेब की मृत्यु 1707 ई. में हुई, तब मुगल साम्राज्य में 21 सूबे थे।",
-        explanation_en: "Aurangzeb died in 1707 CE, when the Mughal Empire had 21 provinces."
+        "q": "खंदक की लड़ाई में मुसलमानों ने क्या रणनीति अपनाई?",
+        "q_en": "What strategy did the Muslims adopt in the Battle of the Trench?",
+        "options": ["गुप्त हमला", "खंदक बनाकर रक्षा", "पहाड़ों में छिपना", "व्यापार बंद करना"],
+        "options_en": ["Secret attack", "Building a trench for defense", "Hiding in mountains", "Stopping trade"],
+        "answer": 1,
+        "explanation": "खंदक की लड़ाई में मुसलमानों ने खंदक बनाकर अपनी रक्षा की।",
+        "explanation_en": "In the Battle of the Trench, the Muslims built a trench for defense."
     },
     {
-        q: "औरंगजेब के पुत्र मुअज्जम किस सूबे के सूबेदार थे?",
-        q_en: "Which province was Aurangzeb’s son Muazzam the governor of?",
-        options: ["काबुल", "गुजरात", "बीजापुर", "दिल्ली"],
-        options_en: ["Kabul", "Gujarat", "Bijapur", "Delhi"],
-        answer: 0,
-        explanation: "मुअज्जम 1707 ई. से पहले काबुल के सूबेदार थे।",
-        explanation_en: "Muazzam was the governor of Kabul before 1707 CE."
+        "q": "मोहम्मद साहब के बाद मुस्लिम जगत का पहला खलीफा कौन बना?",
+        "q_en": "Who became the first Caliph of the Muslim world after Prophet Muhammad?",
+        "options": ["उमर", "अबु बकर", "अली", "उस्मान"],
+        "options_en": ["Umar", "Abu Bakr", "Ali", "Uthman"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब के बाद अबु बकर मुस्लिम जगत के पहले खलीफा बने।",
+        "explanation_en": "Abu Bakr became the first Caliph of the Muslim world after Prophet Muhammad."
     },
     {
-        q: "आजम किस सूबे के सूबेदार थे?",
-        q_en: "Which province was Azam the governor of?",
-        options: ["गुजरात", "काबुल", "बीजापुर", "बंगाल"],
-        options_en: ["Gujarat", "Kabul", "Bijapur", "Bengal"],
-        answer: 0,
-        explanation: "आजम 1707 ई. से पहले गुजरात के सूबेदार थे।",
-        explanation_en: "Azam was the governor of Gujarat before 1707 CE."
+        "q": "इस्लाम का चौथा खलीफा कौन था?",
+        "q_en": "Who was the fourth Caliph of Islam?",
+        "options": ["अबु बकर", "उमर", "उस्मान", "अली"],
+        "options_en": ["Abu Bakr", "Umar", "Uthman", "Ali"],
+        "answer": 3,
+        "explanation": "इस्लाम का चौथा खलीफा अली था।",
+        "explanation_en": "The fourth Caliph of Islam was Ali."
     },
     {
-        q: "कमबख्श किस सूबे के सूबेदार थे?",
-        q_en: "Which province was Kam Bakhsh the governor of?",
-        options: ["बीजापुर", "गुजरात", "काबुल", "बंगाल"],
-        options_en: ["Bijapur", "Gujarat", "Kabul", "Bengal"],
-        answer: 0,
-        explanation: "कमबख्श 1707 ई. से पहले बीजापुर के सूबेदार थे।",
-        explanation_en: "Kam Bakhsh was the governor of Bijapur before 1707 CE."
+        "q": "इस्लाम के धार्मिक कानून को क्या कहते हैं?",
+        "q_en": "What is the religious law of Islam called?",
+        "options": ["कुरान", "सुन्नत", "शरीअत", "फिकह"],
+        "options_en": ["Quran", "Sunnah", "Sharia", "Fiqh"],
+        "answer": 2,
+        "explanation": "इस्लाम के धार्मिक कानून को शरीअत कहा जाता है।",
+        "explanation_en": "The religious law of Islam is called Sharia."
     },
     {
-        q: "जजाऊ का युद्ध कहाँ हुआ था?",
-        q_en: "Where did the Battle of Jajau take place?",
-        options: ["आगरा", "दिल्ली", "लाहौर", "बीजापुर"],
-        options_en: ["Agra", "Delhi", "Lahore", "Bijapur"],
-        answer: 0,
-        explanation: "जजाऊ का युद्ध 1707 ई. में आगरा के पास हुआ।",
-        explanation_en: "The Battle of Jajau took place near Agra in 1707 CE."
+        "q": "इस्लाम का पवित्र ग्रंथ कौन सा है?",
+        "q_en": "Which is the holy scripture of Islam?",
+        "options": ["बाइबल", "वेद", "कुरान", "तोराह"],
+        "options_en": ["Bible", "Vedas", "Quran", "Torah"],
+        "answer": 2,
+        "explanation": "इस्लाम का पवित्र ग्रंथ कुरान है।",
+        "explanation_en": "The holy scripture of Islam is the Quran."
     },
     {
-        q: "बहादुरशाह प्रथम का शासनकाल कब था?",
-        q_en: "What was the reign period of Bahadurshah I?",
-        options: ["1707-1712", "1712-1713", "1713-1719", "1719-1748"],
-        options_en: ["1707-1712", "1712-1713", "1713-1719", "1719-1748"],
-        answer: 0,
-        explanation: "बहादुरशाह प्रथम का शासनकाल 1707-1712 ई. तक था, जिस दौरान उन्होंने साम्राज्य को स्थिर किया।",
-        explanation_en: "Bahadurshah I’s reign was from 1707 to 1712 CE, during which he stabilized the empire."
+        "q": "इस्लाम के अनुयायी कौन हैं?",
+        "q_en": "Who are the followers of Islam?",
+        "options": ["ईसाई", "यहूदी", "मुस्लिम", "हिन्दू"],
+        "options_en": ["Christians", "Jews", "Muslims", "Hindus"],
+        "answer": 2,
+        "explanation": "इस्लाम के अनुयायी मुस्लिम हैं।",
+        "explanation_en": "The followers of Islam are Muslims."
     },
     {
-        q: "बहादुरशाह प्रथम की मृत्यु कहाँ हुई थी?",
-        q_en: "Where did Bahadurshah I die?",
-        options: ["लाहौर", "दिल्ली", "आगरा", "रंगून"],
-        options_en: ["Lahore", "Delhi", "Agra", "Rangoon"],
-        answer: 0,
-        explanation: "बहादुरशाह प्रथम की मृत्यु 1712 ई. में लाहौर में हुई।",
-        explanation_en: "Bahadurshah I died in Lahore in 1712 CE."
+        "q": "इस्लाम का पहला स्तंभ क्या है?",
+        "q_en": "What is the first pillar of Islam?",
+        "options": ["कलमा", "रोज़ा", "हज", "जकात"],
+        "options_en": ["Shahada", "Fasting", "Hajj", "Zakat"],
+        "answer": 0,
+        "explanation": "इस्लाम का पहला स्तंभ कलमा (शहादा) है।",
+        "explanation_en": "The first pillar of Islam is Shahada."
     },
     {
-        q: "बहादुरशाह प्रथम को किसने 'अंतिम अच्छा मुगल नवाब' कहा?",
-        q_en: "Who called Bahadurshah I the ‘last good Mughal Nawab’?",
-        options: ["ओवन सिडनी", "खाफी खां", "जुल्फिकर खां", "सैयद बंधु"],
-        options_en: ["Owen Sidney", "Khafi Khan", "Zulfikar Khan", "Sayyid brothers"],
-        answer: 0,
-        explanation: "ओवन सिडनी ने 1707 ई. में बहादुरशाह प्रथम को 'अंतिम अच्छा मुगल नवाब' कहा।",
-        explanation_en: "In 1707 CE, Owen Sidney called Bahadurshah I the ‘last good Mughal Nawab’."
+        "q": "इस्लाम का दूसरा स्तंभ क्या है?",
+        "q_en": "What is the second pillar of Islam?",
+        "options": ["कलमा", "रोज़ा", "हज", "नमाज"],
+        "options_en": ["Shahada", "Fasting", "Hajj", "Prayer"],
+        "answer": 3,
+        "explanation": "इस्लाम का दूसरा स्तंभ नमाज (सलात) है।",
+        "explanation_en": "The second pillar of Islam is Salat (Prayer)."
     },
     {
-        q: "जहांदारशाह का शासनकाल कब था?",
-        q_en: "What was the reign period of Jahandarshah?",
-        options: ["1712-1713", "1707-1712", "1713-1719", "1719-1748"],
-        options_en: ["1712-1713", "1707-1712", "1713-1719", "1719-1748"],
-        answer: 0,
-        explanation: "जहांदारशाह का शासनकाल 1712-1713 ई. तक था, जो संक्षिप्त और अस्थिर था।",
-        explanation_en: "Jahandarshah’s reign was from 1712 to 1713 CE, which was brief and unstable."
+        "q": "इस्लाम का तीसरा स्तंभ क्या है?",
+        "q_en": "What is the third pillar of Islam?",
+        "options": ["हज", "जकात", "रोज़ा", "नमाज"],
+        "options_en": ["Hajj", "Zakat", "Fasting", "Prayer"],
+        "answer": 2,
+        "explanation": "इस्लाम का तीसरा स्तंभ रोज़ा (सवम) है।",
+        "explanation_en": "The third pillar of Islam is Sawm (Fasting)."
     },
     {
-        q: "जहांदारशाह को किसने बादशाह बनाया?",
-        q_en: "Who made Jahandarshah the emperor?",
-        options: ["जुल्फिकर खां", "सैयद बंधु", "जयसिंह", "निजामुल मुल्क"],
-        options_en: ["Zulfikar Khan", "Sayyid brothers", "Jai Singh", "Nizam-ul-Mulk"],
-        answer: 0,
-        explanation: "जुल्फिकर खां ने 1712 ई. में जहांदारशाह को बादशाह बनाया।",
-        explanation_en: "In 1712 CE, Zulfikar Khan made Jahandarshah the emperor."
+        "q": "इस्लाम का चौथा स्तंभ क्या है?",
+        "q_en": "What is the fourth pillar of Islam?",
+        "options": ["कलमा", "हज", "जकात", "नमाज"],
+        "options_en": ["Shahada", "Hajj", "Zakat", "Prayer"],
+        "answer": 1,
+        "explanation": "इस्लाम का चौथा स्तंभ हज है।",
+        "explanation_en": "The fourth pillar of Islam is Hajj."
     },
     {
-        q: "जहांदारशाह ने किस कर को समाप्त किया था?",
-        q_en: "Which tax did Jahandarshah abolish?",
-        options: ["जजिया", "तीर्थयात्रा कर", "आयात कर", "निर्यात कर"],
-        options_en: ["Jizya", "Pilgrimage tax", "Import tax", "Export tax"],
-        answer: 0,
-        explanation: "जहांदारशाह ने 1712 ई. में जजिया कर समाप्त किया, जिससे धार्मिक सहिष्णुता बढ़ी।",
-        explanation_en: "In 1712 CE, Jahandarshah abolished the Jizya tax, increasing religious tolerance."
+        "q": "इस्लाम का पाँचवाँ स्तंभ क्या है?",
+        "q_en": "What is the fifth pillar of Islam?",
+        "options": ["हज", "रोज़ा", "जकात", "नमाज"],
+        "options_en": ["Hajj", "Fasting", "Zakat", "Prayer"],
+        "answer": 2,
+        "explanation": "इस्लाम का पाँचवाँ स्तंभ जकात है।",
+        "explanation_en": "The fifth pillar of Islam is Zakat."
     },
     {
-        q: "फर्रुखसियर का शासनकाल कब था?",
-        q_en: "What was the reign period of Farrukhsiyar?",
-        options: ["1713-1719", "1707-1712", "1712-1713", "1719-1748"],
-        options_en: ["1713-1719", "1707-1712", "1712-1713", "1719-1748"],
-        answer: 0,
-        explanation: "फर्रुखसियर का शासनकाल 1713-1719 ई. तक था, जिस दौरान सैयद बंधुओं का प्रभाव बढ़ा।",
-        explanation_en: "Farrukhsiyar’s reign was from 1713 to 1719 CE, during which the Sayyid brothers’ influence grew."
+        "q": "मोहम्मद साहब के समय कितने प्रमुख युद्ध हुए?",
+        "q_en": "How many major battles took place during Prophet Muhammad's time?",
+        "options": ["2", "3", "3 (बद्र, उहुद, खंदक)", "4"],
+        "options_en": ["2", "3", "3 (Badr, Uhud, Trench)", "4"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब के समय तीन प्रमुख युद्ध हुए: बद्र, उहुद, और खंदक।",
+        "explanation_en": "Three major battles took place during Prophet Muhammad's time: Badr, Uhud, and Trench."
     },
     {
-        q: "फर्रुखसियर ने अंग्रेजों के लिए फरमान कब जारी किया?",
-        q_en: "When did Farrukhsiyar issue a Farman for the British?",
-        options: ["1717", "1716", "1719", "1712"],
-        options_en: ["1717", "1716", "1719", "1712"],
-        answer: 0,
-        explanation: "फर्रुखसियर ने 1717 ई. में अंग्रेजों के लिए फरमान जारी किया, जिससे उनका व्यापारिक प्रभाव बढ़ा।",
-        explanation_en: "In 1717 CE, Farrukhsiyar issued a Farman for the British, increasing their commercial influence."
+        "q": "बद्र की लड़ाई का महत्व क्या था?",
+        "q_en": "What was the significance of the Battle of Badr?",
+        "options": ["मुसलमानों की हार", "कुरैश की विजय", "इस्लाम की पहली लड़ाई", "रोम का सहयोग"],
+        "options_en": ["Defeat of Muslims", "Victory of Quraysh", "First battle of Islam", "Support of Rome"],
+        "answer": 2,
+        "explanation": "बद्र की लड़ाई इस्लाम की पहली प्रमुख लड़ाई थी, जिसमें मुसलमानों की जीत हुई।",
+        "explanation_en": "The Battle of Badr was the first major battle of Islam, resulting in a victory for the Muslims."
     },
     {
-        q: "रफी उद-दरजात का शासनकाल कब था?",
-        q_en: "What was the reign period of Rafi ud-Darjat?",
-        options: ["29 फरवरी-4 जून 1719", "6 जून-17 सितंबर 1719", "1713-1719", "1719-1748"],
-        options_en: ["February 29–June 4, 1719", "June 6–September 17, 1719", "1713-1719", "1719-1748"],
-        answer: 0,
-        explanation: "रफी उद-दरजात का शासनकाल 29 फरवरी से 4 जून 1719 ई. तक रहा।",
-        explanation_en: "Rafi ud-Darjat’s reign lasted from February 29 to June 4, 1719 CE."
+        "q": "मोहम्मद साहब को कौन-सा उपाधि दी जाती है?",
+        "q_en": "What title is given to Prophet Muhammad?",
+        "options": ["सुल्तान", "राजा", "रसूल (देवदूत)", "सम्राट"],
+        "options_en": ["Sultan", "King", "Rasul (Messenger)", "Emperor"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब को रसूल (देवदूत) की उपाधि दी जाती है।",
+        "explanation_en": "Prophet Muhammad is given the title Rasul (Messenger)."
     },
     {
-        q: "रफी उद-दौलत का शासनकाल कब था?",
-        q_en: "What was the reign period of Rafi ud-Daulat?",
-        options: ["6 जून-17 सितंबर 1719", "29 फरवरी-4 जून 1719", "1713-1719", "1719-1748"],
-        options_en: ["June 6–September 17, 1719", "February 29–June 4, 1719", "1713-1719", "1719-1748"],
-        answer: 0,
-        explanation: "रफी उद-दौलत का शासनकाल 6 जून से 17 सितंबर 1719 ई. तक रहा।",
-        explanation_en: "Rafi ud-Daulat’s reign lasted from June 6 to September 17, 1719 CE."
+        "q": "मोहम्मद साहब ने किस सिद्धांत का प्रचार किया?",
+        "q_en": "Which principle did Prophet Muhammad propagate?",
+        "options": ["पंथवाद", "एकेश्वरवाद और शांति", "मूर्तिपूजा", "जातिवाद"],
+        "options_en": ["Sectarianism", "Monotheism and peace", "Idolatry", "Casteism"],
+        "answer": 1,
+        "explanation": "मोहम्मद साहब ने एकेश्वरवाद और शांति का प्रचार किया।",
+        "explanation_en": "Prophet Muhammad propagated monotheism and peace."
     },
     {
-        q: "मुहम्मद शाह का उपनाम क्या था?",
-        q_en: "What was the nickname of Muhammad Shah?",
-        options: ["रंगीला", "जफर", "शाहे बेखबर", "सवाई"],
-        options_en: ["Rangila", "Zafar", "Shahe Bekhabar", "Sawai"],
-        answer: 0,
-        explanation: "मुहम्मद शाह को 1719 ई. में 'रंगीला' का उपनाम उनकी रंगीन मिजाजी के कारण दिया गया।",
-        explanation_en: "In 1719 CE, Muhammad Shah was nicknamed ‘Rangila’ due to his colorful personality."
+        "q": "मोहम्मद साहब के समय मक्का का प्रमुख कबीला कौन था?",
+        "q_en": "Which was the dominant tribe in Mecca during Prophet Muhammad's time?",
+        "options": ["बानी उमय्य", "बानी हसन", "कुरैश", "बानी अब्बास"],
+        "options_en": ["Banu Umayya", "Banu Hasan", "Quraysh", "Banu Abbas"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब के समय मक्का का प्रमुख कबीला कुरैश था।",
+        "explanation_en": "The dominant tribe in Mecca during Prophet Muhammad's time was the Quraysh."
     },
     {
-        q: "मुहम्मद शाह का शासनकाल कब था?",
-        q_en: "What was the reign period of Muhammad Shah?",
-        options: ["1719-1748", "1707-1712", "1713-1719", "1754-1758"],
-        options_en: ["1719-1748", "1707-1712", "1713-1719", "1754-1758"],
-        answer: 0,
-        explanation: "मुहम्मद शाह का शासनकाल 1719-1748 ई. तक था, जिसमें कई स्वतंत्र प्रदेश उभरे।",
-        explanation_en: "Muhammad Shah’s reign was from 1719 to 1748 CE, during which several independent provinces emerged."
-    },
-    {
-        q: "मुहम्मद शाह के समय बंगाल का स्वतंत्र शासक कौन था?",
-        q_en: "Who was the independent ruler of Bengal during Muhammad Shah’s reign?",
-        options: ["मुर्शिद कुली खां", "सआदत खां", "निजामुल मुल्क", "बदन सिंह"],
-        options_en: ["Murshid Quli Khan", "Saadat Khan", "Nizam-ul-Mulk", "Badan Singh"],
-        answer: 0,
-        explanation: "मुहम्मद शाह के समय 1724 ई. में बंगाल का स्वतंत्र शासक मुर्शिद कुली खां था।",
-        explanation_en: "In 1724 CE, during Muhammad Shah’s reign, Murshid Quli Khan was the independent ruler of Bengal."
-    },
-    {
-        q: "अहमदशाह का शासनकाल कब था?",
-        q_en: "What was the reign period of Ahmad Shah?",
-        options: ["1748-1754", "1754-1758", "1719-1748", "1759-1806"],
-        options_en: ["1748-1754", "1754-1758", "1719-1748", "1759-1806"],
-        answer: 0,
-        explanation: "अहमदशाह का शासनकाल 1748-1754 ई. तक था, जो आर्थिक और सैन्य कमजोरी का दौर था।",
-        explanation_en: "Ahmad Shah’s reign was from 1748 to 1754 CE, a period of economic and military weakness."
-    },
-    {
-        q: "आलमगीर द्वितीय का शासनकाल कब था?",
-        q_en: "What was the reign period of Alamgir II?",
-        options: ["1754-1758", "1748-1754", "1759-1806", "1719-1748"],
-        options_en: ["1754-1758", "1748-1754", "1759-1806", "1719-1748"],
-        answer: 0,
-        explanation: "आलमगीर द्वितीय का शासनकाल 1754-1758 ई. तक था, जिसमें ब्रिटिश प्रभाव बढ़ा।",
-        explanation_en: "Alamgir II’s reign was from 1754 to 1758 CE, during which British influence grew."
-    },
-    {
-        q: "शाहजहां तृतीय का शासनकाल कब था?",
-        q_en: "What was the reign period of Shahjahan III?",
-        options: ["1758-1759", "1754-1758", "1759-1806", "1748-1754"],
-        options_en: ["1758-1759", "1754-1758", "1759-1806", "1748-1754"],
-        answer: 0,
-        explanation: "शाहजहां तृतीय का शासनकाल 1758-1759 ई. तक था, जो संक्षिप्त और अस्थिर था।",
-        explanation_en: "Shahjahan III’s reign was from 1758 to 1759 CE, which was brief and unstable."
-    },
-    {
-        q: "शाहआलम द्वितीय का शासनकाल कब था?",
-        q_en: "What was the reign period of Shah Alam II?",
-        options: ["1759-1806", "1748-1754", "1754-1758", "1719-1748"],
-        options_en: ["1759-1806", "1748-1754", "1754-1758", "1719-1748"],
-        answer: 0,
-        explanation: "शाहआलम द्वितीय का शासनकाल 1759-1806 ई. तक था, जिसमें अंग्रेजों का प्रभाव बढ़ा।",
-        explanation_en: "Shah Alam II’s reign was from 1759 to 1806 CE, during which British influence increased."
-    },
-    {
-        q: "अकबर द्वितीय का शासनकाल कब था?",
-        q_en: "What was the reign period of Akbar II?",
-        options: ["1806-1837", "1759-1806", "1754-1758", "1837-1857"],
-        options_en: ["1806-1837", "1759-1806", "1754-1758", "1837-1857"],
-        answer: 0,
-        explanation: "अकबर द्वितीय का शासनकाल 1806-1837 ई. तक था, जिसमें मुगल सत्ता नाममात्र की रह गई।",
-        explanation_en: "Akbar II’s reign was from 1806 to 1837 CE, when Mughal power was nominal."
-    },
-    {
-        q: "बहादुरशाह द्वितीय का शासनकाल कब था?",
-        q_en: "What was the reign period of Bahadurshah II?",
-        options: ["1837-1857", "1806-1837", "1759-1806", "1754-1758"],
-        options_en: ["1837-1857", "1806-1837", "1759-1806", "1754-1758"],
-        answer: 0,
-        explanation: "बहादुरशाह द्वितीय का शासनकाल 1837-1857 ई. तक था, जो 1857 के विद्रोह के साथ समाप्त हुआ।",
-        explanation_en: "Bahadurshah II’s reign was from 1837 to 1857 CE, ending with the 1857 revolt."
-    },
-    {
-        q: "बहादुरशाह द्वितीय की मृत्यु कब हुई थी?",
-        q_en: "When did Bahadurshah II die?",
-        options: ["1862", "1857", "1837", "1806"],
-        options_en: ["1862", "1857", "1837", "1806"],
-        answer: 0,
-        explanation: "बहादुरशाह द्वितीय की मृत्यु 1862 ई. में रंगून में हुई, जहाँ उन्हें 1857 के विद्रोह के बाद निर्वासित किया गया था।",
-        explanation_en: "Bahadurshah II died in 1862 CE in Rangoon, where he was exiled after the 1857 revolt."
+        "q": "मोहम्मद साहब ने किसे इस्लाम का आधार बताया?",
+        "q_en": "What did Prophet Muhammad consider the foundation of Islam?",
+        "options": ["पंथवाद", "मूर्तिपूजा", "कुरान और पाँच स्तंभ", "जाति व्यवस्था"],
+        "options_en": ["Sectarianism", "Idolatry", "Quran and five pillars", "Caste system"],
+        "answer": 2,
+        "explanation": "मोहम्मद साहब ने कुरान और पाँच स्तंभों को इस्लाम का आधार बताया।",
+        "explanation_en": "Prophet Muhammad considered the Quran and the five pillars as the foundation of Islam."
     }
+
+
 ];
 
         let selectedAnswers = new Array(questions.length).fill(null);
@@ -1369,81 +1687,120 @@
             loadDashboard();
         }
 
-        function loadDashboard() {
-            const totalQuestions = questions.length;
-            const attempted = selectedAnswers.filter(a => a !== null && a !== -1).length;
-            const unattempted = totalQuestions - attempted;
-            const correct = score;
-            const wrong = attempted - correct;
-            const scorePercentage = (correct / totalQuestions * 100).toFixed(1) || 0;
-            const totalMarks = `${totalQuestions * 20} / ${correct * 20}`; // Assuming 20 marks per question
-            const totalTime = formatTime(totalSeconds);
-            const avgTimePerQuestion = (totalSeconds / attempted).toFixed(1) || 0;
-            const speed = (attempted / (totalSeconds / 60)).toFixed(1) || 0;
-            const accuracy = (correct / attempted * 100).toFixed(1) || 0;
-            const efficiency = accuracy > 80 ? 'High' : accuracy > 60 ? 'Medium' : 'Low';
-            const percentile = accuracy > 90 ? 'Top 15%' : accuracy > 70 ? 'Top 30%' : 'Top 50%';
-            const rank = Math.floor(Math.random() * 280) + 1; // Placeholder
-            let longestStreak = 0;
-            let currentStreak = 0;
-            selectedAnswers.forEach((answer, i) => {
-                if (answer === questions[i].answer) {
-                    currentStreak++;
-                    longestStreak = Math.max(longestStreak, currentStreak);
-                } else {
-                    currentStreak = 0;
-                }
-            });
-            const bestSection = 'History (100%)'; // Static as per quiz context
-            const weakSection = 'N/A'; // Placeholder
-            const improvement = accuracy > 80 ? '+5%' : '+2%'; // Placeholder
-            const performanceLevel = accuracy > 80 ? 'Advanced' : accuracy > 60 ? 'Intermediate' : 'Beginner';
-            const medals = accuracy > 80 ? 'Accuracy Master' : 'N/A'; // Placeholder
-            const efficiencyScore = (accuracy * 0.9).toFixed(0); // Placeholder
-            const predictedScore = (scorePercentage * 1.02).toFixed(1); // Placeholder
-            const fastestAnswer = answerTimes.filter(t => t).length ? Math.min(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
-            const slowestAnswer = answerTimes.filter(t => t).length ? Math.max(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
-            const avgTimeCorrect = answerTimes.filter(t => t && t.correct).length ? (answerTimes.filter(t => t && t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && t.correct).length).toFixed(1) : 'N/A';
-            const avgTimeWrong = answerTimes.filter(t => t && !t.correct).length ? (answerTimes.filter(t => t && !t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && !t.correct).length).toFixed(1) : 'N/A';
-            const timeEfficiency = (1 - totalSeconds / (totalQuestions * 30)).toFixed(2); // Placeholder
-            const guessRate = wrong > 0 ? ((wrong / attempted) * 100).toFixed(1) : 0;
-            const firstHalfAccuracy = selectedAnswers.slice(0, Math.ceil(totalQuestions / 2)).filter((a, i) => a === questions[i].answer).length / Math.ceil(totalQuestions / 2) * 100 || 0;
-
-            const dashboardGrid = document.getElementById('dashboardGrid');
-            dashboardGrid.innerHTML = `
-                <div class="dash-box"><h4>Total Questions</h4><p>${totalQuestions}</p></div>
-                <div class="dash-box"><h4>Attempted</h4><p>${attempted}</p></div>
-                <div class="dash-box"><h4>Unattempted</h4><p>${unattempted}</p></div>
-                <div class="dash-box"><h4>Correct</h4><p>${correct}</p></div>
-                <div class="dash-box"><h4>Wrong</h4><p>${wrong}</p></div>
-                <div class="dash-box"><h4>Score</h4><p>${scorePercentage}%</p></div>
-                <div class="dash-box"><h4>Total Marks</h4><p>${totalMarks}</p></div>
-                <div class="dash-box"><h4>Total Time</h4><p>${totalTime}</p></div>
-                <div class="dash-box"><h4>Avg Time/Q</h4><p>${avgTimePerQuestion} sec</p></div>
-                <div class="dash-box"><h4>Speed</h4><p>${speed} Q/min</p></div>
-                <div class="dash-box"><h4>Accuracy</h4><p>${accuracy}%</p></div>
-                <div class="dash-box"><h4>Efficiency</h4><p>${efficiency}</p></div>
-                <div class="dash-box"><h4>Percentile</h4><p>${percentile}</p></div>
-                <div class="dash-box"><h4>Rank</h4><p>${rank} / 280</p></div>
-                <div class="dash-box"><h4>Longest Streak</h4><p>${longestStreak} Qs</p></div>
-                <div class="dash-box"><h4>Best Section</h4><p>${bestSection}</p></div>
-                <div class="dash-box"><h4>Weak Section</h4><p>${weakSection}</p></div>
-                <div class="dash-box"><h4>Improvement</h4><p>${improvement}</p></div>
-                <div class="dash-box"><h4>Performance Level</h4><p>${performanceLevel}</p></div>
-                <div class="dash-box"><h4>Medals</h4><p>${medals}</p></div>
-                <div class="dash-box"><h4>Efficiency Score</h4><p>${efficiencyScore}</p></div>
-                <div class="dash-box"><h4>Predicted Score</h4><p>${predictedScore}%</p></div>
-                <div class="dash-box"><h4>Questions/Min</h4><p>${speed} Q/min</p></div>
-                <div class="dash-box"><h4>Fastest Answer</h4><p>${fastestAnswer} sec</p></div>
-                <div class="dash-box"><h4>Slowest Answer</h4><p>${slowestAnswer} sec</p></div>
-                <div class="dash-box"><h4>Avg Time Correct</h4><p>${avgTimeCorrect} sec</p></div>
-                <div class="dash-box"><h4>Avg Time Wrong</h4><p>${avgTimeWrong} sec</p></div>
-                <div class="dash-box"><h4>Time Efficiency</h4><p>${timeEfficiency}</p></div>
-                <div class="dash-box"><h4>Guess Rate</h4><p>${guessRate}%</p></div>
-                <div class="dash-box"><h4>First-Half Accuracy</h4><p>${firstHalfAccuracy.toFixed(1)}%</p></div>
-            `;
+      function loadDashboard() {
+    const totalQuestions = questions.length;
+    const attempted = selectedAnswers.filter(a => a !== null && a !== -1).length;
+    const unattempted = totalQuestions - attempted;
+    const correct = score;
+    const wrong = attempted - correct;
+    const scorePercentage = (correct / totalQuestions * 100).toFixed(1) || 0;
+    const totalMarks = `${totalQuestions * 20} / ${correct * 20}`; // Assuming 20 marks per question
+    const totalTime = formatTime(totalSeconds);
+    const avgTimePerQuestion = (totalSeconds / attempted).toFixed(1) || 0;
+    const speed = (attempted / (totalSeconds / 60)).toFixed(1) || 0;
+    const accuracy = (correct / attempted * 100).toFixed(1) || 0;
+    const efficiency = accuracy > 80 ? 'High' : accuracy > 60 ? 'Medium' : 'Low';
+    const percentile = accuracy > 90 ? 'Top 15%' : accuracy > 70 ? 'Top 30%' : 'Top 50%';
+    const rank = Math.floor(Math.random() * 280) + 1; // Placeholder
+    let longestStreak = 0;
+    let currentStreak = 0;
+    selectedAnswers.forEach((answer, i) => {
+        if (answer === questions[i].answer) {
+            currentStreak++;
+            longestStreak = Math.max(longestStreak, currentStreak);
+        } else {
+            currentStreak = 0;
         }
+    });
+    const bestSection = 'History (100%)'; // Static as per quiz context
+    const weakSection = 'N/A'; // Placeholder
+    const improvement = accuracy > 80 ? '+5%' : '+2%'; // Placeholder
+    const performanceLevel = accuracy > 80 ? 'Advanced' : accuracy > 60 ? 'Intermediate' : 'Beginner';
+    const medals = accuracy > 80 ? 'Accuracy Master' : 'N/A'; // Placeholder
+    const efficiencyScore = (accuracy * 0.9).toFixed(0); // Placeholder
+    const predictedScore = (scorePercentage * 1.02).toFixed(1); // Placeholder
+    const fastestAnswer = answerTimes.filter(t => t).length ? Math.min(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
+    const slowestAnswer = answerTimes.filter(t => t).length ? Math.max(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
+    const avgTimeCorrect = answerTimes.filter(t => t && t.correct).length ? (answerTimes.filter(t => t && t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && t.correct).length).toFixed(1) : 'N/A';
+    const avgTimeWrong = answerTimes.filter(t => t && !t.correct).length ? (answerTimes.filter(t => t && !t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && !t.correct).length).toFixed(1) : 'N/A';
+    const timeEfficiency = (1 - totalSeconds / (totalQuestions * 30)).toFixed(2); // Placeholder
+    const guessRate = wrong > 0 ? ((wrong / attempted) * 100).toFixed(1) : 0;
+    const firstHalfAccuracy = selectedAnswers.slice(0, Math.ceil(totalQuestions / 2)).filter((a, i) => a === questions[i].answer).length / Math.ceil(totalQuestions / 2) * 100 || 0;
 
+    // Generate HTML for time per question (hidden initially)
+    let questionTimesHTML = '<ul>';
+    for (let i = 0; i < totalQuestions; i++) {
+        const at = answerTimes[i];
+        const time = at ? at.time.toFixed(1) : 'N/A';
+        questionTimesHTML += `<li>Q${i+1}: ${time} sec</li>`;
+    }
+    questionTimesHTML += '</ul>';
+
+    const dashboardGrid = document.getElementById('dashboardGrid');
+    dashboardGrid.innerHTML = `
+        <div class="dash-box"><h4>Total Questions</h4><p>${totalQuestions}</p></div>
+        <div class="dash-box"><h4>Attempted</h4><p>${attempted}</p></div>
+        <div class="dash-box"><h4>Unattempted</h4><p>${unattempted}</p></div>
+        <div class="dash-box"><h4>Correct</h4><p>${correct}</p></div>
+        <div class="dash-box"><h4>Wrong</h4><p>${wrong}</p></div>
+        <div class="dash-box"><h4>Score</h4><p>${scorePercentage}%</p></div>
+        <div class="dash-box"><h4>Total Marks</h4><p>${totalMarks}</p></div>
+        <div class="dash-box"><h4>Total Time</h4><p>${totalTime}</p></div>
+        <div class="dash-box"><h4>Avg Time/Q</h4><p>${avgTimePerQuestion} sec</p></div>
+        <div class="dash-box"><h4>Speed</h4><p>${speed} Q/min</p></div>
+        <div class="dash-box"><h4>Accuracy</h4><p>${accuracy}%</p></div>
+        <div class="dash-box"><h4>Efficiency</h4><p>${efficiency}</p></div>
+        <div class="dash-box"><h4>Percentile</h4><p>${percentile}</p></div>
+        <div class="dash-box"><h4>Rank</h4><p>${rank} / 280</p></div>
+        <div class="dash-box"><h4>Longest Streak</h4><p>${longestStreak} Qs</p></div>
+        <div class="dash-box"><h4>Best Section</h4><p>${bestSection}</p></div>
+        <div class="dash-box"><h4>Weak Section</h4><p>${weakSection}</p></div>
+        <div class="dash-box"><h4>Improvement</h4><p>${improvement}</p></div>
+        <div class="dash-box"><h4>Performance Level</h4><p>${performanceLevel}</p></div>
+        <div class="dash-box"><h4>Medals</h4><p>${medals}</p></div>
+        <div class="dash-box"><h4>Efficiency Score</h4><p>${efficiencyScore}</p></div>
+        <div class="dash-box"><h4>Predicted Score</h4><p>${predictedScore}%</p></div>
+        <div class="dash-box"><h4>Questions/Min</h4><p>${speed} Q/min</p></div>
+        <div class="dash-box"><h4>Fastest Answer</h4><p>${fastestAnswer} sec</p></div>
+        <div class="dash-box"><h4>Slowest Answer</h4><p>${slowestAnswer} sec</p></div>
+        <div class="dash-box"><h4>Avg Time Correct</h4><p>${avgTimeCorrect} sec</p></div>
+        <div class="dash-box"><h4>Avg Time Wrong</h4><p>${avgTimeWrong} sec</p></div>
+        <div class="dash-box"><h4>Time Efficiency</h4><p>${timeEfficiency}</p></div>
+        <div class="dash-box"><h4>Guess Rate</h4><p>${guessRate}%</p></div>
+        <div class="dash-box"><h4>First-Half Accuracy</h4><p>${firstHalfAccuracy.toFixed(1)}%</p></div>
+        <div class="dash-box"><h4>Total Time on Submit</h4><p>${totalTime}</p></div>
+        <div class="dash-box"><h4>Show Time Details</h4><button onclick="toggleTimeDetails()">Show Times</button><div id="timeDetails" style="display:none;">${questionTimesHTML}</div></div>
+        
+        `;
+}
+
+// Function to toggle time details display
+function toggleTimeDetails() {
+    const timeDetails = document.getElementById('timeDetails');
+    timeDetails.style.display = timeDetails.style.display === 'none' ? 'block' : 'none';
+}
+
+// Function to export dashboard as PNG or PDF
+function exportDashboard() {
+    const dashboard = document.getElementById('dashboardGrid');
+    html2canvas(dashboard).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        
+        // Download as PNG
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'dashboard.png';
+        link.click();
+        
+        // Convert to PDF
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('dashboard.pdf');
+    });
+}
         // Initialize
         document.getElementById('timerContainer').addEventListener('dblclick', function() {
             this.classList.toggle('hidden');
@@ -1456,4 +1813,5 @@
         document.head.appendChild(link);
     </script>
 </body>
+
 </html>
