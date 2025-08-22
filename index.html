@@ -16,8 +16,14 @@
         body {
             font-family: 'Segoe UI', 'Poppins', sans-serif;
             min-height: 100vh;
-            transition: background 0.5s ease;
+            transition: background 0.5s ease, color 0.3s ease;
             overflow-x: hidden;
+        }
+
+        /* Eye-Comfort Mode Styles */
+        body.eye-comfort {
+            background: #1e1e1e;
+            color: #e0e0e0;
         }
 
         /* First Page Styles */
@@ -107,8 +113,16 @@
             display: none;
         }
 
+        .eye-comfort #quizPage {
+            background: #2a2a2a;
+        }
+
         #quizPage.end-bg {
             background: #000;
+        }
+
+        .eye-comfort #quizPage.end-bg {
+            background: #1e1e1e;
         }
 
         .container {
@@ -119,12 +133,17 @@
 
         .card {
             background: linear-gradient(135deg, #bce4c5, #d3d3ef);
-
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(100, 46, 46, 0.2);
             padding: 20px;
             margin-bottom: 30px;
             transition: transform 0.2s;
+        }
+
+        .eye-comfort .card {
+            background: linear-gradient(135deg, #3a3a3a, #4a4a4a);
+            color: #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
         }
 
         .card:hover {
@@ -138,12 +157,16 @@
         }
 
         .question .en {
-    font-size: 1.1rem;
-    font-weight: bold; /* bold text */
-    color: #000000;
-    margin-top: 5px;
-}
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #000000;
+            margin-top: 5px;
+        }
 
+        .eye-comfort .question,
+        .eye-comfort .question .en {
+            color: #ffffff;
+        }
 
         .options button {
             display: block;
@@ -162,6 +185,12 @@
             color: #000;
         }
 
+        .eye-comfort .options button {
+            background: #4a4a4a;
+            color: #e0e0e0;
+            border-color: #000000;
+        }
+
         .options button:hover {
             background: #f4ff1f;
             border-color: #9d00ff;
@@ -169,17 +198,28 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-       .options button.correct {
-    background: #b2ffa0 !important;
-    border-color: #ff00bf !important;
-    cursor: default;
-    color: #000 !important;
+        .eye-comfort .options button:hover {
+            background: #6a6a6a;
+            border-color: #002ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
 
-    font-weight: bold; /* text bold */
-    transform: scale(1.1); /* zoom effect */
-    transition: transform 0.3s ease; /* smooth animation */
+        .options button.correct {
+            background: #b2ffa0 !important;
+            border-color: #ff00bf !important;
+            cursor: default;
+            color: #000 !important;
+            font-weight: bold;
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+       .eye-comfort .options button.correct {
+    background: #4caf50 !important;
+    border-color: #0700cd !important;
+    color: #000000 !important;   /* Black text */
+    font-weight: bold !important; /* Bold text */
 }
-
 
 
         .options button.wrong {
@@ -189,9 +229,19 @@
             color: #000 !important;
         }
 
+        .eye-comfort .options button.wrong {
+            background: #d32f2f !important;
+            border-color: #2e0202 !important;
+            color: #ffffff !important;
+        }
+
         .options button.disabled {
             pointer-events: none;
             color: #000;
+        }
+
+        .eye-comfort .options button.disabled {
+            color: #e0e0e0;
         }
 
         .options button::after {
@@ -203,6 +253,10 @@
             height: 0;
             transform: translate(-50%, -50%);
             pointer-events: none;
+        }
+
+        .eye-comfort .options button::after {
+            background: #00cc99;
         }
 
         .options button:active::after {
@@ -235,9 +289,18 @@
             color: #000;
         }
 
+        .eye-comfort .controls button {
+            background: linear-gradient(45deg, #0288d1, #26a69a);
+            color: #ffffff;
+        }
+
         .controls button:hover {
             transform: scale(1.05) translateY(-2px);
             box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+        }
+
+        .eye-comfort .controls button:hover {
+            box-shadow: 0 0 15px rgba(0, 204, 153, 0.6);
         }
 
         @keyframes flowGradient {
@@ -246,16 +309,21 @@
             100% { background-position: 0% 50%; }
         }
 
-      .explanation {
-    margin-top: 10px;
-    padding: 10px;
-    background: #8eedce;
-    border-left: 4px solid #0037ff;
-    font-size: 0.95rem;
-    font-weight: bold;
-    color: #000; /* text black */
-}
+        .explanation {
+            margin-top: 10px;
+            padding: 10px;
+            background: #8eedce;
+            border-left: 4px solid #0037ff;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #000;
+        }
 
+        .eye-comfort .explanation {
+            background: #3a3a3a;
+            border-left-color: #ff00c8;
+            color: #e0e0e0;
+        }
 
         .explanation.active {
             opacity: 1;
@@ -266,9 +334,17 @@
             font-weight: bold;
         }
 
+        .eye-comfort .trick-title {
+            color: #ff6666;
+        }
+
         .trick-content {
             color: blue;
             font-weight: bold;
+        }
+
+        .eye-comfort .trick-content {
+            color: #66b2ff;
         }
 
         .trick {
@@ -278,6 +354,10 @@
         .trick span.trick-label {
             font-weight: bold;
             color: red;
+        }
+
+        .eye-comfort .trick span.trick-label {
+            color: #ff6666;
         }
 
         .trick span.trick-text {
@@ -298,11 +378,19 @@
             position: relative;
         }
 
+        .eye-comfort .progress {
+            background: #666666;
+        }
+
         .progress-bar {
             height: 8px;
             background: linear-gradient(90deg, #18ff03d6, #ff2802);
             width: 0%;
             transition: width 0.3s ease;
+        }
+
+        .eye-comfort .progress-bar {
+            background: linear-gradient(90deg, #00cc99, #0288d1);
         }
 
         .progress-circle {
@@ -320,6 +408,11 @@
             font-size: 0.8rem;
             transform: scale(0);
             animation: grow 0.5s ease forwards;
+        }
+
+        .eye-comfort .progress-circle {
+            background: #3a3a3a;
+            color: #e0e0e0;
         }
 
         @keyframes grow {
@@ -342,6 +435,11 @@
             text-align: center;
         }
 
+        .eye-comfort #timerContainer {
+            background: rgba(60, 60, 60, 0.9);
+            color: #e0e0e0;
+        }
+
         #timerContainer.hidden {
             visibility: hidden;
         }
@@ -355,6 +453,10 @@
             display: none;
         }
 
+        .eye-comfort #dashboardPage {
+            background: linear-gradient(45deg, #1e1e1e, #2a2a2a);
+        }
+
         .dashboard-container {
             max-width: 1200px;
             margin: auto;
@@ -364,6 +466,11 @@
             border-radius: 25px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             animation: slideUpContainer 1.2s ease-in-out;
+        }
+
+        .eye-comfort .dashboard-container {
+            background: rgba(60, 60, 60, 0.3);
+            color: #e0e0e0;
         }
 
         @keyframes slideUpContainer {
@@ -377,6 +484,11 @@
             margin-bottom: 30px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             animation: bounceIn 1s ease-in-out;
+        }
+
+        .eye-comfort .dashboard-container h2 {
+            color: #e0e0e0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         @keyframes bounceIn {
@@ -405,6 +517,11 @@
             overflow: hidden;
         }
 
+        .eye-comfort .dash-box {
+            background: linear-gradient(45deg, #3a3a3a, #4a4a4a);
+            border-color: #666666;
+        }
+
         @keyframes waveFlow {
             0% { background-position: 0% 50%; filter: brightness(1) saturate(1); }
             25% { background-position: 50% 55%; filter: brightness(1.3) saturate(1.3); }
@@ -427,6 +544,10 @@
             filter: drop-shadow(0 0 6px rgba(35, 218, 185, 0.6));
         }
 
+        .eye-comfort .dash-box::before {
+            background: linear-gradient(-45deg, rgba(0, 204, 153, 0.15), rgba(2, 136, 209, 0.181), rgb(0, 0, 0));
+        }
+
         @keyframes waveLine {
             0% { transform: rotate(45deg) translateX(120%) scale(0.85); opacity: 0.35; }
             25% { transform: rotate(45deg) translateX(60%) scale(1); opacity: 0.65; }
@@ -440,6 +561,10 @@
             z-index: 1;
             color: #000;
             font-weight: bold;
+        }
+
+        .eye-comfort .dash-box h4, .eye-comfort .dash-box p {
+            color: #e0e0e0;
         }
 
         .dash-box:nth-child(1) { background: linear-gradient(45deg, #ff6b6b, #ff9f43, #feca57); animation-delay: 0s; }
@@ -472,7 +597,7 @@
         .dash-box:nth-child(28) { background: linear-gradient(45deg, #706fd3, #ff4d4d, #00d2d3); animation-delay: 5.4s; }
         .dash-box:nth-child(29) { background: linear-gradient(45deg, #feca57, #9980fa, #ff9ff3); animation-delay: 5.6s; }
         .dash-box:nth-child(30) { background: linear-gradient(45deg, #54a0ff, #ff793f, #ff6b6b); animation-delay: 5.8s; }
-        
+
         .dash-box:hover {
             transform: scale(1.15) translateY(-10px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
@@ -506,9 +631,18 @@
             color: #000;
         }
 
+        .eye-comfort .back-button {
+            background: linear-gradient(45deg, #0288d1, #26a69a);
+            color: #ffffff;
+        }
+
         .back-button:hover {
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+        }
+
+        .eye-comfort .back-button:hover {
+            box-shadow: 0 0 15px rgba(0, 204, 153, 0.6);
         }
 
         #restartModal {
@@ -525,13 +659,24 @@
             overflow-y: auto;
         }
 
+        .eye-comfort #restartModal {
+            background: #2a2a2a;
+            color: #e0e0e0;
+            border-color: #666666;
+        }
+
         #autoScrollContainer {
             position: fixed;
             bottom: 10px;
             left: 10px;
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
         }
-        #autoScrollContainer button#toggleScrollBtn {
+
+        #autoScrollContainer button#toggleScrollBtn,
+        #autoScrollContainer button#eyeComfortToggle {
             background: linear-gradient(45deg, #4311e8, #ff00dd);
             color: #fff;
             border: none;
@@ -541,16 +686,34 @@
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        #autoScrollContainer button#toggleScrollBtn:hover {
+
+        .eye-comfort #autoScrollContainer button#toggleScrollBtn,
+        .eye-comfort #autoScrollContainer button#eyeComfortToggle {
+            background: linear-gradient(45deg, #0288d1, #26a69a);
+        }
+
+        #autoScrollContainer button#toggleScrollBtn:hover,
+        #autoScrollContainer button#eyeComfortToggle:hover {
             transform: scale(1.05);
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
         }
+
+        .eye-comfort #autoScrollContainer button#toggleScrollBtn:hover,
+        .eye-comfort #autoScrollContainer button#eyeComfortToggle:hover {
+            box-shadow: 0 0 10px rgba(0, 204, 153, 0.6);
+        }
+
         #autoScrollContainer select {
             background: rgba(255, 255, 255, 0.8);
             padding: 5px;
             border-radius: 5px;
             font-size: 0.8rem;
             margin-top: 5px;
+        }
+
+        .eye-comfort #autoScrollContainer select {
+            background: rgba(60, 60, 60, 0.9);
+            color: #e0e0e0;
         }
 
         @media (max-width: 768px) {
@@ -571,9 +734,18 @@
             box-shadow: 0 0 10px red;
         }
 
+        .eye-comfort .highlight {
+            border-color: #00cc99;
+            box-shadow: 0 0 10px #00cc99;
+        }
+
         #score {
             color: #00ff00;
             font-weight: bold;
+        }
+
+        .eye-comfort #score {
+            color: #00cc99;
         }
     </style>
 </head>
@@ -590,8 +762,7 @@
             <div>Total Time: <span id="totalTime">00:00</span></div>
         </div>
         <div class="container" id="quizContainer">
-           <h1 style="color: rgb(255, 0, 0);">Lec 1 "Medieval History" Quiz</h1>
-
+            <h1 style="color: rgb(255, 0, 0);">Lec 1 "Medieval History" Quiz</h1>
             <div id="score"></div>
             <div class="progress">
                 <div class="progress-bar" id="progressBar"></div>
@@ -610,6 +781,7 @@
             </select>
             <div id="autoScrollContainer">
                 <button id="toggleScrollBtn" onclick="toggleScrollOptions()">Scroll</button>
+                <button id="eyeComfortToggle" onclick="toggleEyeComfort()">Eye Comfort</button>
                 <select id="autoScrollSpeed" onchange="startAutoScroll()" style="display: none;">
                     <option value="none">None</option>
                     <option value="very-slow">Very Slow (10 sec/question)</option>
@@ -638,7 +810,7 @@
 
     <script>
         const questions = [
-            {
+           {
         "q": "मोहम्मद साहब का जन्म कब हुआ था?",
         "q_en": "When was Prophet Muhammad born?",
         "options": ["560 ई.", "570 ई.", "580 ई.", "590 ई."],
@@ -1730,6 +1902,12 @@
             select.style.display = select.style.display === 'none' ? 'block' : 'none';
         }
 
+        function toggleEyeComfort() {
+            document.body.classList.toggle('eye-comfort');
+            const button = document.getElementById('eyeComfortToggle');
+            button.textContent = document.body.classList.contains('eye-comfort') ? 'Default' : 'Eye Comfort';
+        }
+
         function startAutoScroll() {
             stopAutoScroll();
             const speedSelect = document.getElementById('autoScrollSpeed').value;
@@ -1932,12 +2110,12 @@
                 const qIndex = parseInt(questionElement.id.split('-')[1]);
 
                 if (keyPressCount === 1) {
-                    // 👉 Single press = select option
+                    // Single press = select option
                     if (selectedAnswers[qIndex] === null && optIndex < questions[qIndex].options.length) {
                         selectOption(qIndex, optIndex);
                     }
                 } else if (keyPressCount === 2) {
-                    // 👉 Double press = submit answer
+                    // Double press = submit answer
                     submitAnswer(qIndex);
                     keyPressCount = 0; // reset
                 }
