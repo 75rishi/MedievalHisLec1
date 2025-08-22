@@ -786,8 +786,7 @@
                 <button class="submit" onclick="submitQuiz()">Submit</button>
                 <button class="restart" onclick="openRestartModal()">Restart</button>
                 <button class="dashboard" onclick="goToDashboard()">Show Dashboard</button>
-                <button class="fullscreen" onclick="toggleFullscreen()">Toggle Fullscreen</button>
-            </div>
+               </div>
             <select id="languageToggle" onchange="toggleLanguage()">
                 <option value="hi">हिन्दी</option>
                 <option value="en">English</option>
@@ -2094,21 +2093,7 @@
             loadQuestions();
         }
 
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().then(() => {
-                    document.body.classList.add('fullscreen');
-                }).catch(err => {
-                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
-                });
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen().then(() => {
-                        document.body.classList.remove('fullscreen');
-                    });
-                }
-            }
-        }
+       
 
         let lastKey = null;
         let lastTime = 0;
