@@ -564,7 +564,7 @@
         }
 
         .eye-comfort .dash-box h4, .eye-comfort .dash-box p {
-            color: #e0e0e0;
+            color: #000000;
         }
 
         .dash-box:nth-child(1) { background: linear-gradient(45deg, #ff6b6b, #ff9f43, #feca57); animation-delay: 0s; }
@@ -810,7 +810,7 @@
 
     <script>
         const questions = [
-           {
+                  {
         "q": "मोहम्मद साहब का जन्म कब हुआ था?",
         "q_en": "When was Prophet Muhammad born?",
         "options": ["560 ई.", "570 ई.", "580 ई.", "590 ई."],
@@ -1712,7 +1712,6 @@
         "explanation": "मोहम्मद साहब ने कुरान और पाँच स्तंभों को इस्लाम का आधार बताया।",
         "explanation_en": "Prophet Muhammad considered the Quran and the five pillars as the foundation of Islam."
     }
-
         ];
 
         let selectedAnswers = new Array(questions.length).fill(null);
@@ -1815,7 +1814,6 @@
             document.getElementById('score').innerText = `Your Score: ${score} / ${questions.length} (Total Time: ${formatTime(totalSeconds)})`;
             loadQuestions();
             clearInterval(timerInterval);
-            stopAutoScroll();
             currentQuestionIndex = 0;
             previousQuestionIndex = -1;
             document.getElementById('quizPage').classList.add('end-bg');
@@ -1908,6 +1906,25 @@
             button.textContent = document.body.classList.contains('eye-comfort') ? 'Default' : 'Eye Comfort';
         }
 
+        function getCurrentVisibleQuestionIndex() {
+            let maxVisibleIndex = 0;
+            let maxVisibleArea = 0;
+            const viewportHeight = window.innerHeight;
+
+            for (let i = 0; i < questions.length; i++) {
+                const elem = document.getElementById(`question-${i}`);
+                if (elem) {
+                    const rect = elem.getBoundingClientRect();
+                    const visibleTop = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
+                    if (visibleTop > maxVisibleArea) {
+                        maxVisibleArea = visibleTop;
+                        maxVisibleIndex = i;
+                    }
+                }
+            }
+            return maxVisibleIndex;
+        }
+
         function startAutoScroll() {
             stopAutoScroll();
             const speedSelect = document.getElementById('autoScrollSpeed').value;
@@ -1916,6 +1933,13 @@
                 previousQuestionIndex = -1;
                 return;
             }
+
+            let startIndexInput = prompt(`कहाँ से शुरू करें? (1 से ${questions.length} तक, या खाली छोड़ें वर्तमान से शुरू करने के लिए)`, '');
+            let startIndex = parseInt(startIndexInput) - 1;
+            if (isNaN(startIndex) || startIndex < 0 || startIndex >= questions.length) {
+                startIndex = getCurrentVisibleQuestionIndex();
+            }
+            currentQuestionIndex = startIndex;
 
             let scrollDelay;
             switch (speedSelect) {
@@ -1927,7 +1951,7 @@
             }
 
             autoScrollInterval = setInterval(() => {
-                if (submitted || currentQuestionIndex >= questions.length) {
+                if (currentQuestionIndex >= questions.length) {
                     stopAutoScroll();
                     return;
                 }
@@ -1960,30 +1984,36 @@
         }
 
         function loadDashboard() {
-            const totalQuestions = questions.length;
-            const attempted = selectedAnswers.filter(a => a !== null && a !== -1).length;
-            const unattempted = totalQuestions - attempted;
-            const correct = score;
-            const wrong = attempted - correct;
-            const scorePercentage = (correct / totalQuestions * 100).toFixed(1) || 0;
-            const totalMarks = `${totalQuestions * 20} / ${correct * 20}`;
-            const totalTime = formatTime(totalSeconds);
-            const avgTimePerQuestion = (totalSeconds / attempted).toFixed(1) || 0;
-            const speed = (attempted / (totalSeconds / 60)).toFixed(1) || 0;
-            const accuracy = (correct / attempted * 100).toFixed(1) || 0;
-            const efficiency = accuracy > 80 ? 'High' : accuracy > 60 ? 'Medium' : 'Low';
-            const percentile = accuracy > 90 ? 'Top 15%' : accuracy > 70 ? 'Top 30%' : 'Top 50%';
-            const rank = Math.floor(Math.random() * 280) + 1;
-            let longestStreak = 0;
-            let currentStreak = 0;
-            selectedAnswers.forEach((answer, i) => {
-                if (answer === questions[i].answer) {
-                    currentStreak++;
-                    longestStreak = Math.max(longestStreak, currentStreak);
-                } else {
-                    currentStreak = 0;
-                }
-            });
+    const totalQuestions = questions.length;
+    const attempted = selectedAnswers.filter(a => a !== null && a !== -1).length;
+    const unattempted = totalQuestions - attempted;
+    const correct = score; // 1 correct = 1 mark
+    const wrong = attempted - correct;
+    const scorePercentage = (correct / totalQuestions * 100).toFixed(1) || 0;
+    
+    // Ab 1 question = 1 mark
+    const totalMarks = `${totalQuestions} / ${correct}`;
+    
+    const totalTime = formatTime(totalSeconds);
+    const avgTimePerQuestion = (totalSeconds / attempted).toFixed(1) || 0;
+    const speed = (attempted / (totalSeconds / 60)).toFixed(1) || 0;
+    const accuracy = (correct / attempted * 100).toFixed(1) || 0;
+    const efficiency = accuracy > 80 ? 'High' : accuracy > 60 ? 'Medium' : 'Low';
+    const percentile = accuracy > 90 ? 'Top 15%' : accuracy > 70 ? 'Top 30%' : 'Top 50%';
+    const rank = Math.floor(Math.random() * 280) + 1;
+
+    let longestStreak = 0;
+    let currentStreak = 0;
+    selectedAnswers.forEach((answer, i) => {
+        if (answer === questions[i].answer) {
+            currentStreak++;
+            longestStreak = Math.max(longestStreak, currentStreak);
+        } else {
+            currentStreak = 0;
+        }
+    });
+
+
             const bestSection = 'History (100%)';
             const weakSection = 'N/A';
             const improvement = accuracy > 80 ? '+5%' : '+2%';
@@ -2023,7 +2053,6 @@
                 <div class="dash-box"><h4>Efficiency</h4><p>${efficiency}</p></div>
                 <div class="dash-box"><h4>Percentile</h4><p>${percentile}</p></div>
                 <div class="dash-box"><h4>Longest Streak</h4><p>${longestStreak} Qs</p></div>
-                <div class="dash-box"><h4>Weak Section</h4><p>${weakSection}</p></div>
                 <div class="dash-box"><h4>Improvement</h4><p>${improvement}</p></div>
                 <div class="dash-box"><h4>Performance Level</h4><p>${performanceLevel}</p></div>
                 <div class="dash-box"><h4>Medals</h4><p>${medals}</p></div>
