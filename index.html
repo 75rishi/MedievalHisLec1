@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  Medieval History Quiz </title>
+    <title>"Medieval History" Quiz</title>
     
     <style>
         /* General Reset and Base Styles */
@@ -31,37 +31,37 @@
             gap: 20px;
         }
 
-      .box {
-    background: linear-gradient(45deg, rgb(218, 0, 171), rgb(0, 255, 191), rgb(255, 221, 0), rgb(218, 0, 171));
-    background-size: 400% 400%;
-    padding: 8px 50px;
-    font-size: 2.1rem;
-    font-weight: 700;
-    font-family: 'Tangerine', cursive;
-    color: black;
-    box-shadow: 0 0 50px rgb(0, 255, 191);
-    outline: 4px solid black;
-    outline-offset: 5px;
-    cursor: pointer;
-    border-radius: 10px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: gradientFlow 5s ease infinite, pulse 1s infinite;
-    transition: background 0.5s ease, box-shadow 0.3s ease;
-}
+        .box {
+            background: linear-gradient(45deg, rgb(218, 0, 171), rgb(0, 255, 191), rgb(255, 221, 0), rgb(218, 0, 171));
+            background-size: 400% 400%;
+            padding: 8px 50px;
+            font-size: 2.1rem;
+            font-weight: 700;
+            font-family: 'Tangerine', cursive;
+            color: black;
+            box-shadow: 0 0 50px rgb(0, 255, 191);
+            outline: 4px solid black;
+            outline-offset: 5px;
+            cursor: pointer;
+            border-radius: 10px;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: gradientFlow 5s ease infinite, pulse 1s infinite;
+            transition: background 0.5s ease, box-shadow 0.3s ease;
+        }
 
-@keyframes gradientFlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-.box:hover {
-    background: linear-gradient(45deg, rgb(0, 255, 255), rgb(255, 0, 255), rgb(255, 255, 0), rgb(0, 255, 255));
-    background-size: 400% 400%;
-    box-shadow: 0 0 50px rgb(255, 0, 255);
-}
+        .box:hover {
+            background: linear-gradient(45deg, rgb(0, 255, 255), rgb(255, 0, 255), rgb(255, 255, 0), rgb(0, 255, 255));
+            background-size: 400% 400%;
+            box-shadow: 0 0 50px rgb(255, 0, 255);
+        }
 
         .box:hover {
             background-color: rgb(56, 255, 242);
@@ -100,11 +100,15 @@
 
         /* Quiz Page Styles */
         #quizPage {
-            background: linear-gradient(135deg, #09287e, #13a155);
-            color: #000;
+            background: linear-gradient(-45deg, #000000, #000000);
+            color: #ff0000;
             position: relative;
             min-height: 100vh;
             display: none;
+        }
+
+        #quizPage.end-bg {
+            background: #000;
         }
 
         .container {
@@ -113,15 +117,15 @@
             padding: 20px;
         }
 
-       .card {
-    background: linear-gradient(135deg, #258cdf, #a2d9ce, #03b0c7);
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(100, 46, 46, 0.2);
-    padding: 20px;
-    margin-bottom: 30px;
-    transition: transform 0.2s;
-}
+        .card {
+            background: linear-gradient(135deg, #bce4c5, #d3d3ef);
 
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(100, 46, 46, 0.2);
+            padding: 20px;
+            margin-bottom: 30px;
+            transition: transform 0.2s;
+        }
 
         .card:hover {
             transform: translateY(-2px);
@@ -134,11 +138,12 @@
         }
 
         .question .en {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #333;
-            margin-top: 5px;
-        }
+    font-size: 1.1rem;
+    font-weight: bold; /* bold text */
+    color: #000000;
+    margin-top: 5px;
+}
+
 
         .options button {
             display: block;
@@ -164,15 +169,21 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .options button.correct {
-            background: #d4f5d0 !important;
-            border-color: #4caf50 !important;
-            cursor: default;
-            color: #000 !important;
-        }
+       .options button.correct {
+    background: #b2ffa0 !important;
+    border-color: #ff00bf !important;
+    cursor: default;
+    color: #000 !important;
+
+    font-weight: bold; /* text bold */
+    transform: scale(1.1); /* zoom effect */
+    transition: transform 0.3s ease; /* smooth animation */
+}
+
+
 
         .options button.wrong {
-            background: #b51010 !important;
+            background: #ff4e4e !important;
             border-color: #000 !important;
             cursor: default;
             color: #000 !important;
@@ -217,7 +228,7 @@
             cursor: pointer;
             font-size: 1rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #4311e8, #ff00dd, #cbd6db, #4311e8);
+            background: linear-gradient(45deg, #4311e8, #ff00dd, #00aeff, #4311e8);
             background-size: 400% 400%;
             animation: flowGradient 5s ease infinite;
             transition: transform 0.3s ease, box-shadow 0.5s ease;
@@ -235,26 +246,47 @@
             100% { background-position: 0% 50%; }
         }
 
-        .explanation {
-            margin-top: 10px;
-            padding: 10px;
-            background: #8eedce;
-            border-left: 4px solid #0037ff;
-            font-size: 0.95rem;
-            animation: slideDown 0.4s ease;
-            opacity: 0;
-            transform: translateY(-10px);
-            font-weight: bold;
-        }
+      .explanation {
+    margin-top: 10px;
+    padding: 10px;
+    background: #8eedce;
+    border-left: 4px solid #0037ff;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #000; /* text black */
+}
+
 
         .explanation.active {
             opacity: 1;
-            transform: translateY(0);
         }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .trick-title {
+            color: red;
+            font-weight: bold;
+        }
+
+        .trick-content {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .trick {
+            margin-top: 10px;
+        }
+
+        .trick span.trick-label {
+            font-weight: bold;
+            color: red;
+        }
+
+        .trick span.trick-text {
+            filter: blur(2px);
+            transition: filter 0.3s ease;
+        }
+
+        .trick span.trick-text:hover {
+            filter: none;
         }
 
         .progress {
@@ -314,25 +346,9 @@
             visibility: hidden;
         }
 
-        #timerBar {
-            width: 100%;
-            height: 10px;
-            background: #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-
-        #timerBarFill {
-            height: 100%;
-            background: #ff4444;
-            width: 100%;
-            transition: width 1s linear, background 1s ease;
-        }
-
         /* Dashboard Page Styles */
         #dashboardPage {
-            background: linear-gradient(45deg, #a1c4fd, #c2e9fb, #d4fc79);
+            background: linear-gradient(45deg, #5c94ec, #c2e9fb, #000000);
             background-size: 600% 400%;
             animation: flow 5s ease-in-out infinite;
             padding: 40px;
@@ -384,14 +400,9 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
             background-size: 800% 600%;
-            animation: waveFlow 6s ease-in-out infinite, floatUpDown 3s ease-in-out infinite;
+            animation: waveFlow 6s ease-in-out infinite;
             position: relative;
             overflow: hidden;
-        }
-
-        @keyframes floatUpDown {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
         }
 
         @keyframes waveFlow {
@@ -461,10 +472,6 @@
         .dash-box:nth-child(28) { background: linear-gradient(45deg, #706fd3, #ff4d4d, #00d2d3); animation-delay: 5.4s; }
         .dash-box:nth-child(29) { background: linear-gradient(45deg, #feca57, #9980fa, #ff9ff3); animation-delay: 5.6s; }
         .dash-box:nth-child(30) { background: linear-gradient(45deg, #54a0ff, #ff793f, #ff6b6b); animation-delay: 5.8s; }
-        .dash-box:nth-child(31) { background: linear-gradient(45deg, #706fd3, #ff6b6b, #54a0ff); animation-delay: 3s; }
-        .dash-box:nth-child(32) { background: linear-gradient(45deg, #ff4d4d, #9980fa, #00d2d3); animation-delay: 3.2s; }
-        .dash-box:nth-child(33) { background: linear-gradient(45deg, #ffcc99, #ff9ff3, #4834d4); animation-delay: 3.4s; }
-        .dash-box:nth-child(34) { background: linear-gradient(45deg, #1dd1a1, #ff793f, #706fd3); animation-delay: 3.6s; }
         
         .dash-box:hover {
             transform: scale(1.15) translateY(-10px);
@@ -493,7 +500,7 @@
             cursor: pointer;
             font-size: 1rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #4311e8, #ff00dd, #cbd6db, #4311e8);
+            background: linear-gradient(45deg, #4311e8, #ecff5a, #00aeff, #4311e8);
             background-size: 400% 400%;
             animation: flowGradient 5s ease infinite;
             color: #000;
@@ -518,6 +525,34 @@
             overflow-y: auto;
         }
 
+        #autoScrollContainer {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1000;
+        }
+        #autoScrollContainer button#toggleScrollBtn {
+            background: linear-gradient(45deg, #4311e8, #ff00dd);
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        #autoScrollContainer button#toggleScrollBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+        }
+        #autoScrollContainer select {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
         @media (max-width: 768px) {
             .container, .dashboard-container {
                 padding: 20px;
@@ -529,6 +564,16 @@
             .dash-box p {
                 font-size: 24px;
             }
+        }
+
+        .highlight {
+            border: 4px solid red;
+            box-shadow: 0 0 10px red;
+        }
+
+        #score {
+            color: #00ff00;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -543,10 +588,10 @@
     <div id="quizPage">
         <div id="timerContainer">
             <div>Total Time: <span id="totalTime">00:00</span></div>
-            <div id="timerBar"><div id="timerBarFill"></div></div>
         </div>
         <div class="container" id="quizContainer">
-            <h1> Lec 1 Medieval History Quiz</h1>
+           <h1 style="color: rgb(255, 0, 0);">Lec 1 "Medieval History" Quiz</h1>
+
             <div id="score"></div>
             <div class="progress">
                 <div class="progress-bar" id="progressBar"></div>
@@ -563,6 +608,16 @@
                 <option value="en">English</option>
                 <option value="both">Both</option>
             </select>
+            <div id="autoScrollContainer">
+                <button id="toggleScrollBtn" onclick="toggleScrollOptions()">Scroll</button>
+                <select id="autoScrollSpeed" onchange="startAutoScroll()" style="display: none;">
+                    <option value="none">None</option>
+                    <option value="very-slow">Very Slow (10 sec/question)</option>
+                    <option value="slow">Slow (7 sec/question)</option>
+                    <option value="normal">Normal (5 sec/question)</option>
+                    <option value="fast">Fast (3 sec/question)</option>
+                </select>
+            </div>
             <div id="restartModal">
                 <h2>Select Questions to Restart</h2>
                 <div id="questionCheckboxes"></div>
@@ -583,9 +638,7 @@
 
     <script>
         const questions = [
-    // Very Hard Questions (1-15)
-    
-    {
+            {
         "q": "मोहम्मद साहब का जन्म कब हुआ था?",
         "q_en": "When was Prophet Muhammad born?",
         "options": ["560 ई.", "570 ई.", "580 ई.", "590 ई."],
@@ -1488,8 +1541,7 @@
         "explanation_en": "Prophet Muhammad considered the Quran and the five pillars as the foundation of Islam."
     }
 
-
-];
+        ];
 
         let selectedAnswers = new Array(questions.length).fill(null);
         let submitted = false;
@@ -1499,6 +1551,9 @@
         let timerInterval;
         let answerTimes = [];
         let startTime;
+        let autoScrollInterval = null;
+        let currentQuestionIndex = 0;
+        let previousQuestionIndex = -1;
 
         function formatTime(seconds) {
             const m = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -1511,29 +1566,7 @@
             timerInterval = setInterval(() => {
                 totalSeconds++;
                 document.getElementById('totalTime').innerText = formatTime(totalSeconds);
-                updateTimerBar();
             }, 1000);
-        }
-
-        function updateTimerBar() {
-            const maxTime = 150;
-            const width = (1 - totalSeconds / maxTime) * 100;
-            let color;
-            if (totalSeconds <= 50) {
-                color = 'lightgreen';
-            } else if (totalSeconds <= 75) {
-                color = 'green';
-            } else if (totalSeconds <= 100) {
-                color = 'black';
-            } else {
-                color = 'red';
-            }
-            const fill = document.getElementById('timerBarFill');
-            fill.style.width = `${width}%`;
-            fill.style.background = color;
-            if (totalSeconds >= maxTime && !submitted) {
-                submitQuiz();
-            }
         }
 
         function loadQuestions() {
@@ -1551,7 +1584,7 @@
                     cls = 'answered';
                 }
                 return `
-                    <div class='card ${cls}'>
+                    <div class='card ${cls}' id="question-${index}">
                         <div class='question'>
                             Q${index + 1}. ${lang === 'en' ? q.q_en : q.q}
                             ${lang === 'both' ? `<div class='en'>Q${index + 1}. ${q.q_en}</div>` : ''}
@@ -1566,13 +1599,13 @@
                                 }
                                 return `
                                     <button class='${btnCls}' onclick='selectOption(${index}, ${i})' ${btnCls.includes('disabled') ? 'disabled' : ''}>
-                                        ${String.fromCharCode(65 + i)}) ${lang === 'en' ? q.options_en[i] : opt}
-                                        ${lang === 'both' ? `<div class='en'>${String.fromCharCode(65 + i)}) ${q.options_en[i]}</div>` : ''}
+                                        ${i + 1}) ${lang === 'en' ? q.options_en[i] : opt}
+                                        ${lang === 'both' ? `<div class='en'>${i + 1}) ${q.options_en[i]}</div>` : ''}
                                     </button>`;
                             }).join('')}
                         </div>
                         ${selectedAnswers[index] !== null ? `
-                            <div class='explanation ${selectedAnswers[index] !== null ? 'active' : ''}'>
+                            <div class='explanation active'>
                                 <b>Explanation:</b> ${lang === 'en' ? q.explanation_en : q.explanation}
                                 ${lang === 'both' ? `<div class='en'><b>Explanation:</b> ${q.explanation_en}</div>` : ''}
                             </div>` : ''}
@@ -1582,11 +1615,10 @@
         }
 
         function selectOption(qIndex, optIndex) {
-            if (submitted) return;
-            if (selectedAnswers[qIndex] !== null) return;
+            if (submitted || selectedAnswers[qIndex] !== null) return;
 
             const endTime = Date.now();
-            const timeTaken = (endTime - startTime) / 1000; // Time in seconds
+            const timeTaken = (endTime - startTime) / 1000;
             answerTimes[qIndex] = { time: timeTaken, correct: optIndex === questions[qIndex].answer };
 
             selectedAnswers[qIndex] = optIndex;
@@ -1595,7 +1627,7 @@
             }
             document.getElementById('score').innerText = `Score: ${score} / ${questions.length}`;
             loadQuestions();
-            startTime = Date.now(); // Reset start time for the next question
+            startTime = Date.now();
         }
 
         function submitQuiz() {
@@ -1603,7 +1635,7 @@
 
             selectedAnswers.forEach((answer, index) => {
                 if (answer === null) {
-                    selectedAnswers[index] = -1; // Mark unattempted
+                    selectedAnswers[index] = -1;
                 }
             });
 
@@ -1611,6 +1643,10 @@
             document.getElementById('score').innerText = `Your Score: ${score} / ${questions.length} (Total Time: ${formatTime(totalSeconds)})`;
             loadQuestions();
             clearInterval(timerInterval);
+            stopAutoScroll();
+            currentQuestionIndex = 0;
+            previousQuestionIndex = -1;
+            document.getElementById('quizPage').classList.add('end-bg');
             setTimeout(goToDashboard, 2000);
         }
 
@@ -1663,7 +1699,7 @@
                         score--;
                     }
                     selectedAnswers[idx] = null;
-                    answerTimes[idx] = null; // Clear answer time
+                    answerTimes[idx] = null;
                 }
             });
 
@@ -1676,9 +1712,10 @@
             document.getElementById('startPage').style.display = 'none';
             document.getElementById('quizPage').style.display = 'block';
             document.getElementById('dashboardPage').style.display = 'none';
+            document.getElementById('quizPage').classList.remove('end-bg');
             startTimer();
             loadQuestions();
-            startTime = Date.now(); // Initialize start time for the first question
+            startTime = Date.now();
         }
 
         function goToDashboard() {
@@ -1688,131 +1725,233 @@
             loadDashboard();
         }
 
-      function loadDashboard() {
-    const totalQuestions = questions.length;
-    const attempted = selectedAnswers.filter(a => a !== null && a !== -1).length;
-    const unattempted = totalQuestions - attempted;
-    const correct = score;
-    const wrong = attempted - correct;
-    const scorePercentage = (correct / totalQuestions * 100).toFixed(1) || 0;
-    const totalMarks = `${totalQuestions * 20} / ${correct * 20}`; // Assuming 20 marks per question
-    const totalTime = formatTime(totalSeconds);
-    const avgTimePerQuestion = (totalSeconds / attempted).toFixed(1) || 0;
-    const speed = (attempted / (totalSeconds / 60)).toFixed(1) || 0;
-    const accuracy = (correct / attempted * 100).toFixed(1) || 0;
-    const efficiency = accuracy > 80 ? 'High' : accuracy > 60 ? 'Medium' : 'Low';
-    const percentile = accuracy > 90 ? 'Top 15%' : accuracy > 70 ? 'Top 30%' : 'Top 50%';
-    const rank = Math.floor(Math.random() * 280) + 1; // Placeholder
-    let longestStreak = 0;
-    let currentStreak = 0;
-    selectedAnswers.forEach((answer, i) => {
-        if (answer === questions[i].answer) {
-            currentStreak++;
-            longestStreak = Math.max(longestStreak, currentStreak);
-        } else {
-            currentStreak = 0;
+        function toggleScrollOptions() {
+            const select = document.getElementById('autoScrollSpeed');
+            select.style.display = select.style.display === 'none' ? 'block' : 'none';
         }
-    });
-    const bestSection = 'History (100%)'; // Static as per quiz context
-    const weakSection = 'N/A'; // Placeholder
-    const improvement = accuracy > 80 ? '+5%' : '+2%'; // Placeholder
-    const performanceLevel = accuracy > 80 ? 'Advanced' : accuracy > 60 ? 'Intermediate' : 'Beginner';
-    const medals = accuracy > 80 ? 'Accuracy Master' : 'N/A'; // Placeholder
-    const efficiencyScore = (accuracy * 0.9).toFixed(0); // Placeholder
-    const predictedScore = (scorePercentage * 1.02).toFixed(1); // Placeholder
-    const fastestAnswer = answerTimes.filter(t => t).length ? Math.min(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
-    const slowestAnswer = answerTimes.filter(t => t).length ? Math.max(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
-    const avgTimeCorrect = answerTimes.filter(t => t && t.correct).length ? (answerTimes.filter(t => t && t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && t.correct).length).toFixed(1) : 'N/A';
-    const avgTimeWrong = answerTimes.filter(t => t && !t.correct).length ? (answerTimes.filter(t => t && !t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && !t.correct).length).toFixed(1) : 'N/A';
-    const timeEfficiency = (1 - totalSeconds / (totalQuestions * 30)).toFixed(2); // Placeholder
-    const guessRate = wrong > 0 ? ((wrong / attempted) * 100).toFixed(1) : 0;
-    const firstHalfAccuracy = selectedAnswers.slice(0, Math.ceil(totalQuestions / 2)).filter((a, i) => a === questions[i].answer).length / Math.ceil(totalQuestions / 2) * 100 || 0;
 
-    // Generate HTML for time per question (hidden initially)
-    let questionTimesHTML = '<ul>';
-    for (let i = 0; i < totalQuestions; i++) {
-        const at = answerTimes[i];
-        const time = at ? at.time.toFixed(1) : 'N/A';
-        questionTimesHTML += `<li>Q${i+1}: ${time} sec</li>`;
-    }
-    questionTimesHTML += '</ul>';
+        function startAutoScroll() {
+            stopAutoScroll();
+            const speedSelect = document.getElementById('autoScrollSpeed').value;
+            if (speedSelect === 'none') {
+                currentQuestionIndex = 0;
+                previousQuestionIndex = -1;
+                return;
+            }
 
-    const dashboardGrid = document.getElementById('dashboardGrid');
-    dashboardGrid.innerHTML = `
-        <div class="dash-box"><h4>Total Questions</h4><p>${totalQuestions}</p></div>
-        <div class="dash-box"><h4>Attempted</h4><p>${attempted}</p></div>
-        <div class="dash-box"><h4>Unattempted</h4><p>${unattempted}</p></div>
-        <div class="dash-box"><h4>Correct</h4><p>${correct}</p></div>
-        <div class="dash-box"><h4>Wrong</h4><p>${wrong}</p></div>
-        <div class="dash-box"><h4>Score</h4><p>${scorePercentage}%</p></div>
-        <div class="dash-box"><h4>Total Marks</h4><p>${totalMarks}</p></div>
-        <div class="dash-box"><h4>Total Time</h4><p>${totalTime}</p></div>
-        <div class="dash-box"><h4>Avg Time/Q</h4><p>${avgTimePerQuestion} sec</p></div>
-        <div class="dash-box"><h4>Speed</h4><p>${speed} Q/min</p></div>
-        <div class="dash-box"><h4>Accuracy</h4><p>${accuracy}%</p></div>
-        <div class="dash-box"><h4>Efficiency</h4><p>${efficiency}</p></div>
-        <div class="dash-box"><h4>Percentile</h4><p>${percentile}</p></div>
-        <div class="dash-box"><h4>Rank</h4><p>${rank} / 280</p></div>
-        <div class="dash-box"><h4>Longest Streak</h4><p>${longestStreak} Qs</p></div>
-        <div class="dash-box"><h4>Best Section</h4><p>${bestSection}</p></div>
-        <div class="dash-box"><h4>Weak Section</h4><p>${weakSection}</p></div>
-        <div class="dash-box"><h4>Improvement</h4><p>${improvement}</p></div>
-        <div class="dash-box"><h4>Performance Level</h4><p>${performanceLevel}</p></div>
-        <div class="dash-box"><h4>Medals</h4><p>${medals}</p></div>
-        <div class="dash-box"><h4>Efficiency Score</h4><p>${efficiencyScore}</p></div>
-        <div class="dash-box"><h4>Predicted Score</h4><p>${predictedScore}%</p></div>
-        <div class="dash-box"><h4>Questions/Min</h4><p>${speed} Q/min</p></div>
-        <div class="dash-box"><h4>Fastest Answer</h4><p>${fastestAnswer} sec</p></div>
-        <div class="dash-box"><h4>Slowest Answer</h4><p>${slowestAnswer} sec</p></div>
-        <div class="dash-box"><h4>Avg Time Correct</h4><p>${avgTimeCorrect} sec</p></div>
-        <div class="dash-box"><h4>Avg Time Wrong</h4><p>${avgTimeWrong} sec</p></div>
-        <div class="dash-box"><h4>Time Efficiency</h4><p>${timeEfficiency}</p></div>
-        <div class="dash-box"><h4>Guess Rate</h4><p>${guessRate}%</p></div>
-        <div class="dash-box"><h4>First-Half Accuracy</h4><p>${firstHalfAccuracy.toFixed(1)}%</p></div>
-        <div class="dash-box"><h4>Total Time on Submit</h4><p>${totalTime}</p></div>
-        <div class="dash-box"><h4>Show Time Details</h4><button onclick="toggleTimeDetails()">Show Times</button><div id="timeDetails" style="display:none;">${questionTimesHTML}</div></div>
-        
-        `;
-}
+            let scrollDelay;
+            switch (speedSelect) {
+                case 'very-slow': scrollDelay = 10000; break;
+                case 'slow': scrollDelay = 7000; break;
+                case 'normal': scrollDelay = 5000; break;
+                case 'fast': scrollDelay = 3000; break;
+                default: scrollDelay = 5000;
+            }
 
-// Function to toggle time details display
-function toggleTimeDetails() {
-    const timeDetails = document.getElementById('timeDetails');
-    timeDetails.style.display = timeDetails.style.display === 'none' ? 'block' : 'none';
-}
+            autoScrollInterval = setInterval(() => {
+                if (submitted || currentQuestionIndex >= questions.length) {
+                    stopAutoScroll();
+                    return;
+                }
 
-// Function to export dashboard as PNG or PDF
-function exportDashboard() {
-    const dashboard = document.getElementById('dashboardGrid');
-    html2canvas(dashboard).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        
-        // Download as PNG
-        const link = document.createElement('a');
-        link.href = imgData;
-        link.download = 'dashboard.png';
-        link.click();
-        
-        // Convert to PDF
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const imgProps = pdf.getImageProperties(imgData);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-        pdf.save('dashboard.pdf');
-    });
-}
-        // Initialize
+                if (previousQuestionIndex !== -1) {
+                    const prevElem = document.getElementById(`question-${previousQuestionIndex}`);
+                    if (prevElem) prevElem.classList.remove('highlight');
+                }
+
+                const questionElement = document.getElementById(`question-${currentQuestionIndex}`);
+                if (questionElement) {
+                    questionElement.classList.add('highlight');
+                    questionElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+
+                previousQuestionIndex = currentQuestionIndex;
+                currentQuestionIndex++;
+            }, scrollDelay);
+        }
+
+        function stopAutoScroll() {
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = null;
+            }
+            if (previousQuestionIndex !== -1) {
+                const prevElem = document.getElementById(`question-${previousQuestionIndex}`);
+                if (prevElem) prevElem.classList.remove('highlight');
+            }
+        }
+
+        function loadDashboard() {
+            const totalQuestions = questions.length;
+            const attempted = selectedAnswers.filter(a => a !== null && a !== -1).length;
+            const unattempted = totalQuestions - attempted;
+            const correct = score;
+            const wrong = attempted - correct;
+            const scorePercentage = (correct / totalQuestions * 100).toFixed(1) || 0;
+            const totalMarks = `${totalQuestions * 20} / ${correct * 20}`;
+            const totalTime = formatTime(totalSeconds);
+            const avgTimePerQuestion = (totalSeconds / attempted).toFixed(1) || 0;
+            const speed = (attempted / (totalSeconds / 60)).toFixed(1) || 0;
+            const accuracy = (correct / attempted * 100).toFixed(1) || 0;
+            const efficiency = accuracy > 80 ? 'High' : accuracy > 60 ? 'Medium' : 'Low';
+            const percentile = accuracy > 90 ? 'Top 15%' : accuracy > 70 ? 'Top 30%' : 'Top 50%';
+            const rank = Math.floor(Math.random() * 280) + 1;
+            let longestStreak = 0;
+            let currentStreak = 0;
+            selectedAnswers.forEach((answer, i) => {
+                if (answer === questions[i].answer) {
+                    currentStreak++;
+                    longestStreak = Math.max(longestStreak, currentStreak);
+                } else {
+                    currentStreak = 0;
+                }
+            });
+            const bestSection = 'History (100%)';
+            const weakSection = 'N/A';
+            const improvement = accuracy > 80 ? '+5%' : '+2%';
+            const performanceLevel = accuracy > 80 ? 'Advanced' : accuracy > 60 ? 'Intermediate' : 'Beginner';
+            const medals = accuracy > 80 ? 'Accuracy Master' : 'N/A';
+            const efficiencyScore = (accuracy * 0.9).toFixed(0);
+            const predictedScore = (scorePercentage * 1.02).toFixed(1);
+            const fastestAnswer = answerTimes.filter(t => t).length ? Math.min(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
+            const slowestAnswer = answerTimes.filter(t => t).length ? Math.max(...answerTimes.filter(t => t).map(t => t.time)).toFixed(0) : 'N/A';
+            const avgTimeCorrect = answerTimes.filter(t => t && t.correct).length ? (answerTimes.filter(t => t && t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && t.correct).length).toFixed(1) : 'N/A';
+            const avgTimeWrong = answerTimes.filter(t => t && !t.correct).length ? (answerTimes.filter(t => t && !t.correct).reduce((sum, t) => sum + t.time, 0) / answerTimes.filter(t => t && !t.correct).length).toFixed(1) : 'N/A';
+            const timeEfficiency = (1 - totalSeconds / (totalQuestions * 30)).toFixed(2);
+            const guessRate = wrong > 0 ? ((wrong / attempted) * 100).toFixed(1) : 0;
+            const firstHalfAccuracy = selectedAnswers.slice(0, Math.ceil(totalQuestions / 2)).filter((a, i) => a === questions[i].answer).length / Math.ceil(totalQuestions / 2) * 100 || 0;
+
+            let questionTimesHTML = '<ul>';
+            for (let i = 0; i < totalQuestions; i++) {
+                const at = answerTimes[i];
+                const time = at ? at.time.toFixed(1) : 'N/A';
+                questionTimesHTML += `<li>Q${i+1}: ${time} sec</li>`;
+            }
+            questionTimesHTML += '</ul>';
+
+            const dashboardGrid = document.getElementById('dashboardGrid');
+            dashboardGrid.innerHTML = `
+                <div class="dash-box"><h4>Total Questions</h4><p>${totalQuestions}</p></div>
+                <div class="dash-box"><h4>Attempted</h4><p>${attempted}</p></div>
+                <div class="dash-box"><h4>Unattempted</h4><p>${unattempted}</p></div>
+                <div class="dash-box"><h4>Correct</h4><p>${correct}</p></div>
+                <div class="dash-box"><h4>Wrong</h4><p>${wrong}</p></div>
+                <div class="dash-box"><h4>Score</h4><p>${scorePercentage}%</p></div>
+                <div class="dash-box"><h4>Total Marks</h4><p>${totalMarks}</p></div>
+                <div class="dash-box"><h4>Total Time</h4><p>${totalTime}</p></div>
+                <div class="dash-box"><h4>Avg Time/Q</h4><p>${avgTimePerQuestion} sec</p></div>
+                <div class="dash-box"><h4>Speed</h4><p>${speed} Q/min</p></div>
+                <div class="dash-box"><h4>Accuracy</h4><p>${accuracy}%</p></div>
+                <div class="dash-box"><h4>Efficiency</h4><p>${efficiency}</p></div>
+                <div class="dash-box"><h4>Percentile</h4><p>${percentile}</p></div>
+                <div class="dash-box"><h4>Longest Streak</h4><p>${longestStreak} Qs</p></div>
+                <div class="dash-box"><h4>Weak Section</h4><p>${weakSection}</p></div>
+                <div class="dash-box"><h4>Improvement</h4><p>${improvement}</p></div>
+                <div class="dash-box"><h4>Performance Level</h4><p>${performanceLevel}</p></div>
+                <div class="dash-box"><h4>Medals</h4><p>${medals}</p></div>
+                <div class="dash-box"><h4>Efficiency Score</h4><p>${efficiencyScore}</p></div>
+                <div class="dash-box"><h4>Predicted Score</h4><p>${predictedScore}%</p></div>
+                <div class="dash-box"><h4>Questions/Min</h4><p>${speed} Q/min</p></div>
+                <div class="dash-box"><h4>Fastest Answer</h4><p>${fastestAnswer} sec</p></div>
+                <div class="dash-box"><h4>Slowest Answer</h4><p>${slowestAnswer} sec</p></div>
+                <div class="dash-box"><h4>Avg Time Correct</h4><p>${avgTimeCorrect} sec</p></div>
+                <div class="dash-box"><h4>Avg Time Wrong</h4><p>${avgTimeWrong} sec</p></div>
+                <div class="dash-box"><h4>Time Efficiency</h4><p>${timeEfficiency}</p></div>
+                <div class="dash-box"><h4>Guess Rate</h4><p>${guessRate}%</p></div>
+                <div class="dash-box"><h4>First-Half Accuracy</h4><p>${firstHalfAccuracy.toFixed(1)}%</p></div>
+                <div class="dash-box"><h4>Total Time on Submit</h4><p>${totalTime}</p></div>
+                <div class="dash-box"><h4>Show Time Details</h4><button onclick="toggleTimeDetails()">Show Times</button><div id="timeDetails" style="display:none;">${questionTimesHTML}</div></div>
+            `;
+        }
+
+        function toggleTimeDetails() {
+            const timeDetails = document.getElementById('timeDetails');
+            timeDetails.style.display = timeDetails.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function toggleLanguage() {
+            language = document.getElementById('languageToggle').value;
+            loadQuestions();
+        }
+
+        let lastKey = null;
+        let lastTime = 0;
+        let keyPressCount = 0;
+
+        document.addEventListener('keydown', function(e) {
+            if (submitted) return;
+
+            // Ctrl+S → stop scroll
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                stopAutoScroll();
+                return;
+            }
+
+            // Shift+S → start scroll
+            if (e.shiftKey && e.key === 'S') {
+                startAutoScroll();
+                return;
+            }
+
+            // Ctrl+ArrowDown → scroll bottom
+            if (e.ctrlKey && e.key === 'ArrowDown') {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                return;
+            }
+
+            // Ctrl+ArrowUp → scroll top
+            if (e.ctrlKey && e.key === 'ArrowUp') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            // Option select / submit
+            if (['1', '2', '3', '4', 'a', 'b', 'c', 'd'].includes(e.key.toLowerCase())) {
+                const now = Date.now();
+
+                if (lastKey === e.key && (now - lastTime) < 400) {  
+                    keyPressCount++;
+                } else {
+                    keyPressCount = 1; // reset
+                }
+
+                lastKey = e.key;
+                lastTime = now;
+
+                let optIndex;
+                if (['1', '2', '3', '4'].includes(e.key)) {
+                    optIndex = parseInt(e.key) - 1;
+                } else {
+                    optIndex = 'abcd'.indexOf(e.key.toLowerCase());
+                }
+
+                const questionElement = document.querySelector('.highlight') || document.querySelector('.card');
+                if (!questionElement) return;
+
+                const qIndex = parseInt(questionElement.id.split('-')[1]);
+
+                if (keyPressCount === 1) {
+                    // 👉 Single press = select option
+                    if (selectedAnswers[qIndex] === null && optIndex < questions[qIndex].options.length) {
+                        selectOption(qIndex, optIndex);
+                    }
+                } else if (keyPressCount === 2) {
+                    // 👉 Double press = submit answer
+                    submitAnswer(qIndex);
+                    keyPressCount = 0; // reset
+                }
+            }
+        });
+
         document.getElementById('timerContainer').addEventListener('dblclick', function() {
             this.classList.toggle('hidden');
         });
 
-        // Load Google Fonts
         const link = document.createElement('link');
         link.href = 'https://fonts.googleapis.com/css2?family=Tangerine&family=Allura&family=Poppins:wght@400;600&display=swap';
         link.rel = 'stylesheet';
         document.head.appendChild(link);
     </script>
 </body>
-
 </html>
