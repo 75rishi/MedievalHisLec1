@@ -747,6 +747,19 @@
         .eye-comfort #score {
             color: #00cc99;
         }
+
+        /* Fullscreen Styles */
+        .fullscreen #timerContainer,
+        .fullscreen #autoScrollContainer,
+        .fullscreen .controls,
+        .fullscreen #languageToggle {
+            display: none;
+        }
+
+        .fullscreen .container {
+            padding: 0;
+            max-width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -773,6 +786,7 @@
                 <button class="submit" onclick="submitQuiz()">Submit</button>
                 <button class="restart" onclick="openRestartModal()">Restart</button>
                 <button class="dashboard" onclick="goToDashboard()">Show Dashboard</button>
+                <button class="fullscreen" onclick="toggleFullscreen()">Toggle Fullscreen</button>
             </div>
             <select id="languageToggle" onchange="toggleLanguage()">
                 <option value="hi">हिन्दी</option>
@@ -810,7 +824,7 @@
 
     <script>
         const questions = [
-                  {
+             {
         "q": "मोहम्मद साहब का जन्म कब हुआ था?",
         "q_en": "When was Prophet Muhammad born?",
         "options": ["560 ई.", "570 ई.", "580 ई.", "590 ई."],
@@ -1770,8 +1784,8 @@
                                 }
                                 return `
                                     <button class='${btnCls}' onclick='selectOption(${index}, ${i})' ${btnCls.includes('disabled') ? 'disabled' : ''}>
-                                        ${i + 1}) ${lang === 'en' ? q.options_en[i] : opt}
-                                        ${lang === 'both' ? `<div class='en'>${i + 1}) ${q.options_en[i]}</div>` : ''}
+                                        ${String.fromCharCode(97 + i)}) ${lang === 'en' ? q.options_en[i] : opt}
+                                        ${lang === 'both' ? `<div class='en'>${String.fromCharCode(97 + i)}) ${q.options_en[i]}</div>` : ''}
                                     </button>`;
                             }).join('')}
                         </div>
@@ -1984,35 +1998,34 @@
         }
 
         function loadDashboard() {
-    const totalQuestions = questions.length;
-    const attempted = selectedAnswers.filter(a => a !== null && a !== -1).length;
-    const unattempted = totalQuestions - attempted;
-    const correct = score; // 1 correct = 1 mark
-    const wrong = attempted - correct;
-    const scorePercentage = (correct / totalQuestions * 100).toFixed(1) || 0;
-    
-    // Ab 1 question = 1 mark
-    const totalMarks = `${totalQuestions} / ${correct}`;
-    
-    const totalTime = formatTime(totalSeconds);
-    const avgTimePerQuestion = (totalSeconds / attempted).toFixed(1) || 0;
-    const speed = (attempted / (totalSeconds / 60)).toFixed(1) || 0;
-    const accuracy = (correct / attempted * 100).toFixed(1) || 0;
-    const efficiency = accuracy > 80 ? 'High' : accuracy > 60 ? 'Medium' : 'Low';
-    const percentile = accuracy > 90 ? 'Top 15%' : accuracy > 70 ? 'Top 30%' : 'Top 50%';
-    const rank = Math.floor(Math.random() * 280) + 1;
+            const totalQuestions = questions.length;
+            const attempted = selectedAnswers.filter(a => a !== null && a !== -1).length;
+            const unattempted = totalQuestions - attempted;
+            const correct = score; // 1 correct = 1 mark
+            const wrong = attempted - correct;
+            const scorePercentage = (correct / totalQuestions * 100).toFixed(1) || 0;
+            
+            // Ab 1 question = 1 mark
+            const totalMarks = `${totalQuestions} / ${correct}`;
+            
+            const totalTime = formatTime(totalSeconds);
+            const avgTimePerQuestion = (totalSeconds / attempted).toFixed(1) || 0;
+            const speed = (attempted / (totalSeconds / 60)).toFixed(1) || 0;
+            const accuracy = (correct / attempted * 100).toFixed(1) || 0;
+            const efficiency = accuracy > 80 ? 'High' : accuracy > 60 ? 'Medium' : 'Low';
+            const percentile = accuracy > 90 ? 'Top 15%' : accuracy > 70 ? 'Top 30%' : 'Top 50%';
+            const rank = Math.floor(Math.random() * 280) + 1;
 
-    let longestStreak = 0;
-    let currentStreak = 0;
-    selectedAnswers.forEach((answer, i) => {
-        if (answer === questions[i].answer) {
-            currentStreak++;
-            longestStreak = Math.max(longestStreak, currentStreak);
-        } else {
-            currentStreak = 0;
-        }
-    });
-
+            let longestStreak = 0;
+            let currentStreak = 0;
+            selectedAnswers.forEach((answer, i) => {
+                if (answer === questions[i].answer) {
+                    currentStreak++;
+                    longestStreak = Math.max(longestStreak, currentStreak);
+                } else {
+                    currentStreak = 0;
+                }
+            });
 
             const bestSection = 'History (100%)';
             const weakSection = 'N/A';
@@ -2081,6 +2094,22 @@
             loadQuestions();
         }
 
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().then(() => {
+                    document.body.classList.add('fullscreen');
+                }).catch(err => {
+                    console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().then(() => {
+                        document.body.classList.remove('fullscreen');
+                    });
+                }
+            }
+        }
+
         let lastKey = null;
         let lastTime = 0;
         let keyPressCount = 0;
@@ -2114,7 +2143,7 @@
             }
 
             // Option select / submit
-            if (['1', '2', '3', '4', 'a', 'b', 'c', 'd'].includes(e.key.toLowerCase())) {
+            if (['a', 'b', 'c', 'd'].includes(e.key.toLowerCase())) {
                 const now = Date.now();
 
                 if (lastKey === e.key && (now - lastTime) < 400) {  
@@ -2126,12 +2155,7 @@
                 lastKey = e.key;
                 lastTime = now;
 
-                let optIndex;
-                if (['1', '2', '3', '4'].includes(e.key)) {
-                    optIndex = parseInt(e.key) - 1;
-                } else {
-                    optIndex = 'abcd'.indexOf(e.key.toLowerCase());
-                }
+                const optIndex = 'abcd'.indexOf(e.key.toLowerCase());
 
                 const questionElement = document.querySelector('.highlight') || document.querySelector('.card');
                 if (!questionElement) return;
